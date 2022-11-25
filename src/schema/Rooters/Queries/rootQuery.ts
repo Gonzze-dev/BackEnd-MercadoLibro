@@ -1,6 +1,6 @@
 import {GraphQLObjectType} from 'graphql'
 
-import { GetUserByMail } from '../../Queries/User/GetUserByMail';
+import { GetUserByMail } from '../../Queries/Usuario/GetUserByMail';
 
 //IDIOMA
 import { GetIdiomaById } from '../../Queries/Idioma/getIdiomaById';
@@ -12,7 +12,7 @@ import { GetTemaById } from '../../Queries/Tema/getTemaById';
 import { GetAutorById } from '../../Queries/Autor/getIdiomaById';
 import { GetLibroByIsbn } from '../../Queries/Libro/getLibroByIsbn';
 
-export const rootQueryUsuario = new GraphQLObjectType({
+export const rootQuery= new GraphQLObjectType({
     name: 'rootQuery',
     fields:
     {

@@ -1,4 +1,5 @@
-import { Column, 
+import { BaseEntity,
+        Column, 
         Entity, 
         JoinColumn, 
         ManyToOne, 
@@ -10,7 +11,8 @@ import { Ciudad } from "./Ciudad";
 import { Usuario } from "./Usuario";
 
 @Entity()
-export class Direccion {
+export class Direccion extends BaseEntity
+{
     
     @PrimaryGeneratedColumn()
     id!: number;

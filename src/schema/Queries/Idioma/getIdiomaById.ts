@@ -1,5 +1,5 @@
-import { GraphQLNonNull, GraphQLInt } from "graphql";
-import { Tidioma } from "../../TypesDefs/idioma";
+import { GraphQLNonNull, GraphQLInt, GraphQLString } from "graphql";
+import { TIdioma } from "../../TypesDefs/idioma";
 
 async function fGetIdiomaById(id: number) {
   try {
@@ -11,7 +11,7 @@ async function fGetIdiomaById(id: number) {
 }
 
 export const GetIdiomaById = {
-  type: Tidioma,
+  type: TIdioma,
   args: {
     id: { type: new GraphQLNonNull(GraphQLInt) },
   },

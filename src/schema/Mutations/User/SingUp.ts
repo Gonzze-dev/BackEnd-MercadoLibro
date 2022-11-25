@@ -1,21 +1,29 @@
-import { GraphQLID, GraphQLNonNull, GraphQLString} from "graphql";
+import { GraphQLNonNull, GraphQLString} from "graphql";
 import { sign } from "jsonwebtoken";
 import { authentication } from "../../TypesDefs/authentication"
 import { secret } from "../../../config"
+import { signUp } from '../../../ORM_Queries/Usuario/signUp'
 
-async function singUp(
-	cuil: any,
-	nombre: any,
-	contrasenia: any,
-	correo: any
-) {
+async function fSingUp(args: any) {
 	let msj = {
 		mensaje: "",
 		success: false,
-		accessToken: ""
+		accessToken: "",
+		usuario: {}
 	};
 
 	try {
+
+		const usuario = await signUp(args);
+		const id_usuario: string = usuario[0].id.toString()
+
+		msj.accessToken = sign(id_usuario, secret);
+		msj.success = false;
+		console.log(usuario[0])
+		console.log(usuario[1])
+		console.log(usuario[2])
+		msj.usuario = usuario[0];
+		
 
 		return msj;
 	} catch (err) {
@@ -26,18 +34,13 @@ async function singUp(
 export const SingUp = {
 	type: authentication,
 	args: {
-		cuil: { type: new GraphQLNonNull(GraphQLID) },
 		nombre: { type: new GraphQLNonNull(GraphQLString) },
 		contrasenia: { type: new GraphQLNonNull(GraphQLString) },
 		correo: { type: new GraphQLNonNull(GraphQLString) },
+		telefono: { type: GraphQLString }
 	},
 	async resolve(_: any, args: any) {
-		const result = await singUp(
-			args.cuil,
-			args.nombre,
-			args.contrasenia,
-			args.correo
-		);
+		const result = await fSingUp(args);
 
 		return result;
 	},

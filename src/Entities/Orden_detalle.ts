@@ -1,14 +1,15 @@
-import { Column,
-    Entity,
-    JoinColumn,
-    ManyToOne,
-    PrimaryGeneratedColumn} from "typeorm";
+import { BaseEntity,
+        Column,
+        Entity,
+        JoinColumn,
+        ManyToOne,
+        PrimaryGeneratedColumn} from "typeorm";
 
 import { Orden } from "./Orden";
 import { Libro } from "./Libro";
 
 @Entity()
-export class Orden_detalle
+export class Orden_detalle extends BaseEntity
 {
     @PrimaryGeneratedColumn()
     id!: number;

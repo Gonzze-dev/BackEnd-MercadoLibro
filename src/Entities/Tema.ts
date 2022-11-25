@@ -1,9 +1,11 @@
-import { Column, 
-    Entity, 
-    PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity,
+        Column, 
+        Entity, 
+        PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Tema {
+export class Tema extends BaseEntity
+{
     @PrimaryGeneratedColumn()
     id!: number;
 

@@ -1,11 +1,12 @@
-import { Column, 
-    Entity, 
-    JoinColumn, 
-    JoinTable, 
-    ManyToMany, 
-    OneToMany, 
-    OneToOne, 
-    PrimaryColumn } from "typeorm";
+import { BaseEntity,
+        Column, 
+        Entity, 
+        JoinColumn, 
+        JoinTable, 
+        ManyToMany, 
+        OneToMany, 
+        OneToOne, 
+        PrimaryColumn } from "typeorm";
 import { Autor } from "./Autor";
     
 import { Editorial } from "./Editorial";
@@ -15,7 +16,8 @@ import { Puntuacion } from "./Puntuacion";
 import { Tema } from "./Tema";
 
 @Entity()
-export class Libro {
+export class Libro extends BaseEntity
+{
     
     @PrimaryColumn()
     isbn!: string;

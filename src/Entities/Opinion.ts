@@ -1,4 +1,5 @@
-import {Column, 
+import {BaseEntity,
+        Column, 
         Entity,
         ManyToOne,
         PrimaryColumn,
@@ -7,7 +8,7 @@ import { Libro } from './Libro';
 import { Usuario } from './Usuario';
 
 @Entity()
-export class Opinion
+export class Opinion extends BaseEntity
 {
     @PrimaryColumn()
     usuario_libro: string;

@@ -1,9 +1,15 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {BaseEntity, 
+        Column, 
+        Entity, 
+        JoinColumn, 
+        ManyToOne, 
+        PrimaryColumn } from "typeorm";
 import { Provincia } from "./Provincia";
 
 
 @Entity()
-export class Ciudad {
+export class Ciudad extends BaseEntity
+{
     @PrimaryColumn()
     cp!: number;
 

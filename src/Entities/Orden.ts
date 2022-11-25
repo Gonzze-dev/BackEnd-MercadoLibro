@@ -1,16 +1,19 @@
-import { Column,
-    Entity,
-    JoinColumn,
-    ManyToOne,
-    OneToOne,
-    PrimaryGeneratedColumn} from "typeorm";
+import { BaseEntity,
+        Column,
+        Entity,
+        JoinColumn,
+        ManyToOne,
+        OneToMany,
+        OneToOne,
+        PrimaryGeneratedColumn} from "typeorm";
 
 import { Cupon } from "./Cupon";
 import { Direccion_entrega } from "./Direccion_entrega";
+import { Orden_detalle } from "./Orden_detalle";
 import { Usuario } from "./Usuario";
 
 @Entity()
-export class Orden 
+export class Orden extends BaseEntity
 {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -34,7 +37,7 @@ export class Orden
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'codigo_cupon'})
-    codigo_cupon!: Cupon;
+    cupon!: Cupon;
 
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE'
@@ -47,4 +50,7 @@ export class Orden
     })
     @JoinColumn({name: 'id_direccion_entrega'})
     direccion_entrega!: Direccion_entrega;
+
+    @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden)
+    orden_detalle!: Orden_detalle[];
 }

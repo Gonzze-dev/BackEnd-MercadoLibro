@@ -1,5 +1,5 @@
 import {GraphQLList, GraphQLID, GraphQLNonNull} from 'graphql';
-import { TipoUsuario } from '../../TypesDefs/user';
+import { TUsuario } from '../../TypesDefs/usuario';
 const { Pool } = require('pg');
 
 const conection = new Pool(
@@ -28,7 +28,7 @@ async function deleteUsuario(cuil: any)
 
 export const DeleteUsuario = 
 {
-    type: TipoUsuario,
+    type: TUsuario,
     args:
     {
         cuil: { type: new GraphQLNonNull(GraphQLID) }

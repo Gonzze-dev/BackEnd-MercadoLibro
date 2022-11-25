@@ -2,7 +2,7 @@ import {GraphQLObjectType,
         GraphQLID,
         GraphQLString} from 'graphql';
 
-export const Tidioma = new GraphQLObjectType(
+export const TIdioma = new GraphQLObjectType(
 {
     name: 'idioma',
     fields: 

@@ -1,16 +1,12 @@
-import { Column,
-    Entity,
-    JoinColumn,
-    ManyToOne,
-    PrimaryColumn,
-    PrimaryGeneratedColumn} from "typeorm";
+import { BaseEntity,
+        Column,
+        Entity,
+        PrimaryColumn,
+        } from "typeorm";
 
-import { Direccion_entrega } from "./Direccion_entrega";
-
-import { Usuario } from "./Usuario";
 
 @Entity()
-export class Cupon 
+export class Cupon extends BaseEntity
 {
     @PrimaryColumn()
     codigo_cupon!: string;

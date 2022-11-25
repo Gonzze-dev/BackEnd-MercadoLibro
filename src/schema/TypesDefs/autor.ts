@@ -4,7 +4,7 @@ import {GraphQLObjectType,
 
 export const TAutor = new GraphQLObjectType(
 {
-    name: 'Autor',
+    name: 'autor',
     fields: 
     {
         id: {type: GraphQLID},

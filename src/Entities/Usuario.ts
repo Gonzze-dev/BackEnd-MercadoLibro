@@ -1,15 +1,18 @@
-import {Column, 
+import {BaseEntity, 
+        Column, 
         Entity, 
         JoinTable, 
         ManyToMany, 
         OneToMany, 
         PrimaryGeneratedColumn} from 'typeorm'
+
 import { Libro } from './Libro'
 import { Opinion } from './Opinion'
+import { Orden } from './Orden';
 import { Puntuacion } from './Puntuacion'
 
 @Entity()
-export class Usuario
+export class Usuario extends BaseEntity
 {
 
     @PrimaryGeneratedColumn()
@@ -49,4 +52,7 @@ export class Usuario
 
     @OneToMany((type) => Puntuacion, puntuacion => puntuacion.usuario)
     public puntuacion: Puntuacion[];
+
+    @OneToMany((type) => Orden, orden => orden.usuario)
+    public orden: Orden[];
 }

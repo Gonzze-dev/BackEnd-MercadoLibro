@@ -1,9 +1,10 @@
-import {Column, 
+import {BaseEntity,
+        Column, 
         Entity, 
         PrimaryGeneratedColumn} from 'typeorm'
 
 @Entity()
-export class Pais
+export class Pais extends BaseEntity
 {
 
     @PrimaryGeneratedColumn()

@@ -1,5 +1,5 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { TipoUsuario } from "../../TypesDefs/user";
+import { TUsuario } from "../../TypesDefs/usuario";
 
 async function fGetUserByMail(correo: any) {
   try {
@@ -11,7 +11,7 @@ async function fGetUserByMail(correo: any) {
 }
 
 export const GetUserByMail = {
-  type: TipoUsuario,
+  type: TUsuario,
   args: {
     correo: { type: new GraphQLNonNull(GraphQLString) },
   },

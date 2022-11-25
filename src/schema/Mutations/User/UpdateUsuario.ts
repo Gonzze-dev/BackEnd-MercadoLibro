@@ -1,6 +1,6 @@
 
 import {GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
-import { TipoUsuario } from '../../TypesDefs/user';
+import { TUsuario } from '../../TypesDefs/usuario';
 const { Pool } = require('pg');
 
 const conection = new Pool(
@@ -28,7 +28,7 @@ async function updateUsuario(cuil: any, nombre: any, contrasenia: any, correo: a
 
 export const UpdateUsuario = 
 {
-    type: TipoUsuario,
+    type: TUsuario,
     args:
     {
         cuil: { type: new GraphQLNonNull(GraphQLID) },
