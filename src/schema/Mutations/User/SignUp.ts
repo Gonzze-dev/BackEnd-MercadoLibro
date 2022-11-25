@@ -4,7 +4,7 @@ import { authentication } from "../../TypesDefs/authentication"
 import { secret } from "../../../config"
 import { signUp } from '../../../ORM_Queries/Usuario/signUp'
 
-async function fSingUp(args: any) {
+async function fSignUp(args: any) {
 	let msj = {
 		mensaje: "",
 		success: false,
@@ -19,19 +19,15 @@ async function fSingUp(args: any) {
 
 		msj.accessToken = sign(id_usuario, secret);
 		msj.success = false;
-		console.log(usuario[0])
-		console.log(usuario[1])
-		console.log(usuario[2])
 		msj.usuario = usuario[0];
 		
-
 		return msj;
 	} catch (err) {
 		return err;
 	}
 }
 
-export const SingUp = {
+export const SignUp = {
 	type: authentication,
 	args: {
 		nombre: { type: new GraphQLNonNull(GraphQLString) },
@@ -40,7 +36,7 @@ export const SingUp = {
 		telefono: { type: GraphQLString }
 	},
 	async resolve(_: any, args: any) {
-		const result = await fSingUp(args);
+		const result = await fSignUp(args);
 
 		return result;
 	},

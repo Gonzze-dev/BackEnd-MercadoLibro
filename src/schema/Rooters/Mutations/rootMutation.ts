@@ -4,7 +4,7 @@ import {DeleteUserByMail} from '../../Mutations/User/DeleteUser';
 import {CreateUser} from '../../Mutations/User/CreateUser';
 import {UpdateUserByCuil} from '../../Mutations/User/UpdateUserByCuil';
 import {Login} from '../../Mutations/User/login';
-import {SingUp} from '../../Mutations/User/SingUp';
+import {SignUp} from '../../Mutations/User/SignUp';
 
 //IDIOMA
 import { InsertIdioma } from '../../Mutations/Idioma/insertIdioma';
@@ -31,7 +31,7 @@ export const rootMutation = new GraphQLObjectType({
         CreateUser: CreateUser,
         UpdateUserByCuil: UpdateUserByCuil,
         Login: Login,
-        SingUp: SingUp,
+        SignUp: SignUp,
 
         InsertIdioma: InsertIdioma,
         UpdateIdioma: UpdateIdioma,

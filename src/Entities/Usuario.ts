@@ -1,6 +1,7 @@
 import {BaseEntity, 
         Column, 
         Entity, 
+        JoinColumn, 
         JoinTable, 
         ManyToMany, 
         OneToMany, 
@@ -43,7 +44,15 @@ export class Usuario extends BaseEntity
         onUpdate: 'CASCADE',
     })
     @JoinTable({
-        name: "favorito"
+        name: "favorito",
+        joinColumn:
+        {
+            name: 'id_usuario'
+        },
+        inverseJoinColumn:
+        {
+            name: 'isbn'
+        }
     })
     libro: Libro[];
 

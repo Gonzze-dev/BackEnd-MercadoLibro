@@ -4,6 +4,7 @@ import {GraphQLObjectType,
     GraphQLInt,
     GraphQLList,
     GraphQLFloat} from 'graphql';
+import { TIdioma } from './idioma';
 
 export const TLibro = new GraphQLObjectType({
 name: 'libro',
@@ -16,7 +17,7 @@ fields:
     precio: {type: GraphQLFloat},
     stock: {type: GraphQLInt},
     descripcion: {type: GraphQLString},
-    idioma: {type: GraphQLString},
+    idioma: {type: TIdioma},
     autor: {type: new GraphQLList(GraphQLString)},
     tema: {type: new GraphQLList(GraphQLString)},
 }

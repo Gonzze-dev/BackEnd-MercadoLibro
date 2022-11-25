@@ -4,6 +4,7 @@ import { BaseEntity,
         JoinColumn, 
         JoinTable, 
         ManyToMany, 
+        ManyToOne, 
         OneToMany, 
         OneToOne, 
         PrimaryColumn } from "typeorm";
@@ -59,8 +60,7 @@ export class Libro extends BaseEntity
     @OneToOne((type) => Idioma, {
         onUpdate: 'CASCADE'
     })
-    @Column({name: 'id_idioma'})
-    idioma!: number;
+    idioma!: Idioma;
 
     @ManyToMany((type) => Tema, {
         onUpdate: 'CASCADE'
@@ -68,10 +68,10 @@ export class Libro extends BaseEntity
     @JoinTable({
         name: "asignar_tema",
         joinColumn: {
-            name: 'id_tema'
+            name: 'isbn'
         },
         inverseJoinColumn: {
-            name: 'isbn'
+            name: 'id_tema'
         }
     })
     tema!: Tema[];
@@ -82,10 +82,10 @@ export class Libro extends BaseEntity
     @JoinTable({
         name: "escrito_por",
         joinColumn: {
-            name: 'id_autor'
+            name: 'isbn'
         },
         inverseJoinColumn: {
-            name: 'isbn'
+            name: 'id_autor'
         }
     })
     @JoinColumn({
