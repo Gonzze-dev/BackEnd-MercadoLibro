@@ -19,7 +19,7 @@ export class Orden_detalle extends BaseEntity
         precision: 9, 
         scale: 2,
     })
-    preico!: number;
+    precio!: number;
 
     @Column()
     cantidad!: number;
@@ -30,8 +30,9 @@ export class Orden_detalle extends BaseEntity
     @JoinColumn({name: 'id_orden'})
     orden!: Orden;
 
-    @ManyToOne((type) => Libro, {
-        onUpdate: 'CASCADE'
+    @ManyToOne((type) => Libro, (libro) => libro.isbn, {
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinColumn({name: 'isbn'})
     libro!: Libro;

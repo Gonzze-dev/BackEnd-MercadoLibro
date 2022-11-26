@@ -34,23 +34,28 @@ export class Orden extends BaseEntity
     total!: number;
 
     @OneToOne((type) => Cupon, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinColumn({name: 'codigo_cupon'})
     cupon!: Cupon;
 
     @ManyToOne((type) => Usuario, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
     })
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;
 
     @ManyToOne((type) => Direccion_entrega, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinColumn({name: 'id_direccion_entrega'})
     direccion_entrega!: Direccion_entrega;
 
-    @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden)
+    @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden, {
+        onUpdate: 'CASCADE',
+        eager: true
+    })
     orden_detalle!: Orden_detalle[];
 }

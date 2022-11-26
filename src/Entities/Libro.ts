@@ -5,8 +5,7 @@ import { BaseEntity,
         JoinTable, 
         ManyToMany, 
         ManyToOne, 
-        OneToMany, 
-        OneToOne, 
+        OneToMany,
         PrimaryColumn } from "typeorm";
 import { Autor } from "./Autor";
     
@@ -51,14 +50,23 @@ export class Libro extends BaseEntity
     })
     fecha_ingreso!: Date;
 
-    @OneToOne((type) => Editorial, {
-        onUpdate: 'CASCADE'
+    @ManyToOne(() => Editorial, (editorial) => editorial.id,
+    {
+        onUpdate: 'CASCADE',
+        eager: true
     })
-    @Column({name: 'id_editorial'})
-    editorial!: number;
+    @JoinColumn({
+        name: 'id_editorial'
+    })
+    editorial!: Editorial;
 
-    @OneToOne((type) => Idioma, {
-        onUpdate: 'CASCADE'
+    @ManyToOne(() => Idioma, (idioma) => idioma.id,
+        {
+            onUpdate: 'CASCADE',
+            eager: true
+        })
+    @JoinColumn({
+        name: 'id_idioma',
     })
     idioma!: Idioma;
 
@@ -77,7 +85,8 @@ export class Libro extends BaseEntity
     tema!: Tema[];
 
     @ManyToMany((type) => Autor, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinTable({
         name: "escrito_por",
@@ -85,17 +94,21 @@ export class Libro extends BaseEntity
             name: 'isbn'
         },
         inverseJoinColumn: {
-            name: 'id_autor'
+            name: 'id_autor',
         }
     })
     @JoinColumn({
-        name: 'id_autor'
+        name: 'id_autor',
     })
     autor!: Autor[];
     
-    @OneToMany((type) => Opinion, opinion => opinion.opinion)
+    @OneToMany((type) => Opinion, opinion => opinion.libro, {
+        eager: true
+    })
     public opinion: Opinion[];
 
-    @OneToMany((type) => Puntuacion, puntuacion => puntuacion.usuario)
-    public puntuacion: Puntuacion[];
+    @OneToMany((type) => Puntuacion, puntuacion => puntuacion.libro, {
+        eager: true
+    })
+    puntuacion: Puntuacion[];
 }

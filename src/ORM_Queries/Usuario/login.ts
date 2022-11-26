@@ -1,15 +1,12 @@
 import { Usuario } from "../../Entities/Usuario";
 
-async function login(args: any) 
+export async function login(args: any) 
 {
     const usuario = await Usuario.find(
         {
-            select:
-            {
-                id: true,
-                nombre: true,
-                admin: true,
-
+            relations:{
+                orden: true,
+                libro: true,
             },
             where:
             {
@@ -19,5 +16,7 @@ async function login(args: any)
         }
     )
 
-    return usuario
+    console.log(usuario[0].orden[0])
+    
+    return usuario[0]
 }

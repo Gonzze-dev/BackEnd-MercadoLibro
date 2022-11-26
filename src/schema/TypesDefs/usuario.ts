@@ -19,6 +19,7 @@ export const TUsuario = new GraphQLObjectType({
         admin: {type: GraphQLBoolean},
         telefono: {type: GraphQLString},
         libro: {type: new GraphQLList(TLibro)},
-        orden: {type: new GraphQLList(TOrden)}
+        orden: {type: new GraphQLList(TOrden)},
+        // carrito: {type: new GraphQLList()}
     }
 });

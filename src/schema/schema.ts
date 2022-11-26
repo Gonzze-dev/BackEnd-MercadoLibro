@@ -1,7 +1,7 @@
 import {GraphQLSchema} from 'graphql'
 
-import {rootQuery} from './Rooters/Queries/rootQuery'
-import {rootMutation} from './Rooters/Mutations/rootMutation'
+import {rootQuery} from './Rooters/rootQuery'
+import {rootMutation} from './Rooters/rootMutation'
 
 export const schema = new GraphQLSchema(
 {

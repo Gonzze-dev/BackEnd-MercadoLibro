@@ -1,10 +1,9 @@
-import {BaseEntity, 
-        Column, 
-        Entity, 
-        JoinColumn, 
-        JoinTable, 
-        ManyToMany, 
-        OneToMany, 
+import {BaseEntity,
+        Column,
+        Entity,
+        JoinTable,
+        ManyToMany,
+        OneToMany,
         PrimaryGeneratedColumn} from 'typeorm'
 
 import { Libro } from './Libro'

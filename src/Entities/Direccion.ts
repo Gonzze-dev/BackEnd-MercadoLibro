@@ -23,8 +23,10 @@ export class Direccion extends BaseEntity
     @Column()
     numero!: number;
 
-    @Column()
-    piso_departamento!: string;
+    @Column({
+        nullable: true
+    })
+    piso_departamento: string;
 
     @Column({type: 'bigint'})
     dni!: number;
@@ -36,7 +38,8 @@ export class Direccion extends BaseEntity
     usuario!: Usuario;
 
     @ManyToOne((type) => Ciudad, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinColumn({name: 'cp'})
     cp!: Ciudad;

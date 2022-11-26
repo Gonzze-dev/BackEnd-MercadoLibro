@@ -14,7 +14,7 @@ export class Opinion extends BaseEntity
     usuario_libro: string;
 
     @Column('text')
-    opinion!: string;
+    comentario!: string;
 
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
