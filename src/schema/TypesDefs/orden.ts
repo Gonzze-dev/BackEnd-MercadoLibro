@@ -4,7 +4,7 @@ import {GraphQLObjectType,
         GraphQLFloat,
         GraphQLList} from 'graphql';
 import { TCupon } from './cupon';
-import { TDireccion } from './Direccion';
+import { TDireccion } from './direccion';
 import { TOrden_detalle } from './orden_detalle';
 
 export const TOrden = new GraphQLObjectType({
@@ -15,7 +15,6 @@ export const TOrden = new GraphQLObjectType({
         fecha: {type: GraphQLString},
         total: {type: GraphQLFloat},
         cupon: {type: TCupon},
-        id_usuario: {type: GraphQLString},
         direccion_entrega: {type: TDireccion},
         orden_detalle: {type: new GraphQLList(TOrden_detalle)}
     }

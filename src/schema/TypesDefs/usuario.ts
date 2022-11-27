@@ -5,6 +5,7 @@ import {GraphQLObjectType,
         GraphQLList
         } from 'graphql';
 
+import { TCarrito } from './carrito';
 import { TLibro } from './libro';
 import { TOrden } from './orden';
 
@@ -18,8 +19,8 @@ export const TUsuario = new GraphQLObjectType({
         contrasenia: {type: GraphQLString},
         admin: {type: GraphQLBoolean},
         telefono: {type: GraphQLString},
-        libro: {type: new GraphQLList(TLibro)},
+        favorito: {type: new GraphQLList(TLibro)},
         orden: {type: new GraphQLList(TOrden)},
-        // carrito: {type: new GraphQLList()}
+        carrito: {type: new GraphQLList(TCarrito)}
     }
 });

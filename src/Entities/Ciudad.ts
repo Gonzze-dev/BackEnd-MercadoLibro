@@ -16,10 +16,10 @@ export class Ciudad extends BaseEntity
     @Column()
     nombre!: string;
 
-    @ManyToOne((type) => Provincia, {
+    @ManyToOne((type) => Provincia, (provincia) => provincia.id, {
         onUpdate: 'CASCADE',
         eager: true
     })
     @JoinColumn({name: 'id_provincia'})
-    provincia!: number;
+    provincia!: Provincia;
 }

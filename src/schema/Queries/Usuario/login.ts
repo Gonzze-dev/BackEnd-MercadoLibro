@@ -1,5 +1,6 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { sign } from "jsonwebtoken";
+import { type } from "os";
 import { secret } from "../../../config";
 import { login } from "../../../ORM_Queries/Usuario/login";
 import { authentication } from "../../TypesDefs/authentication";
@@ -19,12 +20,17 @@ async function fLogin(args: any) {
         const id_usuario: string = usuario.id.toString()
 
         msj.accessToken = sign(id_usuario, secret);
-        msj.success = false;
+        msj.success = true;
         msj.usuario = usuario;
       
         return msj;
-    } catch (err) {
-      return err;
+    } catch (err: any) {
+        
+        msj.accessToken = '';
+        msj.success = false;
+        msj.usuario = {};
+
+        return msj;
     }
 }
 

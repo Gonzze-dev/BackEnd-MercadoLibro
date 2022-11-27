@@ -7,6 +7,7 @@ import {BaseEntity,
         PrimaryGeneratedColumn} from 'typeorm'
 
 import { Libro } from './Libro'
+import { Linea_carrito } from './Linea_carrito';
 import { Opinion } from './Opinion'
 import { Orden } from './Orden';
 import { Puntuacion } from './Puntuacion'
@@ -53,7 +54,7 @@ export class Usuario extends BaseEntity
             name: 'isbn'
         }
     })
-    libro: Libro[];
+    favorito: Libro[];
 
     @OneToMany((type) => Opinion, opinion => opinion.usuario)
     public opinion: Opinion[];
@@ -63,4 +64,7 @@ export class Usuario extends BaseEntity
 
     @OneToMany((type) => Orden, orden => orden.usuario)
     public orden: Orden[];
+
+    @OneToMany((type) => Linea_carrito, linea_carrito => linea_carrito.usuario)
+    public carrito: Linea_carrito[];
 }

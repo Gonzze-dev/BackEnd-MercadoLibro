@@ -40,5 +40,5 @@ export class Direccion_entrega extends BaseEntity
         eager: true
     })
     @JoinColumn({name: 'cp'})
-    cp!: Ciudad;
+    ciudad!: Ciudad;
 }

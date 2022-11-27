@@ -35,5 +35,5 @@ export class Orden_detalle extends BaseEntity
         eager: true
     })
     @JoinColumn({name: 'isbn'})
-    libro!: Libro;
+    libro!: Libro[];
 }

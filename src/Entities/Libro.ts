@@ -71,7 +71,8 @@ export class Libro extends BaseEntity
     idioma!: Idioma;
 
     @ManyToMany((type) => Tema, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinTable({
         name: "asignar_tema",

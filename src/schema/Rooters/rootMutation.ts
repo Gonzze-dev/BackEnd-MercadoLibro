@@ -27,22 +27,22 @@ export const rootMutation = new GraphQLObjectType({
     name: 'rootMutation',
     fields:
     {
-        DeleteUserByMail: DeleteUserByMail,
-        CreateUser: CreateUser,
-        UpdateUserByCuil: UpdateUserByCuil,
-        Login: Login,
+        // DeleteUserByMail: DeleteUserByMail,
+        // CreateUser: CreateUser,
+        // UpdateUserByCuil: UpdateUserByCuil,
+        // Login: Login,
         SignUp: SignUp,
 
-        InsertIdioma: InsertIdioma,
-        UpdateIdioma: UpdateIdioma,
+        // InsertIdioma: InsertIdioma,
+        // UpdateIdioma: UpdateIdioma,
 
-        InsertTema: InsertTema,
-        UpdateTema: UpdateTema,
+        // InsertTema: InsertTema,
+        // UpdateTema: UpdateTema,
 
-        InsertAutor: InsertAutor,
-        UpdateAutor: UpdateAutor,
+        // InsertAutor: InsertAutor,
+        // UpdateAutor: UpdateAutor,
 
-        InsertLibro: InsertLibro,
-        UpdateLibro: UpdateLibro
+        // InsertLibro: InsertLibro,
+        // UpdateLibro: UpdateLibro
     }
 })

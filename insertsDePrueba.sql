@@ -169,3 +169,10 @@ INSERT INTO public.orden_detalle(
 	precio, cantidad, id_orden, isbn)
 	VALUES (10, 2, 1, '456-546-232'),
             (10, 2, 1, '345-854-383');
+
+--CARRITO
+INSERT INTO public.linea_carrito(
+	cantidad, "libroIsbn", id_usuario)
+	VALUES (10, '123-234-513', 1),
+                (3, '234-543-251', 1),
+                (1, '123-213-466', 1);

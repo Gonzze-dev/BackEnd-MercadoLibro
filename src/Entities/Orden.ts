@@ -46,9 +46,8 @@ export class Orden extends BaseEntity
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;
 
-    @ManyToOne((type) => Direccion_entrega, {
+    @ManyToOne((type) => Direccion_entrega, (direccion) => direccion.id, {
         onUpdate: 'CASCADE',
-        eager: true
     })
     @JoinColumn({name: 'id_direccion_entrega'})
     direccion_entrega!: Direccion_entrega;

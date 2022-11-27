@@ -16,7 +16,7 @@ export async function signUp(args: any)
         {
             relations:{
                 orden: true,
-                libro: true,
+                favorito: true,
             },
             where:{
                 correo: args.correo

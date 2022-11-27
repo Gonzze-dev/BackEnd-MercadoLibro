@@ -5,8 +5,13 @@ export async function login(args: any)
     const usuario = await Usuario.find(
         {
             relations:{
-                orden: true,
-                libro: true,
+                orden: {
+                    direccion_entrega: true
+                },
+                favorito: true,
+                carrito: {
+                    libro: true
+                },
             },
             where:
             {
@@ -16,7 +21,7 @@ export async function login(args: any)
         }
     )
 
-    console.log(usuario[0].orden[0])
+    // console.log(usuario[0].orden[0].direccion_entrega)
     
     return usuario[0]
 }

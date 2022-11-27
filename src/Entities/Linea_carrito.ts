@@ -16,8 +16,9 @@ export class Linea_carrito extends BaseEntity
     @Column()
     cantidad!: number;
     
-    @ManyToOne((type) => Libro, {
+    @ManyToOne((type) => Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
+        eager: true
     })
     libro: Libro;
 
