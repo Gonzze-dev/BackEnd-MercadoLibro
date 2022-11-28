@@ -9,7 +9,7 @@ import { TCarrito } from './carrito';
 import { TLibro } from './libro';
 import { TOrden } from './orden';
 
-export const TUsuario = new GraphQLObjectType({
+export const TUsuario: GraphQLObjectType = new GraphQLObjectType({
     name: 'usuario',
     fields: 
     {

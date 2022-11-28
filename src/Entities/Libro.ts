@@ -50,6 +50,11 @@ export class Libro extends BaseEntity
     })
     fecha_ingreso!: Date;
 
+    @Column({
+            nullable: true
+    })
+    descuento: number;
+
     @ManyToOne(() => Editorial, (editorial) => editorial.id,
     {
         onUpdate: 'CASCADE',

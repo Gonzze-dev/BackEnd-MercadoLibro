@@ -14,10 +14,6 @@ export async function signUp(args: any)
 
     const usuario = await Usuario.find(
         {
-            relations:{
-                orden: true,
-                favorito: true,
-            },
             where:{
                 correo: args.correo
             }

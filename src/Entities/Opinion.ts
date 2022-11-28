@@ -1,6 +1,7 @@
 import {BaseEntity,
         Column, 
         Entity,
+        JoinColumn,
         ManyToOne,
         PrimaryColumn,
         } from 'typeorm';
@@ -19,10 +20,16 @@ export class Opinion extends BaseEntity
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
     })
+    @JoinColumn({
+        name: 'id_usuario',
+    })
     usuario: Usuario;
 
     @ManyToOne((type) => Libro, {
         onUpdate: 'CASCADE',
+    })
+    @JoinColumn({
+        name: 'isbn'
     })
     libro: Libro;
 }

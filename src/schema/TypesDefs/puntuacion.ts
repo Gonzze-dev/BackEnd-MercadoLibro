@@ -4,15 +4,16 @@ import {GraphQLObjectType,
     GraphQLFloat,
     GraphQLInt
     } from 'graphql';
+import { TLibro } from './libro';
+import { TUsuario } from './usuario';
 
 export const TPuntuacion = new GraphQLObjectType({
     name: 'puntuacion',
-    fields: 
-    {
+    fields: () => 
+    ({
         usuario_libro: {type: GraphQLString},
         puntuacion: {type: GraphQLFloat},
-        id_usuario: {type: GraphQLInt},
-        isbn: {type: GraphQLString}
-
-    }
+        usuario: {type: TUsuario},
+        isbn: {type: TLibro}
+    })
 });

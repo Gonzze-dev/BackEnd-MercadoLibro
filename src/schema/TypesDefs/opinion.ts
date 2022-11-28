@@ -1,17 +1,16 @@
 import {GraphQLObjectType, 
-    GraphQLID,
     GraphQLString,
-    GraphQLFloat,
-    GraphQLInt
     } from 'graphql';
+import { TLibro } from './libro';
+import { TUsuario } from './usuario';
 
 export const TOpinion = new GraphQLObjectType({
     name: 'opinion',
-    fields: 
-    {
+    fields: () => 
+    ({
         usuario_libro: {type: GraphQLString},
         comentario: {type: GraphQLString},
-        id_usuario: {type: GraphQLInt},
-        isbn: {type: GraphQLString}
-    }
+        usuario: {type: TUsuario},
+        isbn: {type: TLibro}
+    })
 });

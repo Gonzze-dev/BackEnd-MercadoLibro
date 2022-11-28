@@ -13,7 +13,7 @@ import { TOpinion } from './opinion';
 import { TPuntuacion } from './puntuacion';
 import { Ttema } from './tema';
 
-export const TLibro = new GraphQLObjectType({
+export const TLibro: GraphQLObjectType = new GraphQLObjectType({
 name: 'libro',
 fields: 
 {
@@ -24,6 +24,8 @@ fields:
     precio: {type: GraphQLFloat},
     stock: {type: GraphQLInt},
     descripcion: {type: GraphQLString},
+    fecha_ingreso: {type: GraphQLString},
+    descuento: {type: GraphQLInt},
     idioma: {type: TIdioma},
     editorial: {type: TEditorial},
     autor: {type: new GraphQLList(TAutor)},

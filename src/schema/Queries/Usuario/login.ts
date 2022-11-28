@@ -4,7 +4,6 @@ import { type } from "os";
 import { secret } from "../../../config";
 import { login } from "../../../ORM_Queries/Usuario/login";
 import { authentication } from "../../TypesDefs/authentication";
-import { TUsuario } from "../../TypesDefs/usuario";
 
 async function fLogin(args: any) {
     let msj = {
@@ -25,7 +24,7 @@ async function fLogin(args: any) {
       
         return msj;
     } catch (err: any) {
-        
+
         msj.accessToken = '';
         msj.success = false;
         msj.usuario = {};

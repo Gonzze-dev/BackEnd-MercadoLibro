@@ -89,22 +89,22 @@ VALUES  ('Gonzalo Errandonea'),
         ('Vanesa Lopez');
 
 --TEMA
-INSERT INTO tema (nombre)
-VALUES  ('Drama'),
-        ('Terror'),
-        ('Accion'),
-        ('Comedia'),
-        ('Aventura'),
-        ('Fantasia'),
-        ('Ciencia ficcion'),
-        ('Manga'),
-        ('Infantil'),
-        ('Poesia'),
-        ('Teatro'),
-        ('Cocina'),
-        ('Autoayuda'),
-        ('Salud'),
-        ('Economia');
+INSERT INTO tema (nombre, url_imagen)
+VALUES  ('Drama', 'https://imgs.search.brave.com/D8VOEj_PQgTq9aopCN_jDUoIRUQ4RzcuRYhZNXsHARQ/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5w/TkF5bk40NDA2T2s2/d2xFTV9HN1JBSGFF/SyZwaWQ9QXBp'),
+        ('Terror', 'https://imgs.search.brave.com/HQAtf1U9jTFs2v6m9hpLnRcPazdchdVXs_gLvjcLdM0/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/ZXZlbnRvc3pvbWJp/ZXMuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE1LzA3LzEt/b3RoZXItem9tYmll/LWhhbmRzLWhvcnJv/ci13YWxscGFwZXIu/anBn'),
+        ('Accion', 'https://imgs.search.brave.com/AA-w1vTvRi3qBKLuRR_qKrm6DML1z3kR-KtWJqNbZRA/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5F/QWhPZjRmRENCMjVU/Qnl0NDRTbEhRSGFF/SyZwaWQ9QXBp'),
+        ('Comedia', 'https://imgs.search.brave.com/qPZaYJhZ0MqEALHdyO7gN1lff51_yLu_wMNHnzZ-YVI/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5Y/ZXUxVWdrbVJTOHhV/bWJncWZLZU93SGFF/OCZwaWQ9QXBp'),
+        ('Aventura', 'https://imgs.search.brave.com/G8IrN0ZCSRtH1ib-I8pVzH8wAYcp0lVJuucGXFbteQ0/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC41S1pZN09w/R1R1VnFfWC0wQnox/bURRSGFFSyZwaWQ9/QXBp'),
+        ('Fantasia', 'https://imgs.search.brave.com/2sxTLVV-BtZsVMXff11F9lnNQxU2JTF1MS3sPLPbjVc/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5D/TnRBY181STJNbm9u/WXVoeW1QYWZRSGFF/SyZwaWQ9QXBp'),
+        ('Ciencia ficcion', 'https://imgs.search.brave.com/Dmpsn40FF3muo9F1BWtK10vUHgHJO6DAzxjQefx7bz0/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Uy/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC4xOWN3UEw2/aUQ4cFgySHJULXVj/cWRRSGFFbyZwaWQ9/QXBp'),
+        ('Manga', 'https://imgs.search.brave.com/IdN88ywfDgH6wkqi_A1LmKyMXBV1ipUDWoccEWVP7Vo/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC5va09CWE1G/eF9JMkxzOG0zYzc3/djVBSGFFSyZwaWQ9/QXBp'),
+        ('Infantil', 'https://imgs.search.brave.com/KzCVX2yKEYryp8Et173Ajg093eVJVMUnMQY4vY98DEs/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5w/UW4tQWc0dHB1b0p3/VEktTGh1UUZBSGFF/byZwaWQ9QXBp'),
+        ('Poesia', 'https://imgs.search.brave.com/u4zW1UECLyMMHqM1irHC13z0yU1OvWX_okf7DuacenE/rs:fit:905:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5j/c1Y0aHJ5THY2bjRp/ZlFnbjBNMU13SGFE/NCZwaWQ9QXBp'),
+        ('Teatro', 'https://imgs.search.brave.com/hBUJo1UUX2kLjrHlO06hnKyDCbkEifIF8LGj_oD7K6g/rs:fit:761:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5C/YnJRWkJueGdBWnh6/TVkzRXFLUHNBSGFF/biZwaWQ9QXBp'),
+        ('Cocina', 'https://imgs.search.brave.com/vBpKm8YNSYGPXzO_OkJq_61YdD6NGqOHLY72RSRi11k/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5J/Z25fM2JERzRGeW9E/RXdpV3pDbU9nSGFF/byZwaWQ9QXBp'),
+        ('Autoayuda', 'https://imgs.search.brave.com/fapNBDVm9t8urdwwxlfQyEsWaNySJEaOKWIdaKQjqmk/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC54/b1RDUTlTRVJRNnlL/RDJhaTZsQjBBSGFF/OCZwaWQ9QXBp'),
+        ('Salud', 'https://imgs.search.brave.com/loAD7eBp_9m0Y3hnm5O4qViTVFu6cKCtb2ubijeuNTU/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC45/b2pYMlJKS2xJb2Qy/ZEtFRmloTFNnSGFF/NyZwaWQ9QXBp'),
+        ('Economia', 'https://imgs.search.brave.com/YBcOLjCKffiGHx6JZXBEndDA5NIwoQo2a1AuW6XSZlU/rs:fit:480:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4y/TGZ4OU9uSTZuZU1M/b1hDV241ckVRSGFI/VSZwaWQ9QXBp');
 
 --EDITORIAL
 INSERT INTO editorial (nombre)
@@ -150,6 +150,12 @@ VALUES  ('123-234-513', 'https://http2.mlimages.com/123-234-513', 'Harry Potter 
         ('456-456-564', 'https://http2.mlimages.com/456-456-564', 'La Macha', '21/03/2000', 45645.222, 10, 'descripcion de La Macha', 13, 3),
         ('456-543-453', 'https://http2.mlimages.com/456-543-453', 'The lliad', '30/04/1998', 123123.25, 10, 'descripcion de The lliad', 9, 5);
 
+--ASIGNAR_TEMA
+INSERT INTO public.asignar_tema(isbn, id_tema)
+	VALUES ('456-546-232', 1),
+		   ('456-546-232', 2),
+		   ('123-213-466', 10);
+
 --FAVORITOS
 INSERT INTO favorito (id_usuario, isbn)
 VALUES (1, '456-546-232'),
@@ -176,3 +182,13 @@ INSERT INTO public.linea_carrito(
 	VALUES (10, '123-234-513', 1),
                 (3, '234-543-251', 1),
                 (1, '123-213-466', 1);
+
+--PUNTUACION
+INSERT INTO public.puntuacion(
+	usuario_libro, puntuacion, id_usuario, isbn)
+	VALUES ('1-123-234-513', 3, 1, '123-234-513');
+
+--OPINION
+INSERT INTO public.opinion(
+	usuario_libro, comentario, id_usuario, isbn)
+	VALUES ('1-123-234-513', 'No me gusto nada, igual nunca lo lei', 1, '123-234-513');

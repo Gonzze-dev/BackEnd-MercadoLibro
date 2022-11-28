@@ -6,7 +6,13 @@ export async function login(args: any)
         {
             relations:{
                 orden: {
-                    direccion_entrega: true
+                    direccion_entrega: {
+                        ciudad: {
+                            provincia:{
+                                pais: true
+                            }
+                        }
+                    }
                 },
                 favorito: true,
                 carrito: {

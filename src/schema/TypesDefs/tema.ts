@@ -8,6 +8,7 @@ export const Ttema = new GraphQLObjectType({
     fields: 
     {
         id: {type: GraphQLID},
-        nombre: {type: GraphQLString}
+        nombre: {type: GraphQLString},
+        url_imagen: {type: GraphQLString}
     }
 });

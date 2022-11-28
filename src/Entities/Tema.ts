@@ -13,4 +13,7 @@ export class Tema extends BaseEntity
         unique: true
     })
     nombre!: string;
+
+    @Column()
+    url_imagen: string;
 }

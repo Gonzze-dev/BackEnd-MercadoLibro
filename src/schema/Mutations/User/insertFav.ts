@@ -1,10 +1,11 @@
 import { GraphQLNonNull, GraphQLString} from "graphql";
 import { sign } from "jsonwebtoken";
-import { authentication } from "../../TypesDefs/authentication"
-import { secret } from "../../../config"
-import { signUp } from '../../../ORM_Queries/Usuario/signUp'
 
-async function fSignUp(args: any) {
+import { secret } from "../../../config"
+import { insertFav } from "../../../ORM_Queries/Usuario/insertFav";
+import { authentication } from "../../TypesDefs/authentication";
+
+async function fInsertFav(isbn: string, tokenUser: string) {
 	let msj = {
 		mensaje: "",
 		success: false,
@@ -14,29 +15,28 @@ async function fSignUp(args: any) {
 
 	try {
 
-		const usuario = await signUp(args);
+		const usuario = await insertFav(isbn, tokenUser);
 		const id_usuario: string = usuario[0].id.toString()
 
+		msj.mensaje = "Libro añadido a favoritos"
 		msj.accessToken = sign(id_usuario, secret);
 		msj.success = true;
 		msj.usuario = usuario[0];
 		
 		return msj;
 	} catch (err) {
-		return err;
+		return msj;
 	}
 }
 
-export const SignUp = {
+export const InsertFav = {
 	type: authentication,
 	args: {
-		nombre: { type: new GraphQLNonNull(GraphQLString) },
-		contrasenia: { type: new GraphQLNonNull(GraphQLString) },
-		correo: { type: new GraphQLNonNull(GraphQLString) },
-		telefono: { type: GraphQLString }
+		isbn: { type: new GraphQLNonNull(GraphQLString) },
+		tokenUser: { type: new GraphQLNonNull(GraphQLString) },
 	},
 	async resolve(_: any, args: any) {
-		const result = await fSignUp(args);
+		const result = await fInsertFav(args.isbn, args.tokenUser);
 
 		return result;
 	},
