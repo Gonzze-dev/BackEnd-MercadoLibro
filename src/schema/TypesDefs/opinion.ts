@@ -11,6 +11,6 @@ export const TOpinion = new GraphQLObjectType({
         usuario_libro: {type: GraphQLString},
         comentario: {type: GraphQLString},
         usuario: {type: TUsuario},
-        isbn: {type: TLibro}
+        libro: {type: TLibro}
     })
 });

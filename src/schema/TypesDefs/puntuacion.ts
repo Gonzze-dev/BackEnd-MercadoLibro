@@ -14,6 +14,6 @@ export const TPuntuacion = new GraphQLObjectType({
         usuario_libro: {type: GraphQLString},
         puntuacion: {type: GraphQLFloat},
         usuario: {type: TUsuario},
-        isbn: {type: TLibro}
+        libro: {type: TLibro}
     })
 });
