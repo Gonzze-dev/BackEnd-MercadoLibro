@@ -3,13 +3,10 @@ import { verify } from "jsonwebtoken";
 
 import { secret } from "../../../config"
 import { realizarCompra } from "../../../ORM_Queries/Usuario/realizarCompra";
-import { jMercadoPago, TMercado_pago } from "../../TypesDefs/mercadopago";
-
-import { jSend, TSend } from "../../TypesDefs/send";
+import { jMercadoPago, sendMercadoPago } from "../../TypesDefs/mercadopago";
 
 async function fRealizarCompra(tokenUser: string) {
-	let msj = jSend()
-	let urls = jMercadoPago()
+	let msj = jMercadoPago()
 
 	try {
 		const id = parseInt(<string>verify(tokenUser, secret))
@@ -18,9 +15,7 @@ async function fRealizarCompra(tokenUser: string) {
 		msj.message = "realizada con exito!"
 		msj.success = true;
 
-		urls.init_point = res.body.init_point
-
-		msj.object.push(urls)
+		msj.results.init_point = res.body.sandbox_init_point
 
 		return msj;
 	} catch (err) {
@@ -30,7 +25,7 @@ async function fRealizarCompra(tokenUser: string) {
 }
 
 export const RealizarCompra = {
-	type: TSend('RealizarCompra', TMercado_pago),
+	type: sendMercadoPago,
 	args: {
 		tokenUser: { type: new GraphQLNonNull(GraphQLString) },
 	},

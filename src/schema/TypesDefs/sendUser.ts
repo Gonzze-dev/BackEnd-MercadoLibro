@@ -1,25 +1,28 @@
 import { GraphQLBoolean, GraphQLList, GraphQLObjectType, GraphQLString } from "graphql";
+import { TSend } from "./send";
+import { TUsuario } from "./usuario";
 
 export const jSendUser = () =>
 {
     return {
         message: "",
         success: false,
-        accessToken: "",
         status: 0,
-        object: new Array<any>
+        results: {
+            accessToken: '',
+            usuario: new Array<any>
+        }
     }
 }
 
-export const TSendUser = (metodName: string, TypeDef: GraphQLObjectType) => new GraphQLObjectType({
-    name: `send_${metodName}`,
+const ObjectUsuario = new GraphQLObjectType({
+    name: `ObjectUsuario`,
     fields: 
     {
-        message: {type: GraphQLString},
-        success: {type: GraphQLBoolean},
-        status: {type: GraphQLString},
         accessToken: {type: GraphQLString},
-        object: {type: new GraphQLList(TypeDef)}
+        usuario: {type: new GraphQLList(TUsuario)}
     }
-});
+})
+
+export const TSendUser = TSend('sendUsuario', ObjectUsuario);
 

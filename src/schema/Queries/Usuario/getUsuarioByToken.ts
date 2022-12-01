@@ -5,7 +5,6 @@ import { verify } from "jsonwebtoken";
 import { secret } from "../../../config"
 import { getUsuarioById } from "../../../ORM_Queries/Usuario/getUsuarioById";
 import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
-import { TUsuario } from "../../TypesDefs/usuario";
 
 async function fGetUsuarioByToken(tokenUser: string) {
 	let msj = jSendUser();
@@ -16,10 +15,10 @@ async function fGetUsuarioByToken(tokenUser: string) {
     
 		const usuario = await getUsuarioById(id);
 
-		msj.message = "Usuario obtenido con exito"
-		msj.accessToken = tokenUser;
+		msj.message = "Usuario obtenido con exito";
 		msj.success = true;
-		msj.object = usuario;
+		msj.results.accessToken = tokenUser;
+		msj.results.usuario = usuario;
 		
 		return msj;
 	} catch (err) {
@@ -28,7 +27,7 @@ async function fGetUsuarioByToken(tokenUser: string) {
 }
 
 export const GetUsuarioByToken = {
-	type: TSendUser('GetUsuarioByToken', TUsuario),
+	type: TSendUser,
 	args: {
 		tokenUser: { type: new GraphQLNonNull(GraphQLString) },
 	},

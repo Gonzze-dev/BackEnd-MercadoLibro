@@ -4,7 +4,6 @@ import { verify } from "jsonwebtoken";
 import { secret } from "../../../config"
 import { insertFav } from "../../../ORM_Queries/Usuario/insertFav";
 import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
-import { TUsuario } from "../../TypesDefs/usuario";
 
 async function fInsertFav(isbn: string, tokenUser: string) {
 	let msj = jSendUser()
@@ -15,8 +14,8 @@ async function fInsertFav(isbn: string, tokenUser: string) {
 
 		msj.message = "Libro añadido a favoritos"
 		msj.success = true;
-		msj.accessToken = tokenUser;
-		msj.object = usuario;
+		msj.results.accessToken = tokenUser;
+		msj.results.usuario = usuario;
 		
 		return msj;
 	} catch (err) {
@@ -26,7 +25,7 @@ async function fInsertFav(isbn: string, tokenUser: string) {
 }
 
 export const InsertFav = {
-	type: TSendUser('InsertFav', TUsuario),
+	type: TSendUser,
 	args: {
 		isbn: { type: new GraphQLNonNull(GraphQLString) },
 		tokenUser: { type: new GraphQLNonNull(GraphQLString) },

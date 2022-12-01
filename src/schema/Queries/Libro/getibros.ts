@@ -1,8 +1,7 @@
-import { GraphQLList, GraphQLString } from "graphql";
+import { GraphQLString } from "graphql";
 import { getAllLibros } from "../../../ORM_Queries/Libro/getAllLibros";
 import { getAllLibrosByCategoria } from "../../../ORM_Queries/Libro/getAllLibrosByCategoria";
-import { TLibro } from "../../TypesDefs/libro";
-import { jSend, TSend } from "../../TypesDefs/send";
+import { jSendLibro, TSendLibro } from "../../TypesDefs/sendLibro";
 
 async function selectFunction(args:  any)
 {
@@ -17,22 +16,16 @@ async function selectFunction(args:  any)
 }
 
 export async function fGetLibros(args: any) {
-    const msj = jSend()
+    const msj = jSendLibro()
     try {
 
         const libro = await selectFunction(args)
         
         msj.message = "Libros obtenidos con exito!"
 		msj.success = true;
-		msj.object = libro;
+		msj.results.libro = libro
 
-        console.log('\n')
-        console.log('\n')
-        console.log('\n')
-        console.log(libro)
-        console.log('\n')
-        console.log('\n')
-        console.log('\n')
+        console.log(msj.results.libro)
         
         return msj;
     } catch (err) {
@@ -41,7 +34,7 @@ export async function fGetLibros(args: any) {
 }
 
 export const Getlibros = {
-    type: TSend('Getlibros', TLibro),
+    type: TSendLibro,
     args: {
         categoria: {type: GraphQLString}
     },

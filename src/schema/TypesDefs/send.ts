@@ -1,7 +1,6 @@
 import {GraphQLObjectType,
     GraphQLString,
-    GraphQLBoolean,
-    GraphQLList} from 'graphql';
+    GraphQLBoolean} from 'graphql';
 
 /*La existencia de la clase es para ahorrar codigo, debido a que todas 
 las respuestas tienen exactamente la misma extructura, 
@@ -14,7 +13,7 @@ export const jSend = () =>
         message: "",
         success: false,
         status: 0,
-        object: new Array
+        results: new Array
     }
 }
 
@@ -25,7 +24,7 @@ export const TSend = (metodName: string, TypeDef: GraphQLObjectType) => new Grap
         message: {type: GraphQLString},
         success: {type: GraphQLBoolean},
         status: {type: GraphQLString},
-        object: {type: new GraphQLList(TypeDef)}
+        results: {type: TypeDef}
     }
 });
 

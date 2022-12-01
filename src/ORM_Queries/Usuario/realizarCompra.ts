@@ -12,6 +12,7 @@ async function comprarMercadoPago()
         "TEST-102529111039618-111319-be2cad25aff0465082c188157129480d-184613295"});
 
     const preference = {
+
         items: [
             {
 
@@ -19,7 +20,9 @@ async function comprarMercadoPago()
                 quantity: 1,
                 currency_id: "ARS",
                 unit_price: 10,
-                back_urls: { failure: "/failure" },
+                back_urls: { failure: "www.mercadopago.com", pending: 'www.google.com', success: 'www.mercadolibre.com'  },
+                auto_return: 'approved',
+                redirect_urls: { failure: 'www.mercadopago.com', pending: 'www.google.com', success: 'www.mercadolibre.com' },
                 "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
             },
         ],
@@ -63,7 +66,9 @@ export async function realizarCompra (id: number)
     //     }
     // )
 
-    const res = await comprarMercadoPago()
+    
 
+    const res = await comprarMercadoPago()
+    console.log(res)
     return res
 }

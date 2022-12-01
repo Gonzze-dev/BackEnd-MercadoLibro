@@ -13,9 +13,9 @@ async function fSignUp(args: any) {
 		const usuario = await signUp(args);
 		const id_usuario: string = usuario[0].id.toString()
 
-		msj.accessToken = sign(id_usuario, secret);
+		msj.results.accessToken = sign(id_usuario, secret);
 		msj.success = true;
-		msj.object = usuario;
+		msj.results.usuario = usuario;
 		
 		return msj;
 	} catch (err) {
@@ -24,7 +24,7 @@ async function fSignUp(args: any) {
 }
 
 export const SignUp = {
-	type: TSendUser('SignUp', TUsuario),
+	type: TSendUser,
 	args: {
 		nombre: { type: new GraphQLNonNull(GraphQLString) },
 		contrasenia: { type: new GraphQLNonNull(GraphQLString) },

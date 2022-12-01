@@ -1,18 +1,28 @@
 import {GraphQLObjectType, 
     GraphQLString
     } from 'graphql';
+import { TSend } from './send';
 
 export const jMercadoPago = () =>
 {
     return {
-        init_point: ''
+        message: "",
+        success: false,
+        status: 0,
+        results: 
+        {
+            init_point: ''
+        }
     }
 }
 
-export const TMercado_pago = new GraphQLObjectType({
-    name: 'mercado_pago',
+const ObjectMercadoPago = new GraphQLObjectType({
+    name: 'ObjectMercadoPago',
     fields: 
     {
         init_point: {type: GraphQLString}
     }
 });
+
+export const sendMercadoPago = TSend('sendMercadoPago', ObjectMercadoPago);
+

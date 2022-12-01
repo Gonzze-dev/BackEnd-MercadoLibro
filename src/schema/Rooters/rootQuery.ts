@@ -10,7 +10,7 @@ export const rootQuery= new GraphQLObjectType({
     name: 'rootQuery',
     fields:
     {
-        getlibros: Getlibros,
+        getLibros: Getlibros,
         login: Login,
         getUsuarioByToken: GetUsuarioByToken
     }
