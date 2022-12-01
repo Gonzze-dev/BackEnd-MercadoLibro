@@ -5,14 +5,13 @@ import { jSendLibro, TSendLibro } from "../../TypesDefs/sendLibro";
 
 async function selectFunction(args:  any)
 {
-    if (args.categoria)
+    if (args.categoria != '')
     {
         return await getAllLibrosByCategoria(args.categoria)
     }
-    else
-    {
-        return await getAllLibros()
-    }
+
+    return await getAllLibros()
+    
 }
 
 export async function fGetLibros(args: any) {

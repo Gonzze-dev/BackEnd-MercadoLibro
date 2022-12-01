@@ -47,11 +47,11 @@ async function fGetUsuarioByToken(tokenUser: string) {
 
 async function selectFunction(args:  any)
 {
-    if (args.correo && args.contrasenia)
+    if (args.correo != '' && args.contrasenia != '')
     {
         return fGetUsuarioByCorreoYPassword(args)
     }
-    else if(args.tokenUser)
+    else if(args.tokenUser != '')
     {
         return fGetUsuarioByToken(args.tokenUser)
     }
