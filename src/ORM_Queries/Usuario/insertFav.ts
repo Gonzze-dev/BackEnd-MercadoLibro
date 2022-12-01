@@ -7,10 +7,9 @@ import { Libro } from "../../Entities/Libro";
 import { Usuario } from "../../Entities/Usuario";
 
 
-export async function insertFav(isbn: string, tokenUser: string) 
+export async function insertFav(isbn: string, id: number) 
 {
 
-    const id = parseInt(<string>jwt.verify(tokenUser, secret))
     
     const libro = await Libro.find(
         {

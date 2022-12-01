@@ -51,7 +51,10 @@ export class Libro extends BaseEntity
     fecha_ingreso!: Date;
 
     @Column({
-            nullable: true
+        type: 'decimal',
+        precision: 3, 
+        scale: 2,
+        nullable: true
     })
     descuento: number;
 

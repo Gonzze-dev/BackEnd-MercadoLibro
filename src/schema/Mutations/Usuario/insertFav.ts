@@ -1,36 +1,32 @@
 import { GraphQLNonNull, GraphQLString} from "graphql";
-import { sign } from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 
 import { secret } from "../../../config"
 import { insertFav } from "../../../ORM_Queries/Usuario/insertFav";
-import { authentication } from "../../TypesDefs/authentication";
+import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
+import { TUsuario } from "../../TypesDefs/usuario";
 
 async function fInsertFav(isbn: string, tokenUser: string) {
-	let msj = {
-		mensaje: "",
-		success: false,
-		accessToken: "",
-		usuario: {}
-	};
+	let msj = jSendUser()
 
 	try {
+		const id = parseInt(<string>verify(tokenUser, secret))
+		const usuario = await insertFav(isbn, id);
 
-		const usuario = await insertFav(isbn, tokenUser);
-		const id_usuario: string = usuario[0].id.toString()
-
-		msj.mensaje = "Libro añadido a favoritos"
-		msj.accessToken = sign(id_usuario, secret);
+		msj.message = "Libro añadido a favoritos"
 		msj.success = true;
-		msj.usuario = usuario[0];
+		msj.accessToken = tokenUser;
+		msj.object = usuario;
 		
 		return msj;
 	} catch (err) {
+		
 		return msj;
 	}
 }
 
 export const InsertFav = {
-	type: authentication,
+	type: TSendUser('InsertFav', TUsuario),
 	args: {
 		isbn: { type: new GraphQLNonNull(GraphQLString) },
 		tokenUser: { type: new GraphQLNonNull(GraphQLString) },

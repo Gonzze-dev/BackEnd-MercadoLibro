@@ -1,8 +1,9 @@
 import {GraphQLObjectType} from 'graphql';
 
 //USUARIO
-import {SignUp} from '../Mutations/User/SignUp';
-import { InsertFav } from '../Mutations/User/insertFav';
+import { SignUp } from '../Mutations/Usuario/SignUp';
+import { InsertFav } from '../Mutations/Usuario/insertFav';
+import { RealizarCompra } from '../Mutations/Usuario/QuieroCompra';
 
 //IDIOMA
 
@@ -18,7 +19,8 @@ export const rootMutation = new GraphQLObjectType({
     name: 'rootMutation',
     fields:
     {
-        SignUp: SignUp,
+        realizarCompra: RealizarCompra,
+        signUp: SignUp,
         insertFav: InsertFav
     }
 })

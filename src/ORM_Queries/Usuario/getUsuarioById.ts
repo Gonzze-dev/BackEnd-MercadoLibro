@@ -1,6 +1,6 @@
 import { Usuario } from "../../Entities/Usuario";
 
-export async function login(correo: string, contrasenia: string) 
+export async function getUsuarioById(id: number) 
 {
     const usuario = await Usuario.find(
         {
@@ -21,8 +21,7 @@ export async function login(correo: string, contrasenia: string)
             },
             where:
             {
-                correo: correo,
-                contrasenia: contrasenia
+                id: id
             }
         }
     )

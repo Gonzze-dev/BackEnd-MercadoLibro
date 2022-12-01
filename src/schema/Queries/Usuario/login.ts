@@ -1,40 +1,32 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { sign } from "jsonwebtoken";
-import { type } from "os";
+
 import { secret } from "../../../config";
 import { login } from "../../../ORM_Queries/Usuario/login";
-import { authentication } from "../../TypesDefs/authentication";
+import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
+import { TUsuario } from "../../TypesDefs/usuario";
 
 async function fLogin(args: any) {
-    let msj = {
-        mensaje: "",
-        success: false,
-        accessToken: "",
-        usuario: {}
-    };
+    const msj = jSendUser()
 
     try {
-        const usuario = await login(args)
+        const usuario = await login(args.correo, args.contrasenia)
 
-        const id_usuario: string = usuario.id.toString()
+        const id_usuario: string = usuario[0].id.toString()
 
         msj.accessToken = sign(id_usuario, secret);
         msj.success = true;
-        msj.usuario = usuario;
+        msj.object = usuario;
       
         return msj;
     } catch (err: any) {
-
-        msj.accessToken = '';
-        msj.success = false;
-        msj.usuario = {};
 
         return msj;
     }
 }
 
 export const Login = {
-    type: authentication,
+    type: TSendUser('Login', TUsuario),
     args: {
         correo: { type: new GraphQLNonNull(GraphQLString) },
         contrasenia: { type: new GraphQLNonNull(GraphQLString) },

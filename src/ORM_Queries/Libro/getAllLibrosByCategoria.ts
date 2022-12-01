@@ -1,6 +1,6 @@
 import { Libro } from "../../Entities/Libro";
 
-export async function getAllLibros() 
+export async function getAllLibrosByCategoria(categoria: string) 
 {
 
     const libro = await Libro.find(
@@ -13,9 +13,14 @@ export async function getAllLibros()
                 puntuacion:{
                     usuario: true
                 }
+            },
+            where: {
+                tema: {
+                    nombre: categoria
+                }
             }
         }
     )
-
+    console.log(libro)
     return libro
 }

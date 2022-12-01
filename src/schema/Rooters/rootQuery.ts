@@ -1,30 +1,17 @@
 import {GraphQLObjectType} from 'graphql'
 
+//USUARIO
 import { Login } from '../Queries/Usuario/login';
-import { GetUserByMail } from '../Queries/Usuario/GetUserByMail';
-
-//IDIOMA
-import { GetIdiomaById } from '../Queries/Idioma/getIdiomaById';
-
-//TEMA
-import { GetTemaById } from '../Queries/Tema/getTemaById';
-
-//AUTOR
-import { GetAutorById } from '../Queries/Autor/getIdiomaById';
-import { GetLibroByIsbn } from '../Queries/Libro/getLibroByIsbn';
-import { GetAllLibros } from '../Queries/Libro/getAllLibros';
-
+import { GetUsuarioByToken } from '../Queries/Usuario/getUsuarioByToken';
+//LIBRO
+import { Getlibros } from '../Queries/Libro/getibros';
 
 export const rootQuery= new GraphQLObjectType({
     name: 'rootQuery',
     fields:
     {
-        // GetUserByMail: GetUserByMail,
-        // GetIdiomaById: GetIdiomaById,
-        // GetTemaById: GetTemaById,
-        // GetAutorById: GetAutorById,
-        // GetLibroByIsbn: GetLibroByIsbn,
-        GetAllLibros: GetAllLibros,
-        Login: Login
+        getlibros: Getlibros,
+        login: Login,
+        getUsuarioByToken: GetUsuarioByToken
     }
 })
