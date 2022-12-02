@@ -11,7 +11,6 @@ export const rootQuery= new GraphQLObjectType({
     fields:
     {
         getLibros: Getlibros,
-        login: Login,
-        getUsuarioByToken: GetUsuarioByToken
+        login: Login
     }
 })

@@ -1,6 +1,7 @@
+import { Like } from "typeorm";
 import { Libro } from "../../Entities/Libro";
 
-export async function getAllLibrosByCategoria(categoria: string) 
+export async function getLibrosByReference(titulo: string) 
 {
 
     const libro = await Libro.find(
@@ -15,9 +16,7 @@ export async function getAllLibrosByCategoria(categoria: string)
                 }
             },
             where: {
-                tema: {
-                    nombre: categoria
-                }
+                titulo: Like(`%${titulo}%`)
             }
         }
     )
