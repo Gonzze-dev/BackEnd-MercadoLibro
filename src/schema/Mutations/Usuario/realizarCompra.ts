@@ -14,8 +14,7 @@ async function fRealizarCompra(tokenUser: string) {
 		
 		msj.message = "realizada con exito!"
 		msj.success = true;
-
-		msj.results.init_point = res.body.sandbox_init_point
+		msj.init_point = res.body.sandbox_init_point
 
 		return msj;
 	} catch (err) {

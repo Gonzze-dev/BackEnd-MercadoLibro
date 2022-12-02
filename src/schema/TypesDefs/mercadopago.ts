@@ -1,7 +1,6 @@
-import {GraphQLObjectType, 
+import {GraphQLBoolean, GraphQLObjectType, 
     GraphQLString
     } from 'graphql';
-import { TSend } from './send';
 
 export const jMercadoPago = () =>
 {
@@ -9,20 +8,18 @@ export const jMercadoPago = () =>
         message: "",
         success: false,
         status: 0,
-        results: 
-        {
-            init_point: ''
-        }
+        init_point: ''
     }
 }
 
-const ObjectMercadoPago = new GraphQLObjectType({
-    name: 'ObjectMercadoPago',
+export const sendMercadoPago = new GraphQLObjectType({
+    name: `sendMercadoPago`,
     fields: 
     {
+        message: {type: GraphQLString},
+        success: {type: GraphQLBoolean},
+        status: {type: GraphQLString},
         init_point: {type: GraphQLString}
     }
 });
-
-export const sendMercadoPago = TSend('sendMercadoPago', ObjectMercadoPago);
 
