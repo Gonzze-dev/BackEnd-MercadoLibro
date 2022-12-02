@@ -9,22 +9,12 @@ export const jSendLibro = () =>
         status: 0,
         page: 0,
         totalPage: 0,
-        results: {
-            libro: new Array
-        }
+        libro: new Array<any>
     }
 }
 
-const ObjectLibro = new GraphQLObjectType({
-    name: `ObjectLibro`,
-    fields: 
-    {
-        libro: {type: new GraphQLList(TLibro)}
-    }
-})
-
-const TSend = (name: string, TypeDef: GraphQLObjectType) => new GraphQLObjectType({
-    name: `send_${name}`,
+export const TSendLibro = new GraphQLObjectType({
+    name: `sendLibro`,
     fields: 
     {
         message: {type: GraphQLString},
@@ -32,8 +22,6 @@ const TSend = (name: string, TypeDef: GraphQLObjectType) => new GraphQLObjectTyp
         status: {type: GraphQLString},
         page: {type: GraphQLInt},
         totalPage: {type: GraphQLInt},
-        results: {type: TypeDef}
+        libro: {type: new GraphQLList(TLibro)}
     }
 });
-
-export const TSendLibro = TSend('sendLibro', ObjectLibro)

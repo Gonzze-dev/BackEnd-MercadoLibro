@@ -22,9 +22,7 @@ export async function fGetLibros(args: any) {
         
         msj.message = "Libros obtenidos con exito!"
 		msj.success = true;
-		msj.results.libro = libro
-
-        console.log(msj.results.libro)
+		msj.libro = libro
         
         return msj;
     } catch (err) {

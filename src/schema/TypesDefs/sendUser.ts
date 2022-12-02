@@ -8,21 +8,20 @@ export const jSendUser = () =>
         message: "",
         success: false,
         status: 0,
-        results: {
-            accessToken: '',
-            usuario: new Array<any>
-        }
+        accessToken: '',
+        usuario: new Array<any>
     }
 }
 
-const ObjectUsuario = new GraphQLObjectType({
-    name: `ObjectUsuario`,
+export const TSendUser = new GraphQLObjectType({
+    name: `TSendUser`,
     fields: 
     {
+        message: {type: GraphQLString},
+        success: {type: GraphQLBoolean},
+        status: {type: GraphQLString},
         accessToken: {type: GraphQLString},
         usuario: {type: new GraphQLList(TUsuario)}
     }
-})
-
-export const TSendUser = TSend('sendUsuario', ObjectUsuario);
+});
 

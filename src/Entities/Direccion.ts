@@ -18,21 +18,24 @@ export class Direccion extends BaseEntity
     id!: number;
 
     @Column()
-    calle!: string;
-
-    @Column()
-    numero!: number;
+    direccion!: string;
 
     @Column({
         nullable: true
     })
-    piso_departamento: string;
+    infoAdicional: string;
 
     @Column({type: 'bigint'})
     dni!: number;
 
+    @Column({
+        nullable: true
+    })
+    telefono: string;
+
     @OneToOne((type) => Usuario, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;

@@ -14,9 +14,9 @@ async function fGetUsuarioByCorreoYPassword(args: any) {
 
         const id_usuario: string = usuario[0].id.toString()
 
-        msj.results.accessToken = sign(id_usuario, secret);
+        msj.accessToken = sign(id_usuario, secret);
         msj.success = true;
-        msj.results.usuario = usuario;
+        msj.usuario = usuario;
       
         return msj;
     } catch (err: any) {
@@ -36,8 +36,8 @@ async function fGetUsuarioByToken(tokenUser: string) {
 
 		msj.message = "Usuario obtenido con exito";
 		msj.success = true;
-		msj.results.accessToken = tokenUser;
-		msj.results.usuario = usuario;
+		msj.accessToken = tokenUser;
+		msj.usuario = usuario;
 		
 		return msj;
 	} catch (err) {

@@ -18,7 +18,6 @@ export const TUsuario: GraphQLObjectType = new GraphQLObjectType({
         correo: {type: GraphQLString},
         contrasenia: {type: GraphQLString},
         admin: {type: GraphQLBoolean},
-        telefono: {type: GraphQLString},
         favorito: {type: new GraphQLList(TLibro)},
         orden: {type: new GraphQLList(TOrden)},
         carrito: {type: new GraphQLList(TCarrito)}

@@ -35,11 +35,6 @@ export class Usuario extends BaseEntity
     })
     admin: boolean;
 
-    @Column({
-        nullable: true
-    })
-    telefono: string;
-
     @ManyToMany((type) => Libro, {
         onUpdate: 'CASCADE',
     })

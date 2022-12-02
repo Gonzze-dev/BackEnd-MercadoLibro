@@ -16,18 +16,20 @@ export class Direccion_entrega extends BaseEntity
     id!: number;
 
     @Column()
-    calle!: string;
-
-    @Column()
-    numero!: number;
+    direccion!: string;
 
     @Column({
         nullable: true
     })
-    piso_departamento: string;
+    infoAdicional: string;
 
     @Column({type: 'bigint'})
     dni!: number;
+
+    @Column({
+        nullable: true
+    })
+    telefono: string;
 
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE'

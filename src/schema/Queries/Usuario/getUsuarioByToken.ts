@@ -17,8 +17,8 @@ async function fGetUsuarioByToken(tokenUser: string) {
 
 		msj.message = "Usuario obtenido con exito";
 		msj.success = true;
-		msj.results.accessToken = tokenUser;
-		msj.results.usuario = usuario;
+		msj.accessToken = tokenUser;
+		msj.usuario = usuario;
 		
 		return msj;
 	} catch (err) {

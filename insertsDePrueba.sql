@@ -162,8 +162,8 @@ VALUES (1, '456-546-232'),
         (1,'123-213-466');
 
 --DIRECCION ENTREGA
-INSERT INTO direccion_entrega (calle, numero, piso_departamento, dni, id_usuario, cp)
-VALUES ('Escarguache', 4122, null, 42464430, 1,2820);
+INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp)
+VALUES ('Escarguache 4122', 'no hay nada', 42464430, 1,2820);
 
 --ORDEN
 INSERT INTO public.orden(
