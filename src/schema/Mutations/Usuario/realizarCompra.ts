@@ -3,7 +3,7 @@ import { verify } from "jsonwebtoken";
 
 import { secret } from "../../../config"
 import { realizarCompra } from "../../../ORM_Queries/Usuario/realizarCompra";
-import { jMercadoPago, sendMercadoPago } from "../../TypesDefs/mercadopago";
+import { jMercadoPago, sendMercadoPago } from "../../TypesDefs/sendMercadoPago";
 
 async function fRealizarCompra(tokenUser: string) {
 	let msj = jMercadoPago()

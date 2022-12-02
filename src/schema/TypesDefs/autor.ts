@@ -1,13 +1,14 @@
 import {GraphQLObjectType,
     GraphQLID,
-    GraphQLString} from 'graphql';
+    GraphQLString,
+    GraphQLNonNull} from 'graphql';
 
 export const TAutor = new GraphQLObjectType(
 {
     name: 'autor',
     fields: 
     {
-        id: {type: GraphQLID},
-        nombre: {type: GraphQLString}
+        id: {type: new GraphQLNonNull(GraphQLID)},
+        nombre: {type: new GraphQLNonNull(GraphQLString)}
     }
 });
