@@ -25,7 +25,7 @@ export const AppDataSource = new DataSource({
     port: 5432,
     username: "postgres",
     password: "1234",
-    database: "test",
+    database: "test2",
     entities: [Pais, 
                Provincia,
                Ciudad,

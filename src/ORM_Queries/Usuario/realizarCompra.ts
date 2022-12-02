@@ -1,10 +1,13 @@
 import { Usuario } from "../../Entities/Usuario";
 const mercadopago = require("mercadopago");
 
-async function cargarItems()
+async function cargarItems(usuario: any)
 {
+    usuario.carrito
+    
     return null
 }
+
 
 async function comprarMercadoPago() 
 {
@@ -15,7 +18,6 @@ async function comprarMercadoPago()
 
         items: [
             {
-
                 title: "Test",
                 quantity: 1,
                 currency_id: "ARS",
@@ -42,33 +44,19 @@ async function comprarMercadoPago()
 export async function realizarCompra (id: number) 
 {
 
-    // const usuario = await Usuario.find(
-    //     {
-    //         relations:{
-    //             orden: {
-    //                 direccion_entrega: {
-    //                     ciudad: {
-    //                         provincia:{
-    //                             pais: true
-    //                         }
-    //                     }
-    //                 }
-    //             },
-    //             favorito: true,
-    //             carrito: {
-    //                 libro: true
-    //             },
-    //         },
-    //         where:
-    //         {
-    //             id: id
-    //         }
-    //     }
-    // )
-
-    
+    const usuario = await Usuario.find({
+        relations: {
+            carrito: {
+                libro: true
+            },
+        },
+        where:
+        {
+            id: id
+        }
+    })
 
     const res = await comprarMercadoPago()
-    console.log(res)
+
     return res
 }

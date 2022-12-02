@@ -72,57 +72,34 @@ VALUES  ('Español'),
 
 --AUTOR
 INSERT INTO autor (nombre)
-VALUES  ('Gonzalo Errandonea'),
-        ('Gonzalo Romero'),
-        ('Alexis Brunetti'),
-        ('Gabriel Ramos'),
-        ('Tomas Alaluf'),
-        ('Mauro Mendoza'),
-        ('Pablo Pecsio'),
-        ('Esteban Schab'),
-        ('Ernesto Ledesma'),
-        ('Walter Bel'),
-        ('Emiliano Montenegro'),
-        ('Marcos Mendoza'),
-        ('Juan Mendoza'),
-        ('Olga Lopez'),
-        ('Vanesa Lopez');
+VALUES  ('J.K Rowling'),
+        ('George R.R Martin'),
+        ('Dolores Redondo');
 
 --TEMA
 INSERT INTO tema (nombre, url_imagen)
-VALUES  ('Drama', 'https://imgs.search.brave.com/D8VOEj_PQgTq9aopCN_jDUoIRUQ4RzcuRYhZNXsHARQ/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5w/TkF5bk40NDA2T2s2/d2xFTV9HN1JBSGFF/SyZwaWQ9QXBp'),
-        ('Terror', 'https://imgs.search.brave.com/HQAtf1U9jTFs2v6m9hpLnRcPazdchdVXs_gLvjcLdM0/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/ZXZlbnRvc3pvbWJp/ZXMuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE1LzA3LzEt/b3RoZXItem9tYmll/LWhhbmRzLWhvcnJv/ci13YWxscGFwZXIu/anBn'),
-        ('Accion', 'https://imgs.search.brave.com/AA-w1vTvRi3qBKLuRR_qKrm6DML1z3kR-KtWJqNbZRA/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5F/QWhPZjRmRENCMjVU/Qnl0NDRTbEhRSGFF/SyZwaWQ9QXBp'),
-        ('Comedia', 'https://imgs.search.brave.com/qPZaYJhZ0MqEALHdyO7gN1lff51_yLu_wMNHnzZ-YVI/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5Y/ZXUxVWdrbVJTOHhV/bWJncWZLZU93SGFF/OCZwaWQ9QXBp'),
-        ('Aventura', 'https://imgs.search.brave.com/G8IrN0ZCSRtH1ib-I8pVzH8wAYcp0lVJuucGXFbteQ0/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC41S1pZN09w/R1R1VnFfWC0wQnox/bURRSGFFSyZwaWQ9/QXBp'),
-        ('Fantasia', 'https://imgs.search.brave.com/2sxTLVV-BtZsVMXff11F9lnNQxU2JTF1MS3sPLPbjVc/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5D/TnRBY181STJNbm9u/WXVoeW1QYWZRSGFF/SyZwaWQ9QXBp'),
-        ('Ciencia ficcion', 'https://imgs.search.brave.com/Dmpsn40FF3muo9F1BWtK10vUHgHJO6DAzxjQefx7bz0/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Uy/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC4xOWN3UEw2/aUQ4cFgySHJULXVj/cWRRSGFFbyZwaWQ9/QXBp'),
-        ('Manga', 'https://imgs.search.brave.com/IdN88ywfDgH6wkqi_A1LmKyMXBV1ipUDWoccEWVP7Vo/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC5va09CWE1G/eF9JMkxzOG0zYzc3/djVBSGFFSyZwaWQ9/QXBp'),
-        ('Infantil', 'https://imgs.search.brave.com/KzCVX2yKEYryp8Et173Ajg093eVJVMUnMQY4vY98DEs/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5w/UW4tQWc0dHB1b0p3/VEktTGh1UUZBSGFF/byZwaWQ9QXBp'),
-        ('Poesia', 'https://imgs.search.brave.com/u4zW1UECLyMMHqM1irHC13z0yU1OvWX_okf7DuacenE/rs:fit:905:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5j/c1Y0aHJ5THY2bjRp/ZlFnbjBNMU13SGFE/NCZwaWQ9QXBp'),
-        ('Teatro', 'https://imgs.search.brave.com/hBUJo1UUX2kLjrHlO06hnKyDCbkEifIF8LGj_oD7K6g/rs:fit:761:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5C/YnJRWkJueGdBWnh6/TVkzRXFLUHNBSGFF/biZwaWQ9QXBp'),
-        ('Cocina', 'https://imgs.search.brave.com/vBpKm8YNSYGPXzO_OkJq_61YdD6NGqOHLY72RSRi11k/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5J/Z25fM2JERzRGeW9E/RXdpV3pDbU9nSGFF/byZwaWQ9QXBp'),
-        ('Autoayuda', 'https://imgs.search.brave.com/fapNBDVm9t8urdwwxlfQyEsWaNySJEaOKWIdaKQjqmk/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC54/b1RDUTlTRVJRNnlL/RDJhaTZsQjBBSGFF/OCZwaWQ9QXBp'),
-        ('Salud', 'https://imgs.search.brave.com/loAD7eBp_9m0Y3hnm5O4qViTVFu6cKCtb2ubijeuNTU/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC45/b2pYMlJKS2xJb2Qy/ZEtFRmloTFNnSGFF/NyZwaWQ9QXBp'),
-        ('Economia', 'https://imgs.search.brave.com/YBcOLjCKffiGHx6JZXBEndDA5NIwoQo2a1AuW6XSZlU/rs:fit:480:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4y/TGZ4OU9uSTZuZU1M/b1hDV241ckVRSGFI/VSZwaWQ9QXBp');
+VALUES
+        ('Fantasia', 'https://cdn.pixabay.com/photo/2016/04/04/20/34/treehouse-1308108_960_720.jpg'),
+        ('Ciencia ficcion', 'https://cdn.pixabay.com/photo/2018/03/13/15/57/steampunk-3222894_960_720.jpg'),
+        ('Suspenso', 'https://cdn.pixabay.com/photo/2019/09/22/16/50/tunnel-4496526_960_720.jpg'),
+        ('Thriller', ' https://cdn.pixabay.com/photo/2014/07/24/21/35/mortality-401222_960_720.jpg'),
+        ('Ficcion', 'https://cdn.pixabay.com/photo/2016/09/18/08/45/science-fiction-1677542_960_720.jpg')
 
 --EDITORIAL
 INSERT INTO editorial (nombre)
-VALUES  ('Acantilado'),
-        ('Aguilar'),
-        ('Akal'),
-        ('Alba'),
-        ('Alfaguara'),
-        ('Alianza'),
-        ('Almadía'),
-        ('Anagrama'),
-        ('Critica'),
-        ('Debolsillo'),
-        ('Alpha Decay'),
-        ('Ariel'),
-        ('Atalanta'),
-        ('Gallo Nero'),
-        ('Impedimenta');
+VALUES  ('Salamandra Infantil y Juvenil'),
+        ('Salamandra'),
+        ('Vintage Espanol'),
+        ('Ediciones Destino');
+
+--LIBRO
+INSERT INTO libro (isbn, url_imagen, titulo, fecha_edicion, 
+                    precio, stock, descripcion, id_editorial, id_idioma)
+VALUES  ('8418174072', 'https://m.media-amazon.com/images/I/91NW7CBaVwL.jpg', 'Harry Potter y la piedra filosofal', '12/10/2020',  6500.00,  6,  'Sumérgete en esta magnífica edición especial de Harry Potter y la piedra filosofal, obra del prestigioso estudio MinaLima, responsable del diseño gráfico de las películas de la saga «Harry Potter» y de Animales fantásticos. <br/> En esta edición especial de Harry Potter y la piedra filosofal, el texto completo e íntegro de la obra original de J.K. Rowling va acompañado por hermosas ilustraciones a todo color en casi todas las páginas, un diseño excelente y varias sorpresas interactivas de ingeniería en papel, obra del célebre estudio MinaLima. Una nueva forma de descubrir la carta de admisión de Harry a Hogwarts, la entrada mágica al callejón Diagon, el suntuoso festín en el Gran Salón de Hogwarts...', 1, 1),
+ ( '8478885196','https://m.media-amazon.com/images/I/81k9yx9N5+L.jpg','Harry Potter y el prisionero de Azkaban (Harry Potter 3)','20/02/2000',5399.00,3, 'Por la cicatriz que lleva en la frente, sabemos que Harry Potter no es un niño como los demás, sino el héroe que venció a lord Voldemort, el más temible y maligno mago de todos los tiempos y culpable de la muerte de los padres de Harry. Desde entonces, Harry no tiene más remedio que vivir con sus pesados tíos y su insoportable primo Dudley, todos ellos muggles, o sea, personas no magas, que desprecian a su sobrino debido a sus poderes.',2, 1),
+ ( '1644736136','https://m.media-amazon.com/images/I/91RFD8825LL.jpg','Juego de Tronos Canción de Hielo y Fuego','21/07/2022',8150.00,2,'En el legendario mundo de los Siete Reinos, lord Stark y su familia se encuentran en el centro de un conflicto que desatará todas las pasiones y la más mortal de las batallas... Juego de tronos es el primer volumen de Canción de hielo y fuego, la monumental saga de fantasía épica del escritor George R. R. Martin que ha vendido más de 20 millones de ejemplares en todo el mundo.De la saga que inspiró la filmación de la aclamada serie televisiva de HBO: Game of Thrones.En el legendario mundo de los Siete Reinos, donde el verano puede durar décadas y el invierno toda una vida, y donde rastros de una magia inmemorial surgen en los rincones más sombríos, la tierra del norte, Invernalia, está resguardada por un colosal muro de hielo que detiene a fuerzas oscuras y sobrenaturales. En este majestuoso escenario, lord Stark y su familia se encuentran en el centro de un conflicto que desatará todas las pasiones: la traición y la lealtad, la compasión y la sed de venganza, el amor y el poder, la lujuria y el incesto, todo ello para ganar la más mortal de las batallas: el trono de hierro, una poderosa trampa que atrapará a los personajes... y al lector.',3,1),
+ ( '8423362477','https://m.media-amazon.com/images/I/71NtjKt82VL.jpg','Esperando al diluvio: 1591 (Áncora & Delfín)','01/11/2022',2599.00,6,'Entre los años 1968 y 1969, el asesino al que la prensa bautizaría como John Biblia mató a tres mujeres en Glasgow. Nunca fue identificado y el caso todavía sigue abierto hoy en día. En esta novela, a principios de los años ochenta, el investigador de policía escocés Noah Scott Sherrington logra llegar hasta John Biblia, pero un fallo en su corazón en el último momento le impide arrestarlo. A pesar de su frágil estado de salud, y contra los consejos médicos y la negativa de sus superiores para que continúe con la persecución del asesino en serie, Noah sigue una corazonada que lo llevará hasta el Bilbao de 1983. Justo unos días antes de que un verdadero diluvio arrase la ciudad.',4,1);
+
 
 INSERT INTO public.usuario(
 	nombre, correo, contrasenia)
@@ -132,63 +109,24 @@ INSERT INTO public.usuario(
 	nombre, correo, contrasenia, admin)
 	VALUES ('Gonzalo Romero', 'gonzaloRomero@hotmail.com', '1234', true);
 
-INSERT INTO libro (isbn, url_imagen, titulo, fecha_edicion, 
-                    precio, stock, descripcion, id_editorial, id_idioma)
-VALUES  ('123-234-513', 'https://http2.mlimages.com/123-234-513', 'Harry Potter y la piedra filosofal', '02/03/1998', 100.00, 10, 'descripcion de Harry Potter y la piedra filosofal', 1, 1),
-        ('345-345-432', 'https://http2.mlimages.com/345-345-432', 'Harry Potter y la piedra filosofal', '02/03/1998', 123.00, 10, 'descripcion de Harry Potter y la piedra filosofal',3, 2),
-        ('456-546-232', 'https://http2.mlimages.com/456-546-232', 'Las Crónicas de Narnia', '01/01/1998', 634.00, 10, 'descripcion de Las Crónicas de Narnia', 2, 1),
-        ('456-546-453', 'https://http2.mlimages.com/456-546-453', 'Don Quijote de La Mancha', '20/08/1999', 10354.00, 10, 'descripcion de Don Quijote de La Mancha', 6, 1),
-        ('234-543-251', 'https://http2.mlimages.com/234-543-251', 'Juego De Tronos', '21/09/2000', 10032.00, 10, 'descripcion de Juego De Tronos', 4, 1),
-        ('342-543-673', 'https://http2.mlimages.com/342-543-673', 'Choque De Reyes', '12/07/2001', 1233.00, 10, 'descripcion de Choque De Reyes', 7, 1),
-        ('880-954-322', 'https://http2.mlimages.com/880-954-322', 'La Razon De Estar Con Tigo', '12/04/1898', 1234.135, 10, 'descripcion de La Razon De Estar Con Tigo', 2, 1),
-        ('321-432-134', 'https://http2.mlimages.com/321-432-134', 'Diario Del Fin Del Mundo', '13/06/1498', 1763.00, 10, 'descripcion de Diario Del Fin Del Mundo', 1, 2),
-        ('123-213-466', 'https://http2.mlimages.com/123-213-466', 'Luna De Pluton', '15/03/1868', 9500.265, 10, 'descripcion de Luna De Pluton', 1, 1),
-        ('564-765-957', 'https://http2.mlimages.com/564-765-957', 'Festibal de la Blasfemia', '22/05/2002', 12310.123, 10, 'descripcion de Festibal de la Blasfemia', 7, 2),
-        ('877-345-624', 'https://http2.mlimages.com/877-345-624', 'Valle de La Calma', '10/06/2002', 54654.43, 10, 'descripcion de Valle de La Calma', 15, 1),
-        ('573-937-543', 'https://http2.mlimages.com/573-937-543', 'Las Mujeres de Federico', '11/07/2002', 1235.265, 10, 'descripcion de Las Mujeres de Federico', 10, 2),
-        ('345-854-383', 'https://http2.mlimages.com/345-854-383', 'La Odisea de Homero', '26/02/2002', 11235.232, 10, 'descripcion de La Odisea de Homero', 14, 1),
-        ('456-456-564', 'https://http2.mlimages.com/456-456-564', 'La Macha', '21/03/2000', 45645.222, 10, 'descripcion de La Macha', 13, 3),
-        ('456-543-453', 'https://http2.mlimages.com/456-543-453', 'The lliad', '30/04/1998', 123123.25, 10, 'descripcion de The lliad', 9, 5);
+--ESCRITO_POR
+INSERT INTO escrito_por(isbn, id_autor)
+VALUES 
+        ('8418174072', 1),
+        ('8418174072', 1),
+        ('1644736136', 2),
+        ('8423362477', 3);
 
 --ASIGNAR_TEMA
 INSERT INTO public.asignar_tema(isbn, id_tema)
-	VALUES ('456-546-232', 1),
-		   ('456-546-232', 2),
-		   ('123-213-466', 10);
-
---FAVORITOS
-INSERT INTO favorito (id_usuario, isbn)
-VALUES (1, '456-546-232'),
-        (1,'123-213-466');
+	VALUES 
+                ('8418174072', 2),
+                ('8478885196', 2),
+                ('1644736136', 1),
+	        ('1644736136', 5),
+                ('8423362477', 4),
+                ('8423362477', 3),
 
 --DIRECCION ENTREGA
 INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp)
-VALUES ('Escarguache 4122', 'no hay nada', 42464430, 1,2820);
-
---ORDEN
-INSERT INTO public.orden(
-	 total, codigo_cupon, id_usuario, id_direccion_entrega)
-	VALUES (2132, null, 1, 1);
-
---ORDEN DETALLE
-INSERT INTO public.orden_detalle(
-	precio, cantidad, id_orden, isbn)
-	VALUES (10, 2, 1, '456-546-232'),
-            (10, 2, 1, '345-854-383');
-
---CARRITO
-INSERT INTO public.linea_carrito(
-	cantidad, "libroIsbn", id_usuario)
-	VALUES (10, '123-234-513', 1),
-                (3, '234-543-251', 1),
-                (1, '123-213-466', 1);
-
---PUNTUACION
-INSERT INTO public.puntuacion(
-	usuario_libro, puntuacion, id_usuario, isbn)
-	VALUES ('1-123-234-513', 3, 1, '123-234-513');
-
---OPINION
-INSERT INTO public.opinion(
-	usuario_libro, comentario, id_usuario, isbn)
-	VALUES ('1-123-234-513', 'No me gusto nada, igual nunca lo lei', 1, '123-234-513');
+VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820);
