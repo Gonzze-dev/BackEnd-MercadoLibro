@@ -3,8 +3,7 @@ import {GraphQLObjectType,
     GraphQLString,
     GraphQLInt,
     GraphQLList,
-    GraphQLFloat,
-    graphql} from 'graphql';
+    GraphQLFloat} from 'graphql';
 
 import { TAutor } from './autor';
 import { TEditorial } from './editorial';
@@ -15,8 +14,7 @@ import { Ttema } from './tema';
 
 export const TLibro: GraphQLObjectType = new GraphQLObjectType({
 name: 'libro',
-fields: 
-{
+fields: {
     isbn: {type: GraphQLID},
     url_imagen: {type: GraphQLString},
     titulo: {type: GraphQLString},

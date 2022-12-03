@@ -1,5 +1,5 @@
 import { GraphQLBoolean, GraphQLList, GraphQLObjectType, GraphQLString } from "graphql";
-import { TSend } from "./send";
+
 import { TUsuario } from "./usuario";
 
 export const jSendUser = () =>
@@ -9,7 +9,7 @@ export const jSendUser = () =>
         success: false,
         status: 0,
         accessToken: '',
-        usuario: new Array<any>
+        usuario: {},
     }
 }
 
@@ -21,7 +21,7 @@ export const TSendUser = new GraphQLObjectType({
         success: {type: GraphQLBoolean},
         status: {type: GraphQLString},
         accessToken: {type: GraphQLString},
-        usuario: {type: new GraphQLList(TUsuario)}
+        usuario: {type: TUsuario}
     }
 });
 

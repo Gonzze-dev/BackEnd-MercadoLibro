@@ -16,7 +16,7 @@ async function fGetUsuarioByCorreoYPassword(args: any) {
 
         msj.accessToken = sign(id_usuario, secret);
         msj.success = true;
-        msj.usuario = usuario;
+        msj.usuario = usuario[0];
       
         return msj;
     } catch (err: any) {
@@ -37,7 +37,7 @@ async function fGetUsuarioByToken(tokenUser: string) {
 		msj.message = "Usuario obtenido con exito";
 		msj.success = true;
 		msj.accessToken = tokenUser;
-		msj.usuario = usuario;
+		msj.usuario = usuario[0];
 		
 		return msj;
 	} catch (err) {

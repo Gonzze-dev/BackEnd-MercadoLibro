@@ -15,7 +15,7 @@ async function fSignUp(args: any) {
 
 		msj.accessToken = sign(id_usuario, secret);
 		msj.success = true;
-		msj.usuario = usuario;
+		msj.usuario = usuario[0];
 		
 		return msj;
 	} catch (err) {

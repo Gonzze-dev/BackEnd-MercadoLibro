@@ -83,7 +83,7 @@ VALUES
         ('Ciencia ficcion', 'https://cdn.pixabay.com/photo/2018/03/13/15/57/steampunk-3222894_960_720.jpg'),
         ('Suspenso', 'https://cdn.pixabay.com/photo/2019/09/22/16/50/tunnel-4496526_960_720.jpg'),
         ('Thriller', ' https://cdn.pixabay.com/photo/2014/07/24/21/35/mortality-401222_960_720.jpg'),
-        ('Ficcion', 'https://cdn.pixabay.com/photo/2016/09/18/08/45/science-fiction-1677542_960_720.jpg')
+        ('Ficcion', 'https://cdn.pixabay.com/photo/2016/09/18/08/45/science-fiction-1677542_960_720.jpg');
 
 --EDITORIAL
 INSERT INTO editorial (nombre)
@@ -113,19 +113,19 @@ INSERT INTO public.usuario(
 INSERT INTO escrito_por(isbn, id_autor)
 VALUES 
         ('8418174072', 1),
-        ('8418174072', 1),
+        ('8478885196', 1),
         ('1644736136', 2),
         ('8423362477', 3);
 
 --ASIGNAR_TEMA
 INSERT INTO public.asignar_tema(isbn, id_tema)
-	VALUES 
-                ('8418174072', 2),
-                ('8478885196', 2),
-                ('1644736136', 1),
-	        ('1644736136', 5),
-                ('8423362477', 4),
-                ('8423362477', 3),
+VALUES
+        ('8418174072', 2),
+        ('8478885196', 2),
+        ('1644736136', 1),
+        ('1644736136', 5),
+        ('8423362477', 4),
+        ('8423362477', 3);
 
 --DIRECCION ENTREGA
 INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp)

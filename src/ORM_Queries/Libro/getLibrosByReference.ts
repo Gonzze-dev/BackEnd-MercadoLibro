@@ -1,4 +1,4 @@
-import { Like } from "typeorm";
+import { ILike } from "typeorm";
 import { Libro } from "../../Entities/Libro";
 
 export async function getLibrosByReference(titulo: string) 
@@ -16,7 +16,8 @@ export async function getLibrosByReference(titulo: string)
                 }
             },
             where: {
-                titulo: Like(`%${titulo}%`)
+                
+                titulo: ILike(`%${titulo}%`)
             }
         }
     )

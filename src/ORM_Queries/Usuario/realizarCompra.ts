@@ -1,33 +1,38 @@
+import { Linea_carrito } from "../../Entities/Linea_carrito";
 import { Usuario } from "../../Entities/Usuario";
+import { getCarritoUsuario } from "./getCarritoUsuario";
 const mercadopago = require("mercadopago");
 
-async function cargarItems(usuario: any)
+function getItems(usuario: Usuario): Array<any>
 {
-    usuario.carrito
+    let items: Array<any> = [];
     
-    return null
+    usuario.carrito.forEach(linea_carrito => 
+    {
+        items.push({
+            title: linea_carrito.libro.titulo,
+            quantity: (+linea_carrito.cantidad),
+            currency_id: "ARS",
+            unit_price: (+linea_carrito.libro.precio)
+        });
+    });
+    
+    return items
 }
 
 
-async function comprarMercadoPago() 
+async function generateLinkMercadoPago(items: any) 
 {
-    mercadopago.configure({access_token:
-        "TEST-102529111039618-111319-be2cad25aff0465082c188157129480d-184613295"});
-
+    mercadopago.configure({access_token:"TEST-102529111039618-111319-be2cad25aff0465082c188157129480d-184613295"});
+    
     const preference = {
-
-        items: [
-            {
-                title: "Test",
-                quantity: 1,
-                currency_id: "ARS",
-                unit_price: 10,
-                back_urls: { failure: "www.mercadopago.com", pending: 'www.google.com', success: 'www.mercadolibre.com'  },
-                auto_return: 'approved',
-                redirect_urls: { failure: 'www.mercadopago.com', pending: 'www.google.com', success: 'www.mercadolibre.com' },
-                "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
-            },
-        ],
+        items: items,
+        back_urls: {
+            success: 'https://music.youtube.com/',
+            failure: 'https://www.mercadopago.com.ar/developers/es/reference',
+            pending: 'https://www.google.com/',
+        },
+        auto_return: 'approved'
     };
 
     return mercadopago.preferences
@@ -43,20 +48,9 @@ async function comprarMercadoPago()
 
 export async function realizarCompra (id: number) 
 {
-
-    const usuario = await Usuario.find({
-        relations: {
-            carrito: {
-                libro: true
-            },
-        },
-        where:
-        {
-            id: id
-        }
-    })
-
-    const res = await comprarMercadoPago()
+    const usuario = await getCarritoUsuario(id)
+    const items = getItems(usuario[0])
+    const res = await generateLinkMercadoPago(items)
 
     return res
 }
