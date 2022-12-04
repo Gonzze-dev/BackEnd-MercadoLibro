@@ -1,0 +1,1 @@
+isnertLibro(..., [tema], [autor], )

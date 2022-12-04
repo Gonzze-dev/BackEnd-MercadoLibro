@@ -1,3 +1,4 @@
+import { mercadoPagoToken } from "../../config";
 import { Linea_carrito } from "../../Entities/Linea_carrito";
 import { Usuario } from "../../Entities/Usuario";
 import { getCarritoUsuario } from "./getCarritoUsuario";
@@ -23,7 +24,7 @@ function getItems(usuario: Usuario): Array<any>
 
 async function generateLinkMercadoPago(items: any) 
 {
-    mercadopago.configure({access_token:"TEST-102529111039618-111319-be2cad25aff0465082c188157129480d-184613295"});
+    mercadopago.configure({access_token: mercadoPagoToken});
     
     const preference = {
         items: items,
@@ -45,6 +46,18 @@ async function generateLinkMercadoPago(items: any)
         return null;
     });
 }
+
+// async function estadoPago()
+// {
+//     // main.get("https://music.youtube.com/", async (req, res) => {
+//     //     const payment = await mercadopago.payment.findById(req.query.payment_id);
+//     //     const merchantOrder = await mercadopago.merchant_orders.findById(payment.body.order.id);
+//     //     const preferenceId = merchantOrder.body.preference_id;
+//     //     const status = payment.body.status;
+
+//     //     console.log(`Estado del pago ${status}`)
+//     // });
+// }
 
 export async function realizarCompra (id: number) 
 {

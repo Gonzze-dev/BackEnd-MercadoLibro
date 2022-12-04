@@ -10,11 +10,12 @@ export async function signUp(args: any)
     obj_usuario.contrasenia = args.contrasenia;
     
     await obj_usuario.save();
-
+    
     const usuario = await Usuario.find(
         {
             where:{
                 correo: args.correo
+                
             }
         }
     )

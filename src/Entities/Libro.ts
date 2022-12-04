@@ -52,7 +52,7 @@ export class Libro extends BaseEntity
 
     @Column({
         type: 'decimal',
-        precision: 3, 
+        precision: 4, 
         scale: 2,
         nullable: true
     })
