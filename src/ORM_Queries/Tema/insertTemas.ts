@@ -7,7 +7,11 @@ export async function insertTemas(temas: Array<any>): Promise<Tema[]>
 
     temas.forEach( async tema => {
         temasBd.push(await insertTema(tema));
+        console.log(await temasBd)
     });
     
+    
+
+
     return temasBd
 }
