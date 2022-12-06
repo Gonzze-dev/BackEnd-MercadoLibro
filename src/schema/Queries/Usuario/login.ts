@@ -1,7 +1,7 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { sign, verify } from "jsonwebtoken";
 
-import { secret } from "../../../config";
+import { JWT_SECRET } from "../../../config";
 import { getUsuarioById } from "../../../ORM_Queries/Usuario/getUsuarioById";
 import { login } from "../../../ORM_Queries/Usuario/login";
 import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
@@ -14,7 +14,7 @@ async function fGetUsuarioByCorreoYPassword(args: any) {
 
         const id_usuario: string = usuario[0].id.toString()
 
-        msj.accessToken = sign(id_usuario, secret);
+        msj.accessToken = sign(id_usuario, JWT_SECRET);
         msj.success = true;
         msj.usuario = usuario[0];
       
@@ -30,7 +30,7 @@ async function fGetUsuarioByToken(tokenUser: string) {
 
 	try {
 
-		const id: number = parseInt(<string>verify(tokenUser, secret))
+		const id: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
     
 		const usuario = await getUsuarioById(id);
 

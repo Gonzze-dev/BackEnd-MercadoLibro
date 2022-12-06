@@ -1,4 +1,4 @@
-import { mercadoPagoToken } from "../../config";
+import { MERCADO_PAGO_TOKEN } from "../../config";
 import { Linea_carrito } from "../../Entities/Linea_carrito";
 import { Usuario } from "../../Entities/Usuario";
 import { getCarritoUsuario } from "./getCarritoUsuario";
@@ -24,7 +24,7 @@ function getItems(usuario: Usuario): Array<any>
 
 async function generateLinkMercadoPago(items: any) 
 {
-    mercadopago.configure({access_token: mercadoPagoToken});
+    mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
     
     const preference = {
         items: items,

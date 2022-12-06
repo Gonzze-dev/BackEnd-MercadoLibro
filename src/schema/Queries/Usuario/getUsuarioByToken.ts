@@ -2,7 +2,7 @@ import { GraphQLNonNull, GraphQLString} from "graphql";
 import { verify } from "jsonwebtoken";
 
 
-import { secret } from "../../../config"
+import { JWT_SECRET } from "../../../config"
 import { getUsuarioById } from "../../../ORM_Queries/Usuario/getUsuarioById";
 import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
 
@@ -11,7 +11,7 @@ async function fGetUsuarioByToken(tokenUser: string) {
 
 	try {
 
-		const id: number = parseInt(<string>verify(tokenUser, secret))
+		const id: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
     
 		const usuario = await getUsuarioById(id);
 

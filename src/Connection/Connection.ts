@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from "../config";
 import { Autor } from "../Entities/Autor";
 import { Ciudad } from "../Entities/Ciudad";
 import { Cupon } from "../Entities/Cupon";
@@ -20,12 +21,12 @@ import { Tema } from "../Entities/Tema";
 import { Usuario } from "../Entities/Usuario";
 
 export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "1234",
-    database: "test",
+    type: 'postgres',
+    host: DB_HOST,
+    port: Number(DB_PORT),
+    username: DB_USERNAME,
+    password: DB_PASSWORD,
+    database: DB_NAME,
     entities: [Pais, 
                Provincia,
                Ciudad,

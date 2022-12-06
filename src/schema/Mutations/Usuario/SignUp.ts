@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLString} from "graphql";
 import { sign } from "jsonwebtoken";
 import { jSendUser, TSendUser } from "../../TypesDefs/sendUser"
-import { secret } from "../../../config"
+import { JWT_SECRET } from "../../../config"
 import { signUp } from '../../../ORM_Queries/Usuario/signUp'
 import { TUsuario } from "../../TypesDefs/usuario";
 
@@ -13,7 +13,7 @@ async function fSignUp(args: any) {
 		const usuario = await signUp(args);
 		const id_usuario: string = usuario[0].id.toString()
 
-		msj.accessToken = sign(id_usuario, secret);
+		msj.accessToken = sign(id_usuario, JWT_SECRET);
 		msj.success = true;
 		msj.usuario = usuario[0];
 		
