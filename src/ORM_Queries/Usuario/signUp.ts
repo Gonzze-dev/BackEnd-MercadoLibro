@@ -1,21 +1,22 @@
 
 import { Usuario } from "../../Entities/Usuario";
 
-export async function signUp(args: any) 
+export async function signUp(nombre: string, 
+                            correo: string, 
+                            contrasenia: string) 
 {
     const obj_usuario = new Usuario();
 
-    obj_usuario.nombre = args.nombre;
-    obj_usuario.correo = args.correo;
-    obj_usuario.contrasenia = args.contrasenia;
-    
+    obj_usuario.nombre = nombre;
+    obj_usuario.correo = correo;
+    obj_usuario.contrasenia = contrasenia;
+
     await obj_usuario.save();
     
     const usuario = await Usuario.find(
         {
             where:{
-                correo: args.correo
-                
+                correo: correo
             }
         }
     )

@@ -1,3 +1,4 @@
+import { Field, ObjectType } from 'type-graphql';
 import {BaseEntity,
         Column, 
         Entity,
@@ -8,15 +9,18 @@ import {BaseEntity,
 import { Libro } from './Libro';
 import { Usuario } from './Usuario';
 
+@ObjectType()
 @Entity()
 export class Opinion extends BaseEntity
 {
     @PrimaryColumn()
     usuario_libro: string;
 
-    @Column('text')
+    @Field()
+    @Column('text', {nullable: true})
     comentario!: string;
 
+    @Field(type => Usuario, {nullable: true})
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
     })

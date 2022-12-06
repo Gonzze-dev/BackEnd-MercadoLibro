@@ -110,7 +110,7 @@ init_point! **String**
         - codigo_cupon! **String**
         - porc_descuento! **Double**
         - utilziado! **Boolean**
-    - direccion_entrega **Direccion**
+    - direccion_entrega! **Direccion**
         - id! **String**
         - direccion! **String**
         - infoAdicional! **String**
@@ -182,7 +182,7 @@ utilziado! **Boolean**
 - direccion! **String**
 - infoAdicional! **String**
 - dni! **Integer**
-- telefono! **String**
+- telefono **String**
 - usuario! **Integer**
 - ciudad! **ciudad**
 
@@ -201,13 +201,13 @@ utilziado! **Boolean**
 - nombre! **String**
 
 ### Orden_detalle
-- id **String**
-- precio **String**
-- cantidad **String**
-- id_orden **String**
-- libro **String**
+- id! **String**
+- precio! **String**
+- cantidad! **String**
+- id_orden! **String**
+- libro! **String**
 
 ### carrito
-- nro_linea **Integer**
-- cantidad **Integer**
-- libro **Libro**
+- nro_linea! **Integer**
+- cantidad! **Integer**
+- libro! **Libro**

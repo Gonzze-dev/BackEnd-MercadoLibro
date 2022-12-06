@@ -1,18 +1,9 @@
-import { Libro } from "../../Entities/Libro";
+
 import { Usuario } from "../../Entities/Usuario";
 
 
-export async function insertFav(isbn: string, id: number) 
+export async function removeFav(isbn: string, id: number) 
 {
-
-    
-    const libro = await Libro.find(
-        {
-            where:{
-                isbn: isbn
-            }
-        }
-    )
 
     let usuario = await Usuario.find(
         {
@@ -28,7 +19,8 @@ export async function insertFav(isbn: string, id: number)
     
     if (usuario[0].favorito)
     {
-        usuario[0].favorito.push(libro[0]);
+        const index = usuario[0].favorito.findIndex(obj => obj.isbn === isbn)
+        usuario[0].favorito.splice(index, index);
         await usuario[0].save();
     }
     

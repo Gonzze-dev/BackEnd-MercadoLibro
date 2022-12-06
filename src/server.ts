@@ -1,17 +1,25 @@
-import express from 'express';
-import {graphqlHTTP} from 'express-graphql';
-import cors from 'cors';
-import { schema } from './schema/schema';
+import express from "express";
+import { ApolloServer } from "apollo-server-express";
+import { buildSchema } from "type-graphql";
+import { LibroResolver } from "./schema/Resolvers/Libro/LibroResolver";
+import { UsuarioResolver } from "./schema/Resolvers/Usuario/UsuarioResolver";
+import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 
-const server = express();
+export async function startServer() {
 
-server.use(cors());
-server.use(express.json());
+  const app = express();
 
-server.use('/graphql', graphqlHTTP({
-    graphiql: true,
-    schema: schema,
-}));
+  const server = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [LibroResolver, UsuarioResolver, TemaResolver],
+      validate: false
+    }),
+    context: ({ req, res }) => ({ req, res })
+  });
 
+  await server.start()
+  
+  server.applyMiddleware({ app, path: "/graphql" });
 
-export default server;
+  return app;
+}

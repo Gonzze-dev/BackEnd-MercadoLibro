@@ -1,13 +1,15 @@
-import { GraphQLString, GraphQLNonNull } from "graphql";
 import { sign, verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config";
+
 import { getUsuarioById } from "../../../ORM_Queries/Usuario/getUsuarioById";
 import { login } from "../../../ORM_Queries/Usuario/login";
-import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
+import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
-async function fGetUsuarioByCorreoYPassword(args: any) {
-    const msj = jSendUser()
+
+async function GetUsuarioByCorreoYPassword(args: any): Promise<SendUsuario> 
+{
+    const msj = new SendUsuario()
 
     try {
         const usuario = await login(args.correo, args.contrasenia)
@@ -25,8 +27,9 @@ async function fGetUsuarioByCorreoYPassword(args: any) {
     }
 }
 
-async function fGetUsuarioByToken(tokenUser: string) {
-	let msj = jSendUser();
+async function GetUsuarioByToken(tokenUser: string): Promise<SendUsuario>
+{
+    const msj = new SendUsuario()
 
 	try {
 
@@ -34,41 +37,27 @@ async function fGetUsuarioByToken(tokenUser: string) {
     
 		const usuario = await getUsuarioById(id);
 
-		msj.message = "Usuario obtenido con exito";
-		msj.success = true;
-		msj.accessToken = tokenUser;
-		msj.usuario = usuario[0];
-		
+        msj.accessToken = tokenUser;
+        msj.success = true;
+        msj.usuario = usuario[0];
+
 		return msj;
 	} catch (err) {
 		return msj;
 	}
 }
 
-async function selectFunction(args:  any)
+export async function selectLoginType(args:  any)
 {
     if (args.correo != '' && args.contrasenia != '')
     {
-        return fGetUsuarioByCorreoYPassword(args)
+        return await GetUsuarioByCorreoYPassword(args)
     }
     else if(args.tokenUser != '')
     {
-        return fGetUsuarioByToken(args.tokenUser)
+        return await GetUsuarioByToken(args.tokenUser)
     }
     
-    return jSendUser()
+    return new SendUsuario()
 }
 
-
-export const Login = {
-    type: TSendUser,
-    args: {
-        correo: { type: GraphQLString },
-        contrasenia: { type: GraphQLString },
-        tokenUser: {type: GraphQLString }
-    },
-    async resolve(_: any, args: any) {
-        const result = await selectFunction(args);
-        return result;
-    },
-};

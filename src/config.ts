@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 config();
 
-export const APP_PORT = process.env.APP_PORT || '3000'
+export const PORT = process.env.PORT || '3000'
 
 export const DB_USERNAME = process.env.DB_USERNAME || 'postgres';
 export const DB_PASSWORD = process.env.DB_PASSWORD || '1234';

@@ -1,3 +1,4 @@
+import { Field, ID, Int, ObjectType } from "type-graphql";
 import { BaseEntity, 
         Column,
         Entity,
@@ -9,23 +10,31 @@ import { Ciudad } from "./Ciudad";
     
 import { Usuario } from "./Usuario";
 
+@ObjectType()
 @Entity()
 export class Direccion_entrega extends BaseEntity
 {
+    @Field(type => ID)
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Field()
     @Column()
     direccion!: string;
 
+    @Field()
     @Column({
         nullable: true
     })
     infoAdicional: string;
 
+    @Field(type => Int, {nullable: true})
     @Column({type: 'bigint'})
     dni!: number;
 
+    @Field({
+        nullable: true
+    })
     @Column({
         nullable: true
     })
@@ -37,6 +46,7 @@ export class Direccion_entrega extends BaseEntity
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;
 
+    @Field(type => Ciudad)
     @ManyToOne((type) => Ciudad, {
         onUpdate: 'CASCADE',
         eager: true

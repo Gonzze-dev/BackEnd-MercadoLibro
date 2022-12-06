@@ -1,16 +1,20 @@
-import { GraphQLNonNull, GraphQLString} from "graphql";
 import { sign } from "jsonwebtoken";
-import { jSendUser, TSendUser } from "../../TypesDefs/sendUser"
 import { JWT_SECRET } from "../../../config"
 import { signUp } from '../../../ORM_Queries/Usuario/signUp'
-import { TUsuario } from "../../TypesDefs/usuario";
+import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
-async function fSignUp(args: any) {
-	let msj = jSendUser();
+export async function SignUp(nombre: string, 
+							correo: string, 
+							contrasenia: string) 
+{
+	const msj = new SendUsuario();
 
 	try {
 
-		const usuario = await signUp(args);
+		const usuario = await signUp(nombre,
+									correo,
+									contrasenia);
+
 		const id_usuario: string = usuario[0].id.toString()
 
 		msj.accessToken = sign(id_usuario, JWT_SECRET);
@@ -22,17 +26,3 @@ async function fSignUp(args: any) {
 		return msj;
 	}
 }
-
-export const SignUp = {
-	type: TSendUser,
-	args: {
-		nombre: { type: new GraphQLNonNull(GraphQLString) },
-		contrasenia: { type: new GraphQLNonNull(GraphQLString) },
-		correo: { type: new GraphQLNonNull(GraphQLString) }
-	},
-	async resolve(_: any, args: any) {
-		const result = await fSignUp(args);
-
-		return result;
-	},
-};

@@ -4,17 +4,17 @@ export async function getAllLibros()
 {
 
     const libro = await Libro.find(
-        {
-            relations:
-            {
-                opinion:{
-                    usuario: true
-                },
-                puntuacion:{
-                    usuario: true
-                }
-            }
-        }
+        // {
+        //     relations:
+        //     {
+        //         opinion:{
+        //             usuario: false
+        //         },
+        //         puntuacion:{
+        //             usuario: false
+        //         }
+        //     }
+        // }
     )
 
     return libro

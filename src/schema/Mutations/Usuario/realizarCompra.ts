@@ -1,15 +1,17 @@
-import { GraphQLNonNull, GraphQLString} from "graphql";
+
 import { verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config"
 import { realizarCompra } from "../../../ORM_Queries/Usuario/realizarCompra";
-import { jMercadoPago, sendMercadoPago } from "../../TypesDefs/sendMercadoPago";
 
-async function fRealizarCompra(tokenUser: string) {
-	let msj = jMercadoPago()
+import { SendMercadoPago } from "../../../SendTypes/SendMercadoPago";
+
+export async function RealizarCompra(tokenUser: string) {
+	const msj = new SendMercadoPago()
 
 	try {
 		const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
+
 		const res = await realizarCompra(id);
 		
 		msj.message = "realizada con exito!"
@@ -18,19 +20,10 @@ async function fRealizarCompra(tokenUser: string) {
 
 		return msj;
 	} catch (err) {
-		
+		msj.message = "Compra rechazada"
+		msj.success = false;
+		msj.init_point = ''
+
 		return msj;
 	}
 }
-
-export const RealizarCompra = {
-	type: sendMercadoPago,
-	args: {
-		tokenUser: { type: new GraphQLNonNull(GraphQLString) },
-	},
-	async resolve(_: any, args: any) {
-		const result = await fRealizarCompra(args.tokenUser);
-
-		return result;
-	},
-};

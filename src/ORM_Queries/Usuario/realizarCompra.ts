@@ -1,5 +1,4 @@
 import { MERCADO_PAGO_TOKEN } from "../../config";
-import { Linea_carrito } from "../../Entities/Linea_carrito";
 import { Usuario } from "../../Entities/Usuario";
 import { getCarritoUsuario } from "./getCarritoUsuario";
 const mercadopago = require("mercadopago");
@@ -8,15 +7,18 @@ function getItems(usuario: Usuario): Array<any>
 {
     let items: Array<any> = [];
     
-    usuario.carrito.forEach(linea_carrito => 
+    if (usuario.carrito)
     {
-        items.push({
-            title: linea_carrito.libro.titulo,
-            quantity: (+linea_carrito.cantidad),
-            currency_id: "ARS",
-            unit_price: (+linea_carrito.libro.precio)
+        usuario.carrito.forEach(linea_carrito => 
+        {
+            items.push({
+                title: linea_carrito.libro.titulo,
+                quantity: (+linea_carrito.cantidad),
+                currency_id: "ARS",
+                unit_price: (+linea_carrito.libro.precio)
+            });
         });
-    });
+    }
     
     return items
 }
@@ -61,6 +63,7 @@ async function generateLinkMercadoPago(items: any)
 
 export async function realizarCompra (id: number) 
 {
+
     const usuario = await getCarritoUsuario(id)
     const items = getItems(usuario[0])
     const res = await generateLinkMercadoPago(items)
