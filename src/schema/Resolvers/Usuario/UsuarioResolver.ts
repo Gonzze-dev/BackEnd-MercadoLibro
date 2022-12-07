@@ -10,7 +10,9 @@ import { InsertFav } from "../../Mutations/Usuario/insertFav";
 import { RealizarCompra } from "../../Mutations/Usuario/realizarCompra";
 import { SendMercadoPago } from "../../../SendTypes/SendMercadoPago";
 import { RemoveFav } from "../../Mutations/Usuario/removeFav";
-import { AgregarProducto } from "../../Mutations/Usuario/AgregarProducto";
+import { AgregarProducto } from "../../Mutations/Usuario/agregarProducto";
+import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
+import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
 
 @Resolver()
 export class UsuarioResolver
@@ -43,6 +45,18 @@ export class UsuarioResolver
     async agregarProducto(@Args() {cantidad, isbn, tokenUser}: ArgsAgregarProducto)
     {
         return await AgregarProducto(cantidad, isbn, tokenUser);
+    }
+
+    @Mutation(() => SendUsuario)
+    async quitarProducto(@Args() {cantidad, isbn, tokenUser}: ArgsAgregarProducto)
+    {
+        return await QuitarProducto(cantidad, isbn, tokenUser);
+    }
+
+    @Mutation(() => SendUsuario)
+    async eliminarProducto(@Args() {isbn, tokenUser}: ArgsInsertFav)
+    {
+        return await EliminarProducto(isbn, tokenUser);
     }
 
     @Mutation(() => SendMercadoPago)
