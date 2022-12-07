@@ -46,19 +46,6 @@ export async function insertLibro(isbn: string,
         obj_libro.editorial = await insertEditorial(editorial);
 
 
-        // const mapAutores = async (autores: any[]) => {
-        //     console.log('Start')
-        
-        //     const promisesAutor = autores.map(async autor => {
-        //         const arrayAutor = await insertAutor(autor)
-        //         return arrayAutor
-        //     })
-            
-        //     const autor = await Promise.all(promisesAutor)
-
-        //     return autor
-        // }
-
         obj_libro.autor = []
         for (const autor of autores) {
             obj_libro.autor.push(await insertAutor(autor))
@@ -68,17 +55,6 @@ export async function insertLibro(isbn: string,
         for (const tema of temas) {
             obj_libro.tema.push(await insertTema(tema))
         }
-
-        // const mapTemas = async (temas: any[]) => 
-        // {
-        //     const promisesTemas = temas.map(async tema => {
-        //         const arrayTemas = await insertTema(tema)
-        //         return arrayTemas
-        //     })
-            
-        //     const arrayTemas = await Promise.all(promisesTemas)
-        //     return arrayTemas
-        // }
 
         await obj_libro.save()
     }

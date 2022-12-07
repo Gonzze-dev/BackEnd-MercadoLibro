@@ -4,7 +4,7 @@ import { getElementByName } from "../Utilities/getElementByName";
 
 export async function insertTema(tema: any)
 {
-    const existeTema = await existsName(tema.nombre, Tema);
+    const existeTema = await existsName(tema, Tema);
 
     const obj_tema = new Tema();
 
@@ -17,5 +17,5 @@ export async function insertTema(tema: any)
     // }
 
 
-    return await getElementByName(tema.nombre, Tema)
+    return await getElementByName(tema, Tema)
 }
