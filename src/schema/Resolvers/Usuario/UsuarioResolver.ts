@@ -10,7 +10,7 @@ import { InsertFav } from "../../Mutations/Usuario/insertFav";
 import { RealizarCompra } from "../../Mutations/Usuario/realizarCompra";
 import { SendMercadoPago } from "../../../SendTypes/SendMercadoPago";
 import { RemoveFav } from "../../Mutations/Usuario/removeFav";
-import { AgregarProducto } from "../../Mutations/Usuario/agregarProducto";
+import { AgregarProducto } from "../../Mutations/Usuario/AgregarProducto";
 import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
 import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
 
