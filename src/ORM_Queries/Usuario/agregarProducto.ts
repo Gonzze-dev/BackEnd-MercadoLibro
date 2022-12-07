@@ -29,13 +29,22 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
     
     if (usuario[0].carrito)
     {
-        const producto = new Linea_carrito()
+        const index = usuario[0].carrito.findIndex(obj => obj.libro.isbn === isbn)
 
-        producto.cantidad = cantidad;
-        producto.libro = libro[0];
-        producto.usuario = usuario[0];
+        if (index == - 1)
+        {
+            const producto = new Linea_carrito()
+            producto.cantidad = cantidad;
+            producto.libro = libro[0];
+            producto.usuario = usuario[0];
+            await producto.save();
+        }
+        else
+        {
+            usuario[0].carrito[index].cantidad = usuario[0].carrito[index].cantidad + (+ cantidad)
+            await usuario[0].carrito[index].save()
+        }
 
-        await producto.save();
     }
     
 
