@@ -5,11 +5,12 @@ import { SendUsuario } from "../../../SendTypes/SendUsuario";
 import { selectLoginType } from "../../Queries/Usuario/login";
 import { SignUp } from "../../Mutations/Usuario/SignUp";
 
-import { ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
+import { ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
 import { InsertFav } from "../../Mutations/Usuario/insertFav";
 import { RealizarCompra } from "../../Mutations/Usuario/realizarCompra";
 import { SendMercadoPago } from "../../../SendTypes/SendMercadoPago";
 import { RemoveFav } from "../../Mutations/Usuario/removeFav";
+import { AgregarProducto } from "../../Mutations/Usuario/AgregarProducto";
 
 @Resolver()
 export class UsuarioResolver
@@ -36,6 +37,12 @@ export class UsuarioResolver
     async removeFav(@Args() {isbn, tokenUser}: ArgsInsertFav)
     {
         return await RemoveFav(isbn, tokenUser);
+    }
+
+    @Mutation(() => SendUsuario)
+    async agregarProducto(@Args() {cantidad, isbn, tokenUser}: ArgsAgregarProducto)
+    {
+        return await AgregarProducto(cantidad, isbn, tokenUser);
     }
 
     @Mutation(() => SendMercadoPago)

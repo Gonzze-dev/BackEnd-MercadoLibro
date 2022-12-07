@@ -1,4 +1,4 @@
-import { ArgsType, Field } from "type-graphql";
+import { ArgsType, Field, Int } from "type-graphql";
 
 @ArgsType()
 export class ArgsLogin 
@@ -34,4 +34,18 @@ export class ArgsInsertFav
 
     @Field()
     tokenUser: string = '';
+}
+
+
+@ArgsType()
+export class ArgsAgregarProducto
+{
+    @Field(type => Int)
+    cantidad: number;
+
+    @Field()
+    isbn: string;
+
+    @Field()
+    tokenUser: string;
 }
