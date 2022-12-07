@@ -10,13 +10,13 @@ export async function RealizarCompra(tokenUser: string) {
 	const msj = new SendMercadoPago()
 
 	try {
-		const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
+		const id = parseInt(<string>verify(tokenUser, JWT_SECRET));
 
 		const res = await realizarCompra(id);
-		
+
 		msj.message = "realizada con exito!"
 		msj.success = true;
-		msj.init_point = res.body.sandbox_init_point
+		msj.init_point = res;
 
 		return msj;
 	} catch (err) {

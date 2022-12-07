@@ -1,6 +1,8 @@
+import axios from "axios";
 import { MERCADO_PAGO_TOKEN } from "../../config";
 import { Usuario } from "../../Entities/Usuario";
 import { getCarritoUsuario } from "./getCarritoUsuario";
+
 const mercadopago = require("mercadopago");
 
 function getItems(usuario: Usuario): Array<any>
@@ -24,29 +26,32 @@ function getItems(usuario: Usuario): Array<any>
 }
 
 
-async function generateLinkMercadoPago(items: any) 
+async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
-    mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
-    
-    const preference = {
+    const url = "https://api.mercadopago.com/checkout/preferences";
+
+    const body = {
+        payer: {
+            email: usuario.correo
+        },
         items: items,
         back_urls: {
             success: 'https://music.youtube.com/',
             failure: 'https://www.mercadopago.com.ar/developers/es/reference',
             pending: 'https://www.google.com/',
         },
-        auto_return: 'approved'
+        auto_return: 'approved',
+        notification_url: "https://77f7-181-89-97-42.sa.ngrok.io/notificacion",
     };
 
-    return mercadopago.preferences
-    .create(preference)
-    .then(function (response: any) {
-        return response;
-    })
-    .catch(function (error: any) {
-        console.log(error);
-        return null;
+    const payment = await axios.post(url, body, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${MERCADO_PAGO_TOKEN}`
+        }
     });
+
+    return payment.data.sandbox_init_point
 }
 
 // async function estadoPago()
@@ -63,10 +68,15 @@ async function generateLinkMercadoPago(items: any)
 
 export async function realizarCompra (id: number) 
 {
-
+    let res = ""
     const usuario = await getCarritoUsuario(id)
-    const items = getItems(usuario[0])
-    const res = await generateLinkMercadoPago(items)
+    if (usuario)
+    {
+        const items = getItems(usuario[0])
+        
+        res = await crearLinkDePago(usuario[0], items)
+    }
+    
 
     return res
 }
