@@ -1,18 +1,21 @@
 
 import { Resolver, Query, Args, Mutation, Arg } from "type-graphql";
+import { ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
+
 import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
 import { selectLoginType } from "../../Queries/Usuario/login";
 import { SignUp } from "../../Mutations/Usuario/SignUp";
 
-import { ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
 import { InsertFav } from "../../Mutations/Usuario/insertFav";
 import { RealizarCompra } from "../../Mutations/Usuario/realizarCompra";
 import { SendMercadoPago } from "../../../SendTypes/SendMercadoPago";
 import { RemoveFav } from "../../Mutations/Usuario/removeFav";
-import { AgregarProducto } from "../../Mutations/Usuario/AgregarProducto";
+
 import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
 import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
+import { AgregarDireccion } from "../../Mutations/Usuario/agregarDireccion";
+import { AgregarProducto } from "../../Mutations/Usuario/agregarProducto";
 
 @Resolver()
 export class UsuarioResolver
@@ -57,6 +60,18 @@ export class UsuarioResolver
     async eliminarProducto(@Args() {isbn, tokenUser}: ArgsInsertFav)
     {
         return await EliminarProducto(isbn, tokenUser);
+    }
+
+    @Mutation(() => SendUsuario)
+    async agregarDireccion(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, ciudad}: ArgsAgregarDireccion)
+    {
+        return await AgregarDireccion(tokenUser, 
+                                        nombre,
+                                        direccion,
+                                        infoAdicional,
+                                        dni,
+                                        telefono,
+                                        ciudad);
     }
 
     @Mutation(() => SendMercadoPago)

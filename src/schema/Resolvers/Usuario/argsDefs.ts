@@ -49,3 +49,30 @@ export class ArgsAgregarProducto
     @Field()
     tokenUser: string;
 }
+
+
+@ArgsType()
+export class ArgsAgregarDireccion
+{
+    
+    @Field()
+    tokenUser!: string;
+
+    @Field()
+    nombre!: string;
+
+    @Field()
+    direccion!: string;
+
+    @Field()
+    infoAdicional: string;
+
+    @Field(type => Int)
+    dni!: number;
+
+    @Field({nullable: true})
+    telefono: string;
+
+    @Field(type => Int)
+    ciudad!: number;
+}
