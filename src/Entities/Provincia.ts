@@ -20,10 +20,10 @@ export class Provincia extends BaseEntity
     nombre!: string;
     
     @Field(type => Pais, {nullable: true})
-    @ManyToOne((type) => Pais, {
+    @ManyToOne((type) => Pais, (pais) => pais.id, {
         onUpdate: 'CASCADE',
         eager: true
     })
     @JoinColumn({name: 'id_pais'})
-    pais!: number;
+    pais!: Pais;
 }
