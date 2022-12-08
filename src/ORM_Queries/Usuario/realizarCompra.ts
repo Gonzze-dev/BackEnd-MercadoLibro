@@ -14,6 +14,7 @@ function getItems(usuario: Usuario): Array<any>
         usuario.carrito.forEach(linea_carrito => 
         {
             items.push({
+                id: usuario.id,
                 title: linea_carrito.libro.titulo,
                 quantity: (+linea_carrito.cantidad),
                 currency_id: "ARS",
@@ -41,7 +42,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
             pending: 'https://www.google.com/',
         },
         auto_return: 'approved',
-        notification_url: "https://77f7-181-89-97-42.sa.ngrok.io/notificacion",
+        notification_url: "https://2cc8-181-97-124-132.sa.ngrok.io/notificar",
     };
 
     const payment = await axios.post(url, body, {
