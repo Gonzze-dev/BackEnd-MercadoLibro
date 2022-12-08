@@ -18,6 +18,10 @@ export class Direccion_entrega extends BaseEntity
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Field({nullable: true})
+    @Column({nullable: true})
+    nombre!: string;
+
     @Field()
     @Column()
     direccion!: string;

@@ -5,10 +5,10 @@ import { BaseEntity,
         Entity, 
         JoinColumn, 
         ManyToOne,
+        OneToOne,
         PrimaryGeneratedColumn} from "typeorm";
 
 import { Ciudad } from "./Ciudad";
-    
 import { Usuario } from "./Usuario";
 
 @ObjectType()
@@ -19,6 +19,10 @@ export class Direccion extends BaseEntity
     @Field(type => ID)
     @PrimaryGeneratedColumn()
     id!: number;
+
+    @Field({nullable: true})
+    @Column({nullable: true})
+    nombre: string;
 
     @Field()
     @Column()
@@ -42,12 +46,12 @@ export class Direccion extends BaseEntity
     })
     telefono: string;
 
-    @ManyToOne((type) => Usuario, {
+    @OneToOne((type) => Usuario, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'id_usuario'})
-    usuario!: Usuario;
-
+    usuario: Usuario;
+    
     @Field(type => Ciudad)
     @ManyToOne((type) => Ciudad, {
         onUpdate: 'CASCADE',
