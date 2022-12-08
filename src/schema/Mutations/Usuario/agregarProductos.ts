@@ -1,7 +1,7 @@
-import { sign, verify } from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config";
-import { agregarProducto } from "../../../ORM_Queries/Usuario/agregarProducto";
+import { agregarProducto } from "../../../ORM_Queries/Usuario/agregarProductos";
 
 import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
