@@ -15,7 +15,7 @@ import { RemoveFav } from "../../Mutations/Usuario/removeFav";
 import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
 import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
 import { AgregarDireccion } from "../../Mutations/Usuario/agregarDireccion";
-import { AgregarProducto } from "../../Mutations/Usuario/agregarProducto";
+//import { AgregarProducto } from '../../Mutations/Usuario/agregarProducto';
 
 @Resolver()
 export class UsuarioResolver
@@ -47,7 +47,8 @@ export class UsuarioResolver
     @Mutation(() => SendUsuario)
     async agregarProducto(@Args() {cantidad, isbn, tokenUser}: ArgsAgregarProducto)
     {
-        return await AgregarProducto(cantidad, isbn, tokenUser);
+        //return await AgregarProducto(cantidad, isbn, tokenUser);
+        return new SendUsuario()
     }
 
     @Mutation(() => SendUsuario)
