@@ -5,7 +5,9 @@ import {BaseEntity,
         JoinTable,
         ManyToMany,
         OneToMany,
+        OneToOne,
         PrimaryGeneratedColumn} from 'typeorm'
+import { Direccion } from './Direccion';
 
 import { Libro } from './Libro'
 import { Linea_carrito } from './Linea_carrito';
@@ -59,6 +61,11 @@ export class Usuario extends BaseEntity
     })
     favorito?: Libro[];
 
+    @Field(type => Direccion, {nullable: true})
+    @OneToOne((type) => Direccion, (direccion) => direccion.usuario, {
+        onUpdate: 'CASCADE'
+    })
+    direccion: Direccion;
     
     @OneToMany((type) => Opinion, opinion => opinion.usuario)
     public opinion: Opinion[];
