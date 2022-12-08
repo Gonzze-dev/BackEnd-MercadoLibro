@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run after-start",
+    "start": "npm run after-start",
     "after-start": "node dist/index.js",
     "build": "tsc -p .",
     "dev": "ts-node-dev src/index.ts"
