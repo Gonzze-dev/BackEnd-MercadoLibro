@@ -23,10 +23,10 @@ function getItems(usuario: Usuario): Array<any>
                 unit_price: (+linea_carrito.libro.precio)
             });
         });
-        console.log("ITEMS CARGADOS")
+
     }
 
-    
+    console.log("ITEMS CARGADOS")
     return items
 }
 
@@ -34,6 +34,8 @@ function getItems(usuario: Usuario): Array<any>
 async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
     const url = "https://api.mercadopago.com/checkout/preferences";
+    
+    console.log("antes de hacer post")
 
     const body = {
         payer: {
@@ -85,12 +87,12 @@ export async function realizarCompra (id: number)
     let res = ""
     
     const usuario = await getCarritoUsuario(id)
-    console.log("USUARIO Y CARRITO OBTENIDOS")
+
     if (usuario)
     {
-        console.log("CREANDO EN FORMATO ITEMS DE MP")
+
         const items = getItems(usuario[0])
-        console.log("CREANDO LINK")
+        console.log(usuario[0])
         res = await crearLinkDePago(usuario[0], items)
     }
     
