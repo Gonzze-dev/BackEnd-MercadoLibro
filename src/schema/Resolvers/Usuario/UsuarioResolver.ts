@@ -85,8 +85,18 @@ export class UsuarioResolver
     }
 
     @Mutation(() => SendMercadoPago)
-    async realizarCompra(@Arg('tokenUser') tokenUser: string)
+    async realizarCompra(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, ciudad}: ArgsAgregarDireccion)
     {
+        await AgregarDireccion(tokenUser, 
+            nombre,
+            direccion,
+            infoAdicional,
+            dni,
+            telefono,
+            ciudad);
+
         return await RealizarCompra(tokenUser);
     }
+
+    
 }
