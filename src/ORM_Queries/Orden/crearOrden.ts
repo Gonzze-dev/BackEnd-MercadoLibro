@@ -35,8 +35,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             }
         })
 
-        console.log(payment)
-
         const usuario = arr_usuario[0]
           
         if (!payment[0]
@@ -44,7 +42,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             && (usuario.carrito[0].cupon 
             && (!usuario.carrito[0].cupon.utilizado || usuario.carrito[0].cupon.codigo_cupon == '-'))))
         {
-            console.log('realizo acciones')
+
             const cupon = await Cupon.find({
                 where:{
                     codigo_cupon: usuario.carrito[0].cupon.codigo_cupon
@@ -104,15 +102,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             await newPayment.save()
 
             orden = obj_orden
-        }else
-        {
-            const resultadoIf: boolean = (!payment[0]
-                && (((usuario && usuario.carrito) && (usuario.carrito.length > 0))
-                && (usuario.carrito[0].cupon 
-                && (!usuario.carrito[0].cupon.utilizado || usuario.carrito[0].cupon.codigo_cupon == '-'))))
-
-            console.log("no realize nada")
-            console.log(resultadoIf)
         }
     }
     

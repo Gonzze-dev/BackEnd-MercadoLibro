@@ -35,9 +35,9 @@ export async function startServer() {
       let payment: any
 
       const topic = query.topic || query.type;
-      console.log(topic)
+
       if (topic == "payment") {
-        console.log("topic")
+
           const paymentId = query.id || query['data.id'];
           payment = await mercadopago.payment.findById(paymentId)
 
