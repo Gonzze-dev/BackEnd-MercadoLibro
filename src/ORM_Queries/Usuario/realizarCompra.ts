@@ -44,9 +44,9 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
             number: usuario.direccion.dni
         },
         back_urls: {
-            success: 'https://music.youtube.com/',
-            failure: 'https://www.mercadopago.com.ar/developers/es/reference',
-            pending: 'https://www.google.com/',
+            success: 'https://mercado-libro.vercel.app/checkout/success',
+            failure: 'https://mercado-libro.vercel.app/checkout/pending',
+            pending: 'mercado-libro.vercel.app/checkout/denied',
         },
         auto_return: 'approved',
         notification_url: `${URL_NOTIFICACION}/notificar`,
