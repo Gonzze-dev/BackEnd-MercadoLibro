@@ -38,7 +38,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 
     console.log(MERCADO_PAGO_TOKEN)
 
-    const body = {
+    const preference = {
         payer: {
             name: usuario.nombre,
             email: usuario.correo
@@ -57,22 +57,18 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         notification_url: `${URL_NOTIFICACION}/notificar`,
     };
     
-
-   console.log(body)
-
-    const payment = await axios.post(url, body, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${MERCADO_PAGO_TOKEN}`
-        }
+    const link =  mercadopago.preferences
+    .create(preference)
+    .then(function (response: any) {
+        return response.body.sandbox_init_point;
+    })
+    .catch(function (error: any) {
+        console.log(error);
+        return null;
     });
 
-    
+    return link
 
-    console.log(payment.data.sandbox_init_point)
-
-
-    return payment.data.sandbox_init_point
 }
 
 // async function estadoPago()
