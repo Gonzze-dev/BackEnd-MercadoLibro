@@ -7,6 +7,7 @@ import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 
 import bodyParser from "body-parser";
 import { MERCADO_PAGO_TOKEN } from "./config";
+import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
 const mercadopago = require("mercadopago")
 
 export async function startServer() {
@@ -29,25 +30,28 @@ export async function startServer() {
       mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
 
       const {query} = req
+      
 
       let payment: any
       //let merchantOrder: any
 
-      console.log(query)
       const topic = query.topic || query.type;
       
-      switch (topic) {
-        case "payment":
+      if (topic == "payment") {
+          
           const paymentId = query.id || query['data.id'];
           payment = await mercadopago.payment.findById(paymentId)
-          console.log(payment.body.additional_info.items)
-          console.log(payment.body.status)
+
+          const items = payment.body.additional_info.items
+          const status = payment.body.status
+
+          await crearOrden(status, items, <string>paymentId)
           //merchantOrder = await mercadopago.merchant_orders.findById(payment.body.order.id)
-        break;
-        // case "merchant_order":
-        //   const orderId = query.id
-        //   merchantOrder = await mercadopago.merchant_orders.findById(orderId)
-        // break;
+
+          // case "merchant_order":
+          //   const orderId = query.id
+          //   merchantOrder = await mercadopago.merchant_orders.findById(orderId)
+          // break;
       }
       
       
