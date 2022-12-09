@@ -26,7 +26,7 @@ export async function startServer() {
 
   await server.start()
 
-  app.post('/notificar', async (req, res) => {
+  app.post('/notificar', async (req: any, res: any) => {
       mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
 
       const {query} = req
@@ -52,12 +52,20 @@ export async function startServer() {
           //   const orderId = query.id
           //   merchantOrder = await mercadopago.merchant_orders.findById(orderId)
           // break;
+
+          res.status(200)
       }
       
-      
-    
-    res.status(200)
+    res.status(400)
   })
+
+  
+  app.get('/get', async (req: any, res: any) => {
+
+    
+      res.status(200).send("Holaaaaaaaaaaaaaaaaaa")
+  })
+
 
   server.applyMiddleware({ app, path: "/graphql" });
 
