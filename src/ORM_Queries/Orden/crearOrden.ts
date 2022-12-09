@@ -95,12 +95,12 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
                 obj_detalle.orden = obj_orden
                 await eliminarProducto(item_carrito.libro.isbn, idUsuario) 
                 await obj_detalle.save()
-                console.log("SE CREO LA ORDEN")
+
             }
             const newPayment = new Payment_MP()
             newPayment.id = paymentId
             await newPayment.save()
-            console.log("SE CREO EL PAYMENT")
+
             orden = obj_orden
         }
     }

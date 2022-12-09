@@ -63,18 +63,6 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 
 }
 
-// async function estadoPago()
-// {
-//     // main.get("https://music.youtube.com/", async (req, res) => {
-//     //     const payment = await mercadopago.payment.findById(req.query.payment_id);
-//     //     const merchantOrder = await mercadopago.merchant_orders.findById(payment.body.order.id);
-//     //     const preferenceId = merchantOrder.body.preference_id;
-//     //     const status = payment.body.status;
-
-//     //     console.log(`Estado del pago ${status}`)
-//     // });
-// }
-
 export async function realizarCompra (id: number) 
 {
 
