@@ -13,7 +13,7 @@ function getItems(usuario: Usuario): Array<any>
     {
         usuario.carrito.forEach(linea_carrito => 
         {
-            console.log("CARGANDO ITEMS")
+
             items.push({
                 id: usuario.id,
                 title: linea_carrito.libro.titulo,
@@ -26,7 +26,7 @@ function getItems(usuario: Usuario): Array<any>
 
     }
 
-    console.log("ITEMS CARGADOS")
+
     return items
 }
 
@@ -35,7 +35,6 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
     const url = "https://api.mercadopago.com/checkout/preferences";
     
-    console.log("antes de hacer post")
 
     const body = {
         payer: {
@@ -56,8 +55,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         notification_url: `${URL_NOTIFICACION}/notificar`,
     };
 
-    console.log("antes de hacer post")
-    console.log(items)
+
     const payment = await axios.post(url, body, {
         headers: {
             "Content-Type": "application/json",
@@ -65,7 +63,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         }
     });
 
-    console.log(payment.data.sandbox_init_point)
+
     return payment.data.sandbox_init_point
 }
 
