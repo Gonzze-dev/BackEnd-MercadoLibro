@@ -1,4 +1,5 @@
 
+import { Cupon } from "../../Entities/Cupon";
 import { Libro } from "../../Entities/Libro";
 import { Linea_carrito } from "../../Entities/Linea_carrito";
 import { Usuario } from "../../Entities/Usuario";
@@ -26,6 +27,12 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
             }
         }
     )
+
+    let cupon = await Cupon.find({
+        where:{
+            codigo_cupon: '-'
+        }
+    })
     
     if (usuario[0].carrito)
     {
@@ -37,6 +44,7 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
             producto.cantidad = cantidad;
             producto.libro = libro[0];
             producto.usuario = usuario[0];
+            producto.cupon = cupon[0]
             await producto.save();
         }
         else

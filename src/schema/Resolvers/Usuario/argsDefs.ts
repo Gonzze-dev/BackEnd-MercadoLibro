@@ -76,3 +76,14 @@ export class ArgsAgregarDireccion
     @Field(type => Int)
     ciudad!: number;
 }
+
+@ArgsType()
+export class ArgsAgregarCupon
+{
+    @Field()
+    codigo_cupon: string;
+
+    @Field()
+    tokenUser: string;
+}
+

@@ -18,6 +18,7 @@ function getItems(usuario: Usuario): Array<any>
                 title: linea_carrito.libro.titulo,
                 quantity: (+linea_carrito.cantidad),
                 currency_id: "ARS",
+                category: "Libro",
                 unit_price: (+linea_carrito.libro.precio)
             });
         });
@@ -30,19 +31,24 @@ function getItems(usuario: Usuario): Array<any>
 async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
     const url = "https://api.mercadopago.com/checkout/preferences";
-
+    const urlPag = 'https://e1bc-181-97-124-132.sa.ngrok.io'
     const body = {
         payer: {
+            name: usuario.nombre,
             email: usuario.correo
         },
         items: items,
+        identification: {
+            type: "DNI",
+            number: usuario.direccion.dni
+        },
         back_urls: {
             success: 'https://music.youtube.com/',
             failure: 'https://www.mercadopago.com.ar/developers/es/reference',
             pending: 'https://www.google.com/',
         },
         auto_return: 'approved',
-        notification_url: "https://2cc8-181-97-124-132.sa.ngrok.io/notificar",
+        notification_url: `${urlPag}/notificar`,
     };
 
     const payment = await axios.post(url, body, {

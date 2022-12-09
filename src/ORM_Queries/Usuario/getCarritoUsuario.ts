@@ -7,6 +7,7 @@ export async function getCarritoUsuario(id: number)
             carrito: {
                 libro: true
             },
+            direccion: true
         },
         where:
         {

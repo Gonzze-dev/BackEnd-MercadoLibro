@@ -1,6 +1,6 @@
 
 import { Resolver, Query, Args, Mutation, Arg } from "type-graphql";
-import { ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
+import { ArgsAgregarCupon, ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
 
 import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
@@ -16,6 +16,10 @@ import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
 import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
 import { AgregarDireccion } from "../../Mutations/Usuario/agregarDireccion";
 import { AgregarProducto } from "../../Mutations/Usuario/agregarProductos";
+
+import { SendCupon } from "../../../SendTypes/SendCupon";
+import { AgregarCupon } from "../../Mutations/Usuario/agregarCupon";
+
 
 @Resolver()
 export class UsuarioResolver
@@ -72,6 +76,12 @@ export class UsuarioResolver
                                         dni,
                                         telefono,
                                         ciudad);
+    }
+
+    @Mutation(() => SendCupon)
+    async agregarCupon(@Args() {codigo_cupon, tokenUser}: ArgsAgregarCupon)
+    {
+        return await AgregarCupon(codigo_cupon, tokenUser);
     }
 
     @Mutation(() => SendMercadoPago)
