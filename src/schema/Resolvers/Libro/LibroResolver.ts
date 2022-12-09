@@ -1,5 +1,5 @@
 import { Resolver, Args, Query, Mutation } from "type-graphql";
-import { Libro } from "../../../Entities/Libro";
+
 import { SendLibro } from "../../../SendTypes/SendLibro";
 import { InsertLibro } from "../../Mutations/Libro/insertLibro";
 import { GetLibros } from "../../Queries/Libro/getibros";
