@@ -13,6 +13,7 @@ function getItems(usuario: Usuario): Array<any>
     {
         usuario.carrito.forEach(linea_carrito => 
         {
+            console.log("CARGANDO ITEMS")
             items.push({
                 id: usuario.id,
                 title: linea_carrito.libro.titulo,
@@ -22,6 +23,7 @@ function getItems(usuario: Usuario): Array<any>
                 unit_price: (+linea_carrito.libro.precio)
             });
         });
+        console.log("ITEMS CARGADOS")
     }
 
     
@@ -81,11 +83,14 @@ export async function realizarCompra (id: number)
 {
 
     let res = ""
+    
     const usuario = await getCarritoUsuario(id)
+    console.log("USUARIO Y CARRITO OBTENIDOS")
     if (usuario)
     {
+        console.log("CREANDO EN FORMATO ITEMS DE MP")
         const items = getItems(usuario[0])
-        
+        console.log("CREANDO LINK")
         res = await crearLinkDePago(usuario[0], items)
     }
     
