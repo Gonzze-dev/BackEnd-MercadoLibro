@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { MERCADO_PAGO_TOKEN, URL_NOTIFICACION } from "../../config";
 import { Usuario } from "../../Entities/Usuario";
 import { getCarritoUsuario } from "./getCarritoUsuario";
