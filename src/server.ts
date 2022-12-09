@@ -30,7 +30,7 @@ export async function startServer() {
       mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
 
       const {query} = req
-      
+      console.log("MERCADO PAGO MADNO EL PAYMENT")
 
       let payment: any
       //let merchantOrder: any
@@ -44,7 +44,7 @@ export async function startServer() {
 
           const items = payment.body.additional_info.items
           const status = payment.body.status
-
+          console.log("SE VA A CREAR LA ORDEN")
           await crearOrden(status, items, <string>paymentId)
           //merchantOrder = await mercadopago.merchant_orders.findById(payment.body.order.id)
 

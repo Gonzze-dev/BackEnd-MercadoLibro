@@ -59,8 +59,6 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         return null;
     });
 
-    console.log(link)
-
     return link
 
 }
