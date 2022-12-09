@@ -8,6 +8,7 @@ import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 import bodyParser from "body-parser";
 import { MERCADO_PAGO_TOKEN } from "./config";
 import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
+import { Console } from "console";
 const mercadopago = require("mercadopago")
 
 export async function startServer() {
@@ -34,9 +35,9 @@ export async function startServer() {
       let payment: any
 
       const topic = query.topic || query.type;
-      
+      console.log(topic)
       if (topic == "payment") {
-          
+        console.log("topic")
           const paymentId = query.id || query['data.id'];
           payment = await mercadopago.payment.findById(paymentId)
 
