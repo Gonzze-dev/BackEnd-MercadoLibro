@@ -8,7 +8,8 @@ export async function login(correo: string, contrasenia: string)
             {
                 orden:
                 {
-                    direccion_entrega: true
+                    direccion_entrega: true,
+                    cupon: true
                 },
                 favorito: true,
                 carrito: {

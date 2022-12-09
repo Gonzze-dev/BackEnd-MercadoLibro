@@ -1,4 +1,3 @@
-import { Linea_carrito } from "../../Entities/Linea_carrito";
 import { Usuario } from "../../Entities/Usuario";
 
 export async function getUsuarioById(id: number) 
@@ -9,7 +8,8 @@ export async function getUsuarioById(id: number)
             {
                 orden:
                 {
-                    direccion_entrega: true
+                    direccion_entrega: true,
+                    cupon: true
                 },
                 favorito: true,
                 carrito: {
