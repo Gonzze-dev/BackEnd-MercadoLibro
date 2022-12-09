@@ -37,10 +37,10 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 
 
     // const preference = {
-    //     payer: {
-    //         name: usuario.nombre,
-    //         email: usuario.correo
-    //     },
+        // payer: {
+        //     name: usuario.nombre,
+        //     email: usuario.correo
+        // },
     //     items: items,
     //     identification: {
     //         type: "DNI",
@@ -56,11 +56,15 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
     // };
 
     const preference = {
+        payer: {
+            name: usuario.nombre,
+            email: usuario.correo
+        },
         items: items,
         back_urls: {
-            success: 'https://music.youtube.com/',
-            failure: 'https://www.mercadopago.com.ar/developers/es/reference',
-            pending: 'https://www.google.com/',
+            success: 'https://mercado-libro.vercel.app/checkout/success',
+            failure: 'https://mercado-libro.vercel.app/checkout/denied',
+            pending: 'https://mercado-libro.vercel.app/checkout/pending',
         },
         auto_return: 'approved'
     };
