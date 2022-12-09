@@ -52,6 +52,8 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         notification_url: `${URL_NOTIFICACION}/notificar`,
     };
 
+    console.log("antes de hacer post")
+    console.log(items)
     const payment = await axios.post(url, body, {
         headers: {
             "Content-Type": "application/json",
@@ -77,7 +79,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 
 export async function realizarCompra (id: number) 
 {
-    console.log("PROBADO")
+
     let res = ""
     const usuario = await getCarritoUsuario(id)
     if (usuario)
