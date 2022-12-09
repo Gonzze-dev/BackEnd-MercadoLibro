@@ -13,6 +13,7 @@ import { Opinion } from "../Entities/Opinion";
 import { Orden } from "../Entities/Orden";
 import { Orden_detalle } from "../Entities/Orden_detalle";
 import { Pais } from "../Entities/Pais";
+import { Payment_MP } from "../Entities/Payment_MP";
 import { Provincia } from "../Entities/Provincia";
 import { Puntuacion } from "../Entities/Puntuacion";
 import { Tema } from "../Entities/Tema";
@@ -43,7 +44,8 @@ export const AppDataSource = new DataSource({
                Orden_detalle,
                Linea_carrito,
                Libro,
-               Usuario],
+               Usuario,
+               Payment_MP],
     synchronize: true,
     logging: true,
 });
