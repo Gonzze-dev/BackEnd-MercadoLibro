@@ -40,13 +40,12 @@ export class Orden extends BaseEntity
     total!: number;
 
     @Field(type => Cupon, {nullable: true})
-    @OneToOne((type) => Cupon, {
+    @ManyToOne((type) => Cupon, {
         onUpdate: 'CASCADE',
         eager: true
     })
     @JoinColumn({name: 'codigo_cupon'})
     cupon?: Cupon;
-
 
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
@@ -55,13 +54,13 @@ export class Orden extends BaseEntity
     usuario!: Usuario;
 
     @Field(type => Direccion_entrega, {nullable: true})
-    @ManyToOne((type) => Direccion_entrega, (direccion) => direccion.id, {
+    @OneToOne((type) => Direccion_entrega, (direccion) => direccion.id, {
         onUpdate: 'CASCADE',
     })
     @JoinColumn({name: 'id_direccion_entrega'})
     direccion_entrega!: Direccion_entrega;
     
-    @Field(type => Orden_detalle, {nullable: true})
+    @Field(type => [Orden_detalle], {nullable: true})
     @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden, {
         onUpdate: 'CASCADE',
         eager: true
