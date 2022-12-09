@@ -79,7 +79,5 @@ export async function agregarDireccion(id: number,
         }
     })
 
-    console.log(usuario[0])
-
     return usuario
 }
