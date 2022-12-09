@@ -23,6 +23,7 @@ function getItems(usuario: Usuario): Array<any>
             });
         });
     }
+
     
     return items
 }
@@ -30,8 +31,8 @@ function getItems(usuario: Usuario): Array<any>
 
 async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
+    const url = "https://api.mercadopago.com/checkout/preferences";
 
-    const urlPag = 'https://e1bc-181-97-124-132.sa.ngrok.io'
     const body = {
         payer: {
             name: usuario.nombre,
