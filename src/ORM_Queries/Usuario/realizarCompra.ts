@@ -32,9 +32,8 @@ function getItems(usuario: Usuario): Array<any>
 
 async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
-    const url = "https://api.mercadopago.com/checkout/preferences";
-    console.log(URL_NOTIFICACION)
-    console.log(url)
+    mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
+    //const url = "https://api.mercadopago.com/checkout/preferences";
 
     console.log(MERCADO_PAGO_TOKEN)
 
@@ -56,7 +55,9 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         auto_return: 'approved',
         notification_url: `${URL_NOTIFICACION}/notificar`,
     };
+
     
+
     const link =  mercadopago.preferences
     .create(preference)
     .then(function (response: any) {
