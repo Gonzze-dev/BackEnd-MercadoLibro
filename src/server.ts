@@ -26,7 +26,7 @@ export async function startServer() {
 
   await server.start()
 
-  app.use('/notificar', async (req, res) => {
+  app.post('/notificar', async (req, res) => {
       mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
 
       const {query} = req
