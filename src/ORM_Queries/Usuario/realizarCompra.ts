@@ -45,8 +45,8 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         },
         back_urls: {
             success: 'https://mercado-libro.vercel.app/checkout/success',
-            failure: 'https://mercado-libro.vercel.app/checkout/pending',
-            pending: 'mercado-libro.vercel.app/checkout/denied',
+            failure: 'https://mercado-libro.vercel.app/checkout/denied',
+            pending: 'https://mercado-libro.vercel.app/checkout/pending',
         },
         auto_return: 'approved',
         notification_url: `${URL_NOTIFICACION}/notificar`,
@@ -59,6 +59,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
         }
     });
 
+    console.log(payment.data.sandbox_init_point)
     return payment.data.sandbox_init_point
 }
 
@@ -76,6 +77,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 
 export async function realizarCompra (id: number) 
 {
+    console.log("PROBADO")
     let res = ""
     const usuario = await getCarritoUsuario(id)
     if (usuario)
