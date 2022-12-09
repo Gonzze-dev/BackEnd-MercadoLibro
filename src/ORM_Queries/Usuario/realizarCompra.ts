@@ -26,7 +26,6 @@ function getItems(usuario: Usuario): Array<any>
 
     }
 
-
     return items
 }
 
@@ -35,7 +34,6 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
     const url = "https://api.mercadopago.com/checkout/preferences";
     
-
     const body = {
         payer: {
             name: usuario.nombre,
@@ -62,6 +60,11 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
             Authorization: `Bearer ${MERCADO_PAGO_TOKEN}`
         }
     });
+
+    console.log(url)
+    console.log(MERCADO_PAGO_TOKEN)
+
+    console.log(payment.data.sandbox_init_point)
 
 
     return payment.data.sandbox_init_point
