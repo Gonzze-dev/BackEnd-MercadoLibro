@@ -74,7 +74,7 @@ export class ArgsAgregarDireccion
     telefono: string;
 
     @Field(type => Int)
-    ciudad!: number;
+    cp!: number;
 }
 
 @ArgsType()

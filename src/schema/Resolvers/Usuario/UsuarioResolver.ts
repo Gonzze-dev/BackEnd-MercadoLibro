@@ -67,7 +67,7 @@ export class UsuarioResolver
     }
 
     @Mutation(() => SendUsuario)
-    async agregarDireccion(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, ciudad}: ArgsAgregarDireccion)
+    async agregarDireccion(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, cp}: ArgsAgregarDireccion)
     {
         return await AgregarDireccion(tokenUser, 
                                         nombre,
@@ -75,7 +75,7 @@ export class UsuarioResolver
                                         infoAdicional,
                                         dni,
                                         telefono,
-                                        ciudad);
+                                        cp);
     }
 
     @Mutation(() => SendCupon)
@@ -85,7 +85,7 @@ export class UsuarioResolver
     }
 
     @Mutation(() => SendMercadoPago)
-    async realizarCompra(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, ciudad}: ArgsAgregarDireccion)
+    async realizarCompra(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, cp}: ArgsAgregarDireccion)
     {
         await AgregarDireccion(tokenUser, 
             nombre,
@@ -93,7 +93,7 @@ export class UsuarioResolver
             infoAdicional,
             dni,
             telefono,
-            ciudad);
+            cp);
 
         return await RealizarCompra(tokenUser);
     }
