@@ -3,6 +3,7 @@ config();
 
 export const PORT = process.env.PORT
 
+export const URL_NOTIFICACION = process.env.URL || '/error';
 export const DB_USERNAME = process.env.DB_USERNAME || 'postgres';
 export const DB_PASSWORD = process.env.DB_PASSWORD || '1234';
 export const DB_HOST = process.env.DB_HOST || 'localhost';

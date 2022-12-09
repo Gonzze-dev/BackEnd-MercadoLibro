@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MERCADO_PAGO_TOKEN } from "../../config";
+import { MERCADO_PAGO_TOKEN, URL_NOTIFICACION } from "../../config";
 import { Usuario } from "../../Entities/Usuario";
 import { getCarritoUsuario } from "./getCarritoUsuario";
 
@@ -30,7 +30,7 @@ function getItems(usuario: Usuario): Array<any>
 
 async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
-    const url = "https://api.mercadopago.com/checkout/preferences";
+
     const urlPag = 'https://e1bc-181-97-124-132.sa.ngrok.io'
     const body = {
         payer: {
@@ -48,7 +48,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
             pending: 'https://www.google.com/',
         },
         auto_return: 'approved',
-        notification_url: `${urlPag}/notificar`,
+        notification_url: `${URL_NOTIFICACION}/notificar`,
     };
 
     const payment = await axios.post(url, body, {
