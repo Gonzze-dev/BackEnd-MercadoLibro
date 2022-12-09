@@ -51,8 +51,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
             failure: 'https://mercado-libro.vercel.app/checkout/denied',
             pending: 'https://mercado-libro.vercel.app/checkout/pending',
         },
-        auto_return: 'approved',
-        notification_url: `${URL_NOTIFICACION}/notificar`,
+        auto_return: 'approved'
     };
 
     console.log(preference)
