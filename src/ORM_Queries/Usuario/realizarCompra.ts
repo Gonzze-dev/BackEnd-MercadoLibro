@@ -34,6 +34,10 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 {
     const url = "https://api.mercadopago.com/checkout/preferences";
     console.log(URL_NOTIFICACION)
+    console.log(url)
+
+    console.log(MERCADO_PAGO_TOKEN)
+
     const body = {
         payer: {
             name: usuario.nombre,
@@ -54,9 +58,7 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
     };
     
 
-    console.log(url)
-
-    console.log(MERCADO_PAGO_TOKEN)
+   console.log(body)
 
     const payment = await axios.post(url, body, {
         headers: {
