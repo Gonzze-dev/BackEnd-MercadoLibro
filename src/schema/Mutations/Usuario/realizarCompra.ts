@@ -23,7 +23,7 @@ export async function RealizarCompra(tokenUser: string) {
 		msj.message = "Compra rechazada"
 		msj.success = false;
 		msj.init_point = ''
-
+		console.log(err)
 		return msj;
 	}
 }
