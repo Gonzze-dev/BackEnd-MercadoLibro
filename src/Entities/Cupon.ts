@@ -16,7 +16,7 @@ export class Cupon extends BaseEntity
     @Field(type => Float)
     @Column({
         type: 'decimal',
-        precision: 3, 
+        precision: 4, 
         scale: 2,
     })
     porc_descuento!: number;
