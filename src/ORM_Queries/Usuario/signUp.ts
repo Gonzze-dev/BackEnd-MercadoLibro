@@ -1,4 +1,5 @@
 
+import { ILike } from "typeorm";
 import { Usuario } from "../../Entities/Usuario";
 
 export async function signUp(nombre: string, 
@@ -8,7 +9,7 @@ export async function signUp(nombre: string,
     let usuario = await Usuario.find(
         {
             where:{
-                correo: correo
+                correo: ILike(`${correo}`)
             }
         }
     )

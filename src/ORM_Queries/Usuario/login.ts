@@ -1,3 +1,4 @@
+import { ILike } from "typeorm";
 import { Usuario } from "../../Entities/Usuario";
 
 export async function login(correo: string, contrasenia: string) 
@@ -23,7 +24,7 @@ export async function login(correo: string, contrasenia: string)
             },
             where:
             {
-                correo: correo,
+                correo: ILike(`${correo}`),
                 contrasenia: contrasenia
             }
         }
