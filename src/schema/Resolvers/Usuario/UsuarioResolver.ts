@@ -1,6 +1,6 @@
 
 import { Resolver, Query, Args, Mutation, Arg } from "type-graphql";
-import { ArgsAgregarCupon, ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
+import { ArgsAgregarCupon, ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsOpinar, ArgsOpinoOPuntuo, ArgsPuntuar, ArgsSingUp } from "./argsDefs";
 
 import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
@@ -19,6 +19,13 @@ import { AgregarProducto } from "../../Mutations/Usuario/agregarProductos";
 
 import { SendCupon } from "../../../SendTypes/SendCupon";
 import { AgregarCupon } from "../../Mutations/Usuario/agregarCupon";
+import { SendLibro } from "../../../SendTypes/SendLibro";
+import { Opinar } from "../../Mutations/Usuario/opinar";
+import { Puntuar } from "../../Mutations/Usuario/puntuar";
+import { Puntuo } from "../../Mutations/Usuario/puntuo";
+import { Opino } from "../../Mutations/Usuario/opino";
+import { SendOpino } from "../../../SendTypes/SendOpino";
+import { SendPuntuo } from "../../../SendTypes/SendPuntuo";
 
 
 @Resolver()
@@ -85,18 +92,34 @@ export class UsuarioResolver
     }
 
     @Mutation(() => SendMercadoPago)
-    async realizarCompra(@Args() {tokenUser, nombre,direccion, infoAdicional, dni, telefono, cp}: ArgsAgregarDireccion)
+    async realizarCompra(@Arg("tokenUser") tokenUser: string)
     {
-        await AgregarDireccion(tokenUser, 
-            nombre,
-            direccion,
-            infoAdicional,
-            dni,
-            telefono,
-            cp);
 
         return await RealizarCompra(tokenUser);
     }
 
+    @Mutation(() => SendLibro)
+    async opinar(@Args() {comentario, isbn, tokenUser}: ArgsOpinar)
+    {
+        return await Opinar(comentario, isbn, tokenUser);
+    }
     
+    @Mutation(() => SendLibro)
+    async puntuar(@Args() {puntuacion, isbn, tokenUser}: ArgsPuntuar)
+    {
+        return await Puntuar(puntuacion, isbn, tokenUser);
+    }
+
+    @Query(() => SendOpino)
+    async opino(@Args() {isbn, tokenUser}: ArgsOpinoOPuntuo)
+    {
+        return await Opino(isbn, tokenUser);
+    }
+
+    @Query(() => SendPuntuo)
+    async puntuo(@Args() {isbn, tokenUser}: ArgsOpinoOPuntuo)
+    {
+        return await Puntuo(isbn, tokenUser);
+    }
+
 }
