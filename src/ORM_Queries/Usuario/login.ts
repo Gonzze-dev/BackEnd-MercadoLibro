@@ -9,7 +9,10 @@ export async function login(correo: string, contrasenia: string)
                 orden:
                 {
                     direccion_entrega: true,
-                    cupon: true
+                    cupon: true,
+                    orden_detalle:{
+                        libro: true
+                    }
                 },
                 favorito: true,
                 carrito: {
@@ -30,5 +33,7 @@ export async function login(correo: string, contrasenia: string)
         throw "ERROR, CORREO O CONTRASEÑA INVALIDAS"
     }
     
+    console.log(usuario[0])
+
     return usuario
 }

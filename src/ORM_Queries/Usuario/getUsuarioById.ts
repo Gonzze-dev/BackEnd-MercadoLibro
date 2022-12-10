@@ -9,7 +9,11 @@ export async function getUsuarioById(id: number)
                 orden:
                 {
                     direccion_entrega: true,
-                    cupon: true
+                    cupon: true,
+                    orden_detalle:{
+                        libro: true
+                    }
+                    
                 },
                 favorito: true,
                 carrito: {
@@ -24,6 +28,6 @@ export async function getUsuarioById(id: number)
         }
     )
 
-    
+    console.log(usuario[0])
     return usuario
 }
