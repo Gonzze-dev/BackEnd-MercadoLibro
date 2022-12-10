@@ -5,18 +5,16 @@ import { eliminarNotificacion } from "../../../ORM_Queries/Usuario/eliminarNotif
 
 import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
-export async function EliminarNotificacion(idNotificacion: number, tokenUser: string) {
+export async function EliminarNotificacion(idNotificacion: number) {
 	const msj = new SendUsuario()
 
 	try {
-		const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
 
-		const mensaje = await eliminarNotificacion(idNotificacion, id);
+		const mensaje = await eliminarNotificacion(idNotificacion);
 
 		msj.message = mensaje
 		msj.success = true;
-		msj.accessToken = tokenUser;
-		
+
 		return msj;
 	} catch (err) {
 		

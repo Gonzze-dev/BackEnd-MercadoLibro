@@ -16,6 +16,7 @@ import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
 import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
 import { AgregarDireccion } from "../../Mutations/Usuario/agregarDireccion";
 import { AgregarProducto } from "../../Mutations/Usuario/agregarProductos";
+import { EliminarNotificacion } from "../../Mutations/Usuario/eliminarNotificacion"
 
 import { SendCupon } from "../../../SendTypes/SendCupon";
 import { AgregarCupon } from "../../Mutations/Usuario/agregarCupon";
@@ -120,6 +121,12 @@ export class UsuarioResolver
     async puntuo(@Args() {isbn, tokenUser}: ArgsOpinoOPuntuo)
     {
         return await Puntuo(isbn, tokenUser);
+    }
+
+    @Mutation(() => SendUsuario)
+    async eliminarNotificacion(@Arg('id') id: number)
+    {
+        return await EliminarNotificacion(id);
     }
 
 }

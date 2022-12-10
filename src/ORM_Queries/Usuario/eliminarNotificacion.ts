@@ -1,21 +1,16 @@
-import { Usuario } from "../../Entities/Usuario";
+import { Notificacion } from "../../Entities/Notificacion";
 
-export async function eliminarNotificacion(idNotificacion: number, idUsuario: number) {
+export async function eliminarNotificacion(idNotificacion: number) {
 
-    const usuario = await Usuario.find({
-        relations:{
-            notificacion: true
-        },
+    const notificacion = await Notificacion.find({
         where:{
-            id: idUsuario
+            id: idNotificacion
         }
     })
 
-    if (usuario[0].notificacion)
+    if (notificacion[0])
     {
-        const index = usuario[0].notificacion.findIndex(obj => obj.id === idNotificacion)
-        usuario[0].notificacion.splice(index, 1);
-        await usuario[0].save();
+        notificacion[0].remove()
     }
 
     return 'NOTIFICACION ELIMINADA EXITOSAMENTE!!'
