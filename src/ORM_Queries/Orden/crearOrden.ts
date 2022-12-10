@@ -1,5 +1,6 @@
 import { Cupon } from "../../Entities/Cupon";
 import { Direccion_entrega } from "../../Entities/Direccion_entrega";
+import { Libro } from "../../Entities/Libro";
 import { Orden } from "../../Entities/Orden";
 import { Orden_detalle } from "../../Entities/Orden_detalle";
 import { Payment_MP } from "../../Entities/Payment_MP";
@@ -86,6 +87,14 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
             for (const item_carrito of usuario.carrito) 
             {
+                const libro = await Libro.find({
+                    where: {
+                        isbn: item_carrito.libro.isbn
+                    }
+                })
+
+                libro[0].stock = +libro[0].stock - (+ item_carrito.cantidad)
+
                 const obj_detalle = new Orden_detalle()
 
                 obj_detalle.precio = item_carrito.libro.precio
@@ -95,6 +104,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
                 obj_detalle.orden = obj_orden
                 await eliminarProducto(item_carrito.libro.isbn, idUsuario) 
                 await obj_detalle.save()
+                await libro[0].save()
 
             }
             const newPayment = new Payment_MP()
