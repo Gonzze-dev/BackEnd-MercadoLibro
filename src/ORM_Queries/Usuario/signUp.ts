@@ -16,7 +16,7 @@ export async function signUp(nombre: string,
 
     if (usuario[0])
     {
-        throw "ERROR, YA HAY UN USUAIRO REGITRADO CON ESTE CORREO"
+        throw "ERROR, CORREO EN USO"
     }
 
     const obj_usuario = new Usuario();
