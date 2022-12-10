@@ -10,6 +10,10 @@ export class ArgsGetLibro {
 
     @Field()
     titulo: string = '';
+
+    @Field()
+    descuento: boolean = false;
+    
 }
 
 @ArgsType()
