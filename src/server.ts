@@ -35,12 +35,13 @@ export async function startServer() {
       let payment: any
 
       const topic = query.topic || query.type;
+      
   
       if (topic == "payment") {
 
           const paymentId = query.id || query['data.id'];
           payment = await mercadopago.payment.findById(paymentId)
-
+          
           const items = payment.body.additional_info.items
           const status = payment.body.status
 

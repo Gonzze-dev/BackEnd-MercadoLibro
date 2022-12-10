@@ -132,7 +132,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
             orden = obj_orden
         }
-    }else if(status == 'opened')
+    }else if(status == 'in_process')
     {
         if(await esNotificacionRepetida(paymentId))
         {
