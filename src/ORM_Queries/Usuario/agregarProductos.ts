@@ -34,10 +34,7 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         }
     })
     
-    if (cantidad  > libro[0].stock)
-    {
-        throw new Error("ERROR, LA CANTIDAD ES MAYOR QUE LA DEL LIBRO");
-    }
+    
 
     if (usuario[0].carrito)
     {
@@ -45,6 +42,10 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
 
         if (index == - 1)
         {
+            if (+cantidad  > +libro[0].stock)
+            {
+                throw "ERROR, LA CANTIDAD ES MAYOR QUE LA DEL LIBRO";
+            }
             const producto = new Linea_carrito()
             producto.cantidad = cantidad;
             producto.libro = libro[0];
@@ -55,9 +56,10 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         else
         {
             nuevaCantidad = usuario[0].carrito[index].cantidad + (+ cantidad)
+            console.log(nuevaCantidad  < libro[0].stock)
             if (nuevaCantidad  > libro[0].stock)
             {
-                throw new Error("ERROR, LA CANTIDAD A AGREGAR ES MAYOR QUE LA DEL LIBRO");
+                throw "ERROR, LA CANTIDAD A AGREGAR ES MAYOR QUE LA DEL LIBRO";
             }
             usuario[0].carrito[index].cantidad = nuevaCantidad
             await usuario[0].carrito[index].save()
