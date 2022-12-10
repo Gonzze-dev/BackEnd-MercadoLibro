@@ -87,3 +87,38 @@ export class ArgsAgregarCupon
     tokenUser: string;
 }
 
+@ArgsType()
+export class ArgsOpinar
+{
+    @Field()
+    comentario: string;
+
+    @Field()
+    isbn: string;
+    
+    @Field()
+    tokenUser: string;
+}
+
+@ArgsType()
+export class ArgsPuntuar
+{
+    @Field()
+    puntuacion: number;
+
+    @Field()
+    isbn: string;
+    
+    @Field()
+    tokenUser: string;
+}
+
+@ArgsType()
+export class ArgsOpinoOPuntuo
+{
+    @Field()
+    isbn: string;
+    
+    @Field()
+    tokenUser: string;
+}
