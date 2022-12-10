@@ -56,17 +56,14 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
     }
     
 
-    usuario = await Usuario.find(
-        {
-            relations:
-            {
-                carrito: true
-            },
-            where:{
-                id: id
-            }
+    usuario = await Usuario.find({
+        relations:{
+            carrito: true
+        },
+        where:{
+            id: id
         }
-    )
+    })
 
     return usuario
 }
