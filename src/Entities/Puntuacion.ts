@@ -1,4 +1,4 @@
-import { type } from "os";
+
 import { Field, Int, ObjectType } from "type-graphql";
 import { BaseEntity,
         Column, 
@@ -23,6 +23,7 @@ export class Puntuacion extends BaseEntity
     @Field(type => Usuario, {nullable: true})
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
+        eager: true
     })
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;
