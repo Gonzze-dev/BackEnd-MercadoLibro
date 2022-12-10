@@ -1,4 +1,4 @@
-import { sign, verify } from "jsonwebtoken";
+import { decode, sign, verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config";
 
@@ -16,13 +16,15 @@ async function GetUsuarioByCorreoYPassword(args: any): Promise<SendUsuario>
 
         const id_usuario: string = usuario[0].id.toString()
 
+        msj.message = 'USUARIO LOGUEADO CORRECTAMENTE!!'
         msj.accessToken = sign(id_usuario, JWT_SECRET);
         msj.success = true;
         msj.usuario = usuario[0];
       
         return msj;
     } catch (err: any) {
-
+        msj.message = err
+        msj.success = false
         return msj;
     }
 }
@@ -30,21 +32,39 @@ async function GetUsuarioByCorreoYPassword(args: any): Promise<SendUsuario>
 async function GetUsuarioByToken(tokenUser: string): Promise<SendUsuario>
 {
     const msj = new SendUsuario()
-
+    let idString = ''
+    try
+    {
+        idString = <string>verify(tokenUser, JWT_SECRET) 
+        
+    }catch(err: any)
+    {
+        msj.message = "ERROR, TOKEN INVALIDO"
+        msj.success = false
+		return msj;
+    }
 	try {
 
-		const id: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
-    
+
+
+		const id: number = parseInt(idString)
+        
+        
 		const usuario = await getUsuarioById(id);
 
+        msj.message = 'USUARIO LOGUEADO CORRECTAMENTE!!'
         msj.accessToken = tokenUser;
         msj.success = true;
         msj.usuario = usuario[0];
 
 		return msj;
-	} catch (err) {
+	}
+    catch (err: any) {
+        msj.message = err
+        msj.success = false
 		return msj;
 	}
+    
 }
 
 export async function selectLoginType(args:  any)

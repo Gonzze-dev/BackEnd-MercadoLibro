@@ -16,13 +16,16 @@ export async function SignUp(nombre: string,
 									contrasenia);
 
 		const id_usuario: string = usuario[0].id.toString()
-
+		
+		msj.message = "EL USUARIO SE REGISTRO CORRECTAMENTE!"
 		msj.accessToken = sign(id_usuario, JWT_SECRET);
 		msj.success = true;
 		msj.usuario = usuario[0];
 		
 		return msj;
-	} catch (err) {
+	} catch (err: any) {
+		msj.message = err
+		msj.success = false;
 		return msj;
 	}
 }

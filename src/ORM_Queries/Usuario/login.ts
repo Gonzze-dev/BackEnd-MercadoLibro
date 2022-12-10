@@ -24,6 +24,11 @@ export async function login(correo: string, contrasenia: string)
             }
         }
     )
+
+    if(!usuario[0])
+    {
+        throw "ERROR, CORREO O CONTRASEÑA INVALIDAS"
+    }
     
     return usuario
 }

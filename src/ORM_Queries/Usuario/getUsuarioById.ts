@@ -24,5 +24,6 @@ export async function getUsuarioById(id: number)
         }
     )
 
+    
     return usuario
 }
