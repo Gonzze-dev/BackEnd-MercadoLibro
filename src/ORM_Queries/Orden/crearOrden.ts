@@ -1,3 +1,4 @@
+import { Like } from "typeorm";
 import { Cupon } from "../../Entities/Cupon";
 import { Direccion_entrega } from "../../Entities/Direccion_entrega";
 import { Libro } from "../../Entities/Libro";
@@ -7,6 +8,17 @@ import { Orden_detalle } from "../../Entities/Orden_detalle";
 
 import { Usuario } from "../../Entities/Usuario";
 import { eliminarProducto } from "../Usuario/eliminarProducto";
+
+async function esNotificacionRepetida(paymentId: string) 
+{
+    const notificacion = await Notificacion.find({
+        where:{
+            mensaje: Like(`%${paymentId}%`)
+        }
+    })
+
+    return (!notificacion[0])? true : false
+}
 
 export async function crearOrden(status: string, items: Array<any>, paymentId: string) 
 {
@@ -114,7 +126,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             }
 
             const notificacion = new Notificacion()
-            notificacion.mensaje = `SE REALIZO LA COMPRA CORRECTAMENTE`;
+            notificacion.mensaje = `SE REALIZO LA COMPRA ${paymentId} CORRECTAMENTE`;
             notificacion.usuario = usuario;
             await notificacion.save()
 
@@ -122,17 +134,24 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         }
     }else if(status == 'opened')
     {
-        const notificacion = new Notificacion()
-        notificacion.mensaje = `COMPRA PENDIENTE`;
-        notificacion.usuario = arr_usuario[0];
-        await notificacion.save()
+        if(await esNotificacionRepetida(paymentId))
+        {
+            const notificacion = new Notificacion()
+            notificacion.mensaje = `COMPRA ${paymentId} PENDIENTE`;
+            notificacion.usuario = arr_usuario[0];
+            await notificacion.save()
+        }
+        
     }
     else if(status == 'rejected')
     {
-        const notificacion = new Notificacion()
-        notificacion.mensaje = `SE RECHAZO LA COMPRA`;
-        notificacion.usuario = arr_usuario[0];
-        await notificacion.save()
+        if(await esNotificacionRepetida(paymentId))
+        {
+            const notificacion = new Notificacion()
+            notificacion.mensaje = `SE RECHAZO LA COMPRA ${paymentId}`;
+            notificacion.usuario = arr_usuario[0];
+            await notificacion.save()
+        }
     }
     
     return orden
