@@ -55,13 +55,6 @@ export async function startServer() {
 
   })
 
-  
-  app.get('/get', async (req: any, res: any) => {
-
-    
-      res.status(200).send("Holaaaaaaaaaaaaaaaaaa")
-  })
-
 
   server.applyMiddleware({ app, path: "/graphql" });
 
