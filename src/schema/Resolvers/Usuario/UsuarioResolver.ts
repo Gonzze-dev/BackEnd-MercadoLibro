@@ -16,7 +16,7 @@ import { QuitarProducto } from "../../Mutations/Usuario/quitarProducto";
 import { EliminarProducto } from "../../Mutations/Usuario/eliminarProducto";
 import { AgregarDireccion } from "../../Mutations/Usuario/agregarDireccion";
 import { AgregarProducto } from "../../Mutations/Usuario/agregarProductos";
-import { EliminarNotificacion } from "../../Mutations/Usuario/eliminarNotificacion"
+import { EliminarNotificacion } from "../../Mutations/Usuario/eliminarNotificaciones"
 
 import { SendCupon } from "../../../SendTypes/SendCupon";
 import { AgregarCupon } from "../../Mutations/Usuario/agregarCupon";
