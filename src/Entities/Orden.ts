@@ -22,6 +22,9 @@ export class Orden extends BaseEntity
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Column({type: "varchar", nullable: true})
+    payment_id_mp!: string;
+
     @Field(type => String)
     @Column(
         {

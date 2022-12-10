@@ -3,7 +3,7 @@ import { Direccion_entrega } from "../../Entities/Direccion_entrega";
 import { Libro } from "../../Entities/Libro";
 import { Orden } from "../../Entities/Orden";
 import { Orden_detalle } from "../../Entities/Orden_detalle";
-import { Payment_MP } from "../../Entities/Payment_MP";
+
 import { Usuario } from "../../Entities/Usuario";
 import { eliminarProducto } from "../Usuario/eliminarProducto";
 
@@ -18,6 +18,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
     if (status == 'approved')
     {
+
         const arr_usuario = await Usuario.find({
             relations: {
                 direccion: true,
@@ -30,14 +31,14 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             }
         })
 
-        const payment = await Payment_MP.find({
+        const payment = await Orden.find({
             where:{
-                id: paymentId
+                payment_id_mp: paymentId
             }
         })
 
         const usuario = arr_usuario[0]
-          
+
         if (!payment[0]
             && (((usuario && usuario.carrito) && (usuario.carrito.length > 0))
             && (usuario.carrito[0].cupon 
@@ -79,6 +80,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             obj_orden.usuario = usuario
             obj_orden.total = totalCantidad * totalPrecio
             obj_orden.cupon = usuario.carrito[0].cupon
+            obj_orden.payment_id_mp = paymentId
 
             await direccion_entrega.save()
             obj_orden.direccion_entrega = direccion_entrega
@@ -107,9 +109,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
                 await libro[0].save()
 
             }
-            const newPayment = new Payment_MP()
-            newPayment.id = paymentId
-            await newPayment.save()
 
             orden = obj_orden
         }

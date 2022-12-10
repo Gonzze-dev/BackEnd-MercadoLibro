@@ -56,7 +56,7 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         else
         {
             nuevaCantidad = usuario[0].carrito[index].cantidad + (+ cantidad)
-            console.log(nuevaCantidad  < libro[0].stock)
+
             if (nuevaCantidad  > libro[0].stock)
             {
                 throw "ERROR, LA CANTIDAD A AGREGAR ES MAYOR QUE LA DEL LIBRO";

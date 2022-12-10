@@ -35,7 +35,7 @@ export async function startServer() {
       let payment: any
 
       const topic = query.topic || query.type;
-
+  
       if (topic == "payment") {
 
           const paymentId = query.id || query['data.id'];
