@@ -14,7 +14,8 @@ export async function getUsuarioById(id: number)
                 favorito: true,
                 carrito: {
                     libro: true
-                }
+                },
+                direccion: true
             },
             where:
             {

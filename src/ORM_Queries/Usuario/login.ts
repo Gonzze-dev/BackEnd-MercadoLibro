@@ -14,7 +14,8 @@ export async function login(correo: string, contrasenia: string)
                 favorito: true,
                 carrito: {
                     libro: true
-                }
+                },
+                direccion: true
             },
             where:
             {
