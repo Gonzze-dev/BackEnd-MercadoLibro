@@ -8,7 +8,7 @@ import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 import bodyParser from "body-parser";
 import { MERCADO_PAGO_TOKEN } from "./config";
 import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
-import { Console } from "console";
+
 const mercadopago = require("mercadopago")
 
 export async function startServer() {
@@ -45,7 +45,7 @@ export async function startServer() {
           const status = payment.body.status
 
           await crearOrden(status, items, <string>paymentId)
-
+          
           res.status(200)
       }
       else
