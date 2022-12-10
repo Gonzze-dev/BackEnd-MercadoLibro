@@ -11,6 +11,7 @@ import { Direccion } from './Direccion';
 
 import { Libro } from './Libro'
 import { Linea_carrito } from './Linea_carrito';
+import { Notificacion } from './Notificacion';
 import { Opinion } from './Opinion'
 import { Orden } from './Orden';
 import { Puntuacion } from './Puntuacion'
@@ -66,7 +67,13 @@ export class Usuario extends BaseEntity
         onUpdate: 'CASCADE'
     })
     direccion: Direccion;
-    
+
+    @Field(type => [Notificacion], {nullable: true})
+    @OneToMany((type) => Notificacion, notificacion => notificacion.usuario,{
+        eager: true
+    })
+    public notificacion: Notificacion[];
+
     @OneToMany((type) => Opinion, opinion => opinion.usuario)
     public opinion: Opinion[];
 

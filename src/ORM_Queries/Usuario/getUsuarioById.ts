@@ -19,7 +19,8 @@ export async function getUsuarioById(id: number)
                 carrito: {
                     libro: true
                 },
-                direccion: true
+                direccion: true,
+                notificacion: true
             },
             where:
             {

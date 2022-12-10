@@ -1,6 +1,7 @@
 import { Cupon } from "../../Entities/Cupon";
 import { Direccion_entrega } from "../../Entities/Direccion_entrega";
 import { Libro } from "../../Entities/Libro";
+import { Notificacion } from "../../Entities/Notificacion";
 import { Orden } from "../../Entities/Orden";
 import { Orden_detalle } from "../../Entities/Orden_detalle";
 
@@ -16,20 +17,22 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
     let orden = new Orden();
 
+    const arr_usuario = await Usuario.find({
+        relations: {
+            direccion: true,
+            carrito: {
+                libro: true
+            }
+        },
+        where: {
+            id: idUsuario
+        }
+    })
+
     if (status == 'approved')
     {
 
-        const arr_usuario = await Usuario.find({
-            relations: {
-                direccion: true,
-                carrito: {
-                    libro: true
-                }
-            },
-            where: {
-                id: idUsuario
-            }
-        })
+        
 
         const payment = await Orden.find({
             where:{
@@ -110,8 +113,26 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
             }
 
+            const notificacion = new Notificacion()
+            notificacion.mensaje = `SE REALIZO LA COMPRA CORRECTAMENTE`;
+            notificacion.usuario = usuario;
+            await notificacion.save()
+
             orden = obj_orden
         }
+    }else if(status == 'opened')
+    {
+        const notificacion = new Notificacion()
+        notificacion.mensaje = `COMPRA PENDIENTE`;
+        notificacion.usuario = arr_usuario[0];
+        await notificacion.save()
+    }
+    else if(status == 'rejected')
+    {
+        const notificacion = new Notificacion()
+        notificacion.mensaje = `SE RECHAZO LA COMPRA`;
+        notificacion.usuario = arr_usuario[0];
+        await notificacion.save()
     }
     
     return orden

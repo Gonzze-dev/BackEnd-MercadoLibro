@@ -9,6 +9,7 @@ import { Editorial } from "../Entities/Editorial";
 import { Idioma } from "../Entities/Idioma";
 import { Libro } from "../Entities/Libro";
 import { Linea_carrito } from "../Entities/Linea_carrito";
+import { Notificacion } from "../Entities/Notificacion";
 import { Opinion } from "../Entities/Opinion";
 import { Orden } from "../Entities/Orden";
 import { Orden_detalle } from "../Entities/Orden_detalle";
@@ -44,7 +45,8 @@ export const AppDataSource = new DataSource({
                Orden_detalle,
                Linea_carrito,
                Libro,
-               Usuario],
+               Usuario,
+               Notificacion],
     synchronize: true,
     logging: true,
 });
