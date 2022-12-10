@@ -93,7 +93,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
                     }
                 })
 
-                libro[0].stock = +libro[0].stock - (+ item_carrito.cantidad)
+                libro[0].stock = libro[0].stock - (+ item_carrito.cantidad)
 
                 const obj_detalle = new Orden_detalle()
 
