@@ -7,7 +7,7 @@ import { Usuario } from "../../Entities/Usuario";
 
 export async function agregarProducto(cantidad: number, isbn: string, id: number) 
 {
-
+    let nuevaCantidad = 0;
     const libro = await Libro.find(
         {
             where:{
@@ -34,6 +34,11 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         }
     })
     
+    if (cantidad  > libro[0].stock)
+    {
+        throw new Error("ERROR, LA CANTIDAD ES MAYOR QUE LA DEL LIBRO");
+    }
+
     if (usuario[0].carrito)
     {
         const index = usuario[0].carrito.findIndex(obj => obj.libro.isbn === isbn)
@@ -49,7 +54,12 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         }
         else
         {
-            usuario[0].carrito[index].cantidad = usuario[0].carrito[index].cantidad + (+ cantidad)
+            nuevaCantidad = usuario[0].carrito[index].cantidad + (+ cantidad)
+            if (nuevaCantidad  > libro[0].stock)
+            {
+                throw new Error("ERROR, LA CANTIDAD A AGREGAR ES MAYOR QUE LA DEL LIBRO");
+            }
+            usuario[0].carrito[index].cantidad = nuevaCantidad
             await usuario[0].carrito[index].save()
         }
 

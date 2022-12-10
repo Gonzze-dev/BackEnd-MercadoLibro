@@ -21,7 +21,11 @@ export async function AgregarProducto(cantidad: number, isbn: string, tokenUser:
         msj.usuario = usuario[0];
 
 		return msj;
-	} catch (err) {
+	} catch (err: any) {
+		msj.message = err
+		msj.accessToken = tokenUser
+		msj.success = false
+
 		return msj;
 	}
 }

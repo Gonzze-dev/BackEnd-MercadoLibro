@@ -128,5 +128,10 @@ VALUES
         ('8423362477', 3);
 
 --DIRECCION ENTREGA
-INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp)
-VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820);
+INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp, nombre)
+VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820, 'Gonzalo Errandonea');
+
+
+--DIRECCION
+INSERT INTO direccion (direccion, "infoAdicional", dni, id_usuario, cp, nombre)
+VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820, 'Gonzalo Errandonea');
