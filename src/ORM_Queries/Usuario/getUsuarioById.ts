@@ -28,6 +28,5 @@ export async function getUsuarioById(id: number)
         }
     )
 
-    console.log(usuario[0])
     return usuario
 }

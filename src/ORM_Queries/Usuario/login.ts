@@ -32,8 +32,6 @@ export async function login(correo: string, contrasenia: string)
     {
         throw "ERROR, CORREO O CONTRASEÑA INVALIDAS"
     }
-    
-    console.log(usuario[0])
 
     return usuario
 }
