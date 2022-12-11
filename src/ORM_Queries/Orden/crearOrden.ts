@@ -126,7 +126,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             }
 
             const notificacion = new Notificacion()
-            notificacion.mensaje = `COMPRA APROBADA \nTICKET: ${paymentId}`;
+            notificacion.mensaje = `Compra aprobada\nTicket: ${paymentId}`;
             notificacion.usuario = usuario;
             await notificacion.save()
 
@@ -137,7 +137,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         if(await esNotificacionRepetida(paymentId))
         {
             const notificacion = new Notificacion()
-            notificacion.mensaje = `COMPRA PENDIENTE \nTICKET: ${paymentId}`;
+            notificacion.mensaje = `Compra pendiente\nTicket: ${paymentId}`;
             notificacion.usuario = arr_usuario[0];
             await notificacion.save()
         }
@@ -148,7 +148,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         if(await esNotificacionRepetida(paymentId))
         {
             const notificacion = new Notificacion()
-            notificacion.mensaje = `COMPRA RECHAZADA \nTICKET: ${paymentId}}`;
+            notificacion.mensaje = `Compra rechazada`;
             notificacion.usuario = arr_usuario[0];
             await notificacion.save()
         }
