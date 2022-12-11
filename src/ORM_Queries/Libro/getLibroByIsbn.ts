@@ -16,25 +16,25 @@ export async function getLibroByIsbn(isbn: string)
             fecha_ingreso: true,
             descuento: true,
             editorial: {
-            nombre: true
+                nombre: true
             },
             tema: {
-            nombre: true
+                nombre: true
             },
             autor: {
-            nombre: true
+                nombre: true
             },
             opinion:{
-            comentario: true,
-            usuario:{
-                nombre: true
-            }
+                comentario: true,
+                usuario:{
+                    nombre: true
+                }
             },
             puntuacion:{
-            puntuacion: true,
-            usuario:{
-                nombre: true
-            }
+                puntuacion: true,
+                usuario:{
+                    nombre: true
+                }
             },
         },
         relations:

@@ -17,13 +17,13 @@ export async function getLibrosByReference(titulo: string)
             fecha_ingreso: true,
             descuento: true,
             editorial: {
-            nombre: true
+                nombre: true
             },
             tema: {
-            nombre: true
+                nombre: true
             },
             autor: {
-            nombre: true
+                nombre: true
             },
             opinion:{
             comentario: true,
