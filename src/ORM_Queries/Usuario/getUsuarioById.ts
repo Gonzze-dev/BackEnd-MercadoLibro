@@ -18,6 +18,7 @@ export async function getUsuarioById(id: number)
                         libro: true
                     }
                 },
+                direccion: true
             },
             where:
             {
