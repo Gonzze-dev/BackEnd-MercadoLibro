@@ -7,6 +7,13 @@ export async function login(correo: string, contrasenia: string)
         {
             relations:
             {
+                direccion: true,
+                favorito: true,
+                notificacion: true,
+                carrito:{
+                    libro: true
+                },
+                
                 orden:
                 {
                     direccion_entrega: true,
@@ -15,12 +22,6 @@ export async function login(correo: string, contrasenia: string)
                         libro: true
                     }
                 },
-                favorito: true,
-                carrito: {
-                    libro: true
-                },
-                direccion: true,
-                notificacion: true
             },
             where:
             {

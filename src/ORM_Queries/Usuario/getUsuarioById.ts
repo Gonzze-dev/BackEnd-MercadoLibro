@@ -6,10 +6,12 @@ export async function getUsuarioById(id: number)
         {
             relations:
             {
+                direccion: true,
+                favorito: true,
+                notificacion: true,
                 carrito:{
                     libro: true
                 },
-                notificacion: true,
                 orden:
                 {
                     direccion_entrega: true,
@@ -18,7 +20,6 @@ export async function getUsuarioById(id: number)
                         libro: true
                     }
                 },
-                direccion: true
             },
             where:
             {
