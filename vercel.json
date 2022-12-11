@@ -1,11 +1,11 @@
 {
-    "versel": 2,
+    "vercel": 2,
     "builds":[{
-        "dist": "./index.js",
+        "src": "./index.js",
         "use": "@versel/node"
     }],
     "routes": [{
-        "dist": "./(.*)*",
+        "src": "./(.*)*",
         "dest": "/"
     }]
 }
