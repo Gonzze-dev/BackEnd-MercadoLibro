@@ -26,5 +26,24 @@ export async function getUsuarioById(id: number)
             }
     })
 
+    const usuario2 = await Usuario.find(
+        {
+            select:
+            {
+                favorito: {
+                    isbn: true
+                }
+            },
+            relations:
+            {
+                favorito: true
+            },
+            where:
+            {
+                id: id
+            }
+        }
+    )
+
     return usuario
 }
