@@ -32,7 +32,7 @@ export async function insertFav(isbn: string, id: number)
         console.log(libro[0])
         usuario[0].favorito.push(libro[0]);
         const notificacion = new Notificacion();
-        notificacion.mensaje = `SE AÑADIO EL LIBRO ${libro[0].titulo} A FAVORITOS`;
+        notificacion.mensaje = `'${libro[0].titulo}' SE AGREGÓ A FAVORITOS`;
         notificacion.usuario = usuario[0];
 
         await usuario[0].save();
