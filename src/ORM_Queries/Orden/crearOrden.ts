@@ -33,6 +33,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         relations: {
             direccion: true,
             carrito: {
+                cupon: true,
                 libro: true
             }
         },
