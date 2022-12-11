@@ -5,14 +5,51 @@ export async function getLibrosConDescuento()
 {
 
     const libro = await Libro.find({
-        relations:
+        select: 
         {
+            isbn: true,
+            url_imagen: true,
+            titulo: true,
+            fecha_edicion: true,
+            precio: true,
+            stock: true,
+            descripcion: true,
+            fecha_ingreso: true,
+            descuento: true,
+            editorial: {
+            nombre: true
+            },
+            tema: {
+            nombre: true
+            },
+            autor: {
+            nombre: true
+            },
             opinion:{
-                usuario: true
+            comentario: true,
+            usuario:{
+                nombre: true
+            }
             },
             puntuacion:{
-                usuario: true
+            puntuacion: true,
+            usuario:{
+                nombre: true
             }
+            },
+        },
+        relations:
+        {
+            editorial: true,
+            idioma: true,
+            opinion: {
+                usuario: true
+            },
+            puntuacion: {
+                usuario: true
+            },
+            tema: true,
+            autor: true
         },
         where: {
             descuento: MoreThan(0)

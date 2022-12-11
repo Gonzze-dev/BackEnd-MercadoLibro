@@ -36,8 +36,7 @@ export class Orden_detalle extends BaseEntity
 
     @Field(type => Libro, {nullable: true})
     @ManyToOne((type) => Libro, (libro) => libro.isbn, {
-        onUpdate: 'CASCADE',
-        eager: true
+        onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     libro: Libro;

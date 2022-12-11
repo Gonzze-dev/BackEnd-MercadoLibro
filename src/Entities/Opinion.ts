@@ -22,8 +22,7 @@ export class Opinion extends BaseEntity
 
     @Field(type => Usuario, {nullable: true})
     @ManyToOne((type) => Usuario, {
-        onUpdate: 'CASCADE',
-        eager: true
+        onUpdate: 'CASCADE'
     })
     @JoinColumn({
         name: 'id_usuario',

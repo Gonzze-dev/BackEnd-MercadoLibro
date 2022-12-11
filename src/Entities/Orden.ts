@@ -44,8 +44,7 @@ export class Orden extends BaseEntity
 
     @Field(type => Cupon, {nullable: true})
     @ManyToOne((type) => Cupon, {
-        onUpdate: 'CASCADE',
-        eager: true
+        onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'codigo_cupon'})
     cupon?: Cupon;
@@ -65,8 +64,7 @@ export class Orden extends BaseEntity
     
     @Field(type => [Orden_detalle], {nullable: true})
     @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden, {
-        onUpdate: 'CASCADE',
-        eager: true
+        onUpdate: 'CASCADE'
     })
     orden_detalle!: Orden_detalle[];
 }

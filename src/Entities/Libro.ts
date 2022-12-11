@@ -74,7 +74,6 @@ export class Libro extends BaseEntity
     @ManyToOne(() => Editorial, (editorial) => editorial.id,
     {
         onUpdate: 'CASCADE',
-        eager: true
     })
     @JoinColumn({
         name: 'id_editorial'
@@ -85,7 +84,6 @@ export class Libro extends BaseEntity
     @ManyToOne(() => Idioma, (idioma) => idioma.id,
         {
             onUpdate: 'CASCADE',
-            eager: true
         })
     @JoinColumn({
         name: 'id_idioma',
@@ -95,7 +93,6 @@ export class Libro extends BaseEntity
     @Field(type => [Tema], {nullable: true})
     @ManyToMany((type) => Tema, {
         onUpdate: 'CASCADE',
-        eager: true
     })
     @JoinTable({
         name: "asignar_tema",
@@ -111,7 +108,6 @@ export class Libro extends BaseEntity
     @Field(type => [Autor], {nullable: true})
     @ManyToMany((type) => Autor, {
         onUpdate: 'CASCADE',
-        eager: true
     })
     @JoinTable({
         name: "escrito_por",
@@ -129,13 +125,11 @@ export class Libro extends BaseEntity
     
     @Field(type => [Opinion], {nullable: true})
     @OneToMany((type) => Opinion, opinion => opinion.libro, {
-        eager: true
     })
     public opinion?: Opinion[];
 
     @Field(type => [Puntuacion], {nullable: true})
     @OneToMany((type) => Puntuacion, puntuacion => puntuacion.libro, {
-        eager: true
     })
     puntuacion?: Puntuacion[];
 }
