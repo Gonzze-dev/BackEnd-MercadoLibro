@@ -1,11 +1,27 @@
 {
     "vercel": 2,
     "builds":[{
-        "src": "./index.js",
-        "use": "@versel/node"
+        "src": "dist/index.js",
+        "use": "@vercel/node",
+        "cofing":{
+            "includeFiles":["dist/**"]
+        }
     }],
     "routes": [{
-        "src": "./(.*)*",
-        "dest": "/"
-    }]
+        "src": "/(.*)*",
+        "dest": "dist/index.js"
+    }],
+    "env": {
+        "PORT": "@port",
+
+        "DB_USERNAME": "@db_username",
+        "DB_PASSWORD": "@db_password",
+        "DB_HOST": "@db_host",
+        "DB_PORT": "@db_port",
+        "DB_NAME": "@db_name",
+
+        "URL_NOTIFICACION": "@url_notificacion",
+        "JWT_SECRET": "@jwt_secret",
+        "MERCADO_PAGO_TOKEN": "@mercado_pago_token"
+    }
 }
