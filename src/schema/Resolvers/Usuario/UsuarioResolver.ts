@@ -124,7 +124,7 @@ export class UsuarioResolver
         return await Puntuo(isbn, tokenUser);
     }
 
-    @Mutation(() => SendUsuario)
+    @Mutation(() => Send)
     async eliminarNotificacion(@Arg('id') id: number)
     {
         return await EliminarNotificacion(id);

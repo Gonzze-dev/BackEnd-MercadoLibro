@@ -1,20 +1,20 @@
 import { verify } from "jsonwebtoken";
 
-import { JWT_SECRET } from "../../../config"
 import { eliminarNotificacion } from "../../../ORM_Queries/Usuario/eliminarNotificacion";
+import { Send } from "../../../SendTypes/Send";
 
-import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
 export async function EliminarNotificacion(idNotificacion: number) {
-	const msj = new SendUsuario()
+	const msj = new Send()
 
 	try {
 
-		const mensaje = await eliminarNotificacion(idNotificacion);
+		await eliminarNotificacion(idNotificacion);
 
-		msj.message = mensaje
+		msj.message = 'NOTIFICACION ELIMINADA EXITOSAMENTE!!';
 		msj.success = true;
-
+		msj.status = 200;
+		
 		return msj;
 	} catch (err) {
 		

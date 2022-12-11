@@ -10,8 +10,7 @@ export async function eliminarNotificacion(idNotificacion: number) {
 
     if (notificacion[0])
     {
-        notificacion[0].remove()
+        await notificacion[0].remove()
     }
 
-    return 'NOTIFICACION ELIMINADA EXITOSAMENTE!!'
 }
