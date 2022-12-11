@@ -22,16 +22,4 @@ export async function removeFav(isbn: string, id: number)
         await usuario[0].save();
     }
     
-
-    usuario = await Usuario.find({
-        relations:
-        {
-            favorito: true
-        },
-        where:{
-            id: id
-        }
-    })
-
-    return usuario
 }

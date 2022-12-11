@@ -2,12 +2,11 @@ import { verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config";
 import { eliminarProducto } from "../../../ORM_Queries/Usuario/eliminarProducto";
+import { Send } from "../../../SendTypes/Send";
 
-import { SendUsuario } from "../../../SendTypes/SendUsuario";
-
-export async function EliminarProducto(isbn: string, tokenUser: string): Promise<SendUsuario>
+export async function EliminarProducto(isbn: string, tokenUser: string): Promise<Send>
 {
-    const msj = new SendUsuario()
+    const msj = new Send()
 
 	try {
 
@@ -16,9 +15,8 @@ export async function EliminarProducto(isbn: string, tokenUser: string): Promise
 		const usuario = await eliminarProducto(isbn, id);
 
         msj.message = `EL PRODUCTO SE ELIMINO CON EXITO!!!`
-        msj.accessToken = tokenUser;
         msj.success = true;
-        msj.usuario = usuario[0];
+		msj.status = 200;
 
 		return msj;
 	} catch (err) {

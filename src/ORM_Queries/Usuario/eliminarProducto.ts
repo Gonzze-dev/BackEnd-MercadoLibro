@@ -4,17 +4,15 @@ import { Usuario } from "../../Entities/Usuario";
 export async function eliminarProducto(isbn: string, id: number) 
 {
 
-    let usuario = await Usuario.find(
+    let usuario = await Usuario.find({
+        relations:
         {
-            relations:
-            {
-                carrito: true
-            },
-            where:{
-                id: id
-            }
+            carrito: true
+        },
+        where:{
+            id: id
         }
-    )
+    })
     
     if (usuario[0].carrito)
     {
@@ -25,19 +23,5 @@ export async function eliminarProducto(isbn: string, id: number)
             await usuario[0].carrito[index].remove()
         }
     }
-    
-
-    usuario = await Usuario.find(
-        {
-            relations:
-            {
-                carrito: true
-            },
-            where:{
-                id: id
-            }
-        }
-    )
-
-    return usuario
+ 
 }

@@ -2,28 +2,26 @@ import { verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config";
 import { agregarProducto } from "../../../ORM_Queries/Usuario/agregarProductos";
+import { Send } from "../../../SendTypes/Send";
 
-import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
-export async function AgregarProducto(cantidad: number, isbn: string, tokenUser: string): Promise<SendUsuario>
+export async function AgregarProducto(cantidad: number, isbn: string, tokenUser: string): Promise<Send>
 {
-    const msj = new SendUsuario()
+    const msj = new Send()
 
 	try {
 
 		const id: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
 
-		const usuario = await agregarProducto(cantidad, isbn, id);
+		await agregarProducto(cantidad, isbn, id);
 
         msj.message = 'SE AÑADIO AL CARRITO CON EXITO!!!'
-        msj.accessToken = tokenUser;
         msj.success = true;
-        msj.usuario = usuario[0];
+        msj.status = 200;
 
 		return msj;
 	} catch (err: any) {
 		msj.message = err
-		msj.accessToken = tokenUser
 		msj.success = false
 
 		return msj;

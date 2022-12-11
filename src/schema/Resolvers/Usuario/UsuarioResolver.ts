@@ -27,6 +27,7 @@ import { Puntuo } from "../../Mutations/Usuario/puntuo";
 import { Opino } from "../../Mutations/Usuario/opino";
 import { SendOpino } from "../../../SendTypes/SendOpino";
 import { SendPuntuo } from "../../../SendTypes/SendPuntuo";
+import { Send } from "../../../SendTypes/Send";
 
 
 @Resolver()
@@ -44,13 +45,13 @@ export class UsuarioResolver
         return await SignUp(nombre, correo, contrasenia);
     }
     
-    @Mutation(() => SendUsuario)
+    @Mutation(() => Send)
     async insertFav(@Args() {isbn, tokenUser}: ArgsInsertFav)
     {
         return await InsertFav(isbn, tokenUser);
     }
 
-    @Mutation(() => SendUsuario)
+    @Mutation(() => Send)
     async removeFav(@Args() {isbn, tokenUser}: ArgsInsertFav)
     {
         return await RemoveFav(isbn, tokenUser);
@@ -62,13 +63,13 @@ export class UsuarioResolver
         return await AgregarProducto(cantidad, isbn, tokenUser);
     }
 
-    @Mutation(() => SendUsuario)
+    @Mutation(() => Send)
     async quitarProducto(@Args() {cantidad, isbn, tokenUser}: ArgsAgregarProducto)
     {
         return await QuitarProducto(cantidad, isbn, tokenUser);
     }
 
-    @Mutation(() => SendUsuario)
+    @Mutation(() => Send)
     async eliminarProducto(@Args() {isbn, tokenUser}: ArgsInsertFav)
     {
         return await EliminarProducto(isbn, tokenUser);

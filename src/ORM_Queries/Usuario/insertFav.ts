@@ -14,7 +14,7 @@ export async function insertFav(isbn: string, id: number)
         }
     )
 
-    let usuario = await Usuario.find(
+    const usuario = await Usuario.find(
         {
             relations:
             {
@@ -39,19 +39,4 @@ export async function insertFav(isbn: string, id: number)
         await notificacion.save();
     }
     
-
-    
-    
-    usuario = await Usuario.find({
-        relations:
-        {
-            favorito: true,
-            notificacion: true,
-        },
-        where:{
-            id: id
-        }
-    })
-
-    return usuario
 }
