@@ -56,10 +56,10 @@ export class Libro extends BaseEntity
 
     @Field(type => String)
     @Column({
-        type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP'
+        type: 'date',
+        default: () => 'CURRENT_DATE'
     })
-    fecha_ingreso!: Date;
+    fecha_ingreso!: String;
 
     @Field(type => Float, {nullable: true})
     @Column({

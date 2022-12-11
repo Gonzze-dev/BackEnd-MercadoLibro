@@ -5,6 +5,17 @@ import { insertIdioma } from "../Idioma/insertIdioma";
 import { insertTema } from "../Tema/insertTema";
 import { existsLibro } from "./existsLibro"
 
+
+
+const formatedDate = (date: Date) => {
+    return [
+        date.getDate(),
+        (date.getMonth() + 1),
+        date.getFullYear()
+        ].join('/')
+}
+
+  
 export async function insertLibro(isbn: string,
                                     imagen: string,
                                     titulo: string,
@@ -35,7 +46,11 @@ export async function insertLibro(isbn: string,
 
         if (fecha_ingreso)
         {
-            obj_libro.fecha_ingreso = new Date(fecha_ingreso);
+            obj_libro.fecha_ingreso = fecha_ingreso
+        }
+        else
+        {
+            obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
         }
         if (descuento > 0)
         {
@@ -60,4 +75,8 @@ export async function insertLibro(isbn: string,
     }
 
     return obj_libro
+}
+
+function padTo2Digits(arg0: number) {
+    throw new Error("Function not implemented.");
 }
