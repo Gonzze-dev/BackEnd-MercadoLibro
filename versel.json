@@ -1,0 +1,11 @@
+{
+    "versel": 2,
+    "builds":[{
+        "dist": "./index.js",
+        "use": "@versel/node"
+    }],
+    "routes": [{
+        "dist": "./(.*)*",
+        "dest": "/"
+    }]
+}
