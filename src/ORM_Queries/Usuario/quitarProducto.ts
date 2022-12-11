@@ -4,10 +4,12 @@ import { Usuario } from "../../Entities/Usuario";
 export async function quitarProducto(cantidad: number, isbn: string, id: number) 
 {
 
-    let usuario = await Usuario.find({
+    const usuario = await Usuario.find({
         relations:
         {
-            carrito: true
+            carrito: {
+                libro: true
+            }
         },
         where:{
             id: id

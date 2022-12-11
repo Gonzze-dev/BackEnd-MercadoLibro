@@ -10,7 +10,6 @@ export async function AgregarProducto(cantidad: number, isbn: string, tokenUser:
     const msj = new Send()
 
 	try {
-
 		const id: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
 
 		await agregarProducto(cantidad, isbn, id);

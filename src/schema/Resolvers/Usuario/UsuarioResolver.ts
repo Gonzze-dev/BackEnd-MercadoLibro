@@ -57,7 +57,7 @@ export class UsuarioResolver
         return await RemoveFav(isbn, tokenUser);
     }
 
-    @Mutation(() => SendUsuario)
+    @Mutation(() => Send)
     async agregarProducto(@Args() {cantidad, isbn, tokenUser}: ArgsAgregarProducto)
     {
         return await AgregarProducto(cantidad, isbn, tokenUser);

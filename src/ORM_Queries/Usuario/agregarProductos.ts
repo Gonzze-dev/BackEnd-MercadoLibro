@@ -16,18 +16,18 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         }
     )
 
-    let usuario = await Usuario.find(
+    let usuario = await Usuario.find({
+        relations:
         {
-            relations:
-            {
-                carrito: true
-            },
-            where:{
-                id: id
+            carrito: {
+                libro: true
             }
+        },
+        where:{
+            id: id
         }
-    )
-
+    })
+    
     let cupon = await Cupon.find({
         where:{
             codigo_cupon: '-'
@@ -66,5 +66,13 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         }
 
     }
+
+    console.log(isbn)
+    console.log(isbn)
+    console.log(isbn)
+    console.log(isbn)
+    console.log(isbn)
+    console.log(isbn)
+    console.log(isbn)
     
 }
