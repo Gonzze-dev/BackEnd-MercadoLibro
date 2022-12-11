@@ -18,25 +18,7 @@ export async function getUsuarioById(id: number)
                     orden_detalle:{
                         libro: true
                     }
-                },
-            },
-            where:
-            {
-                id: id
-            }
-    })
-
-    const usuario2 = await Usuario.find(
-        {
-            select:
-            {
-                favorito: {
-                    isbn: true
                 }
-            },
-            relations:
-            {
-                favorito: true
             },
             where:
             {

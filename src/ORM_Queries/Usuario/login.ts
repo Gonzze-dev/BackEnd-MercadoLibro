@@ -19,8 +19,7 @@ export async function login(correo: string, contrasenia: string)
                     orden_detalle:{
                         libro: true
                     }
-                },
-                favorito: true
+                }
             },
             where:
             {
@@ -34,26 +33,6 @@ export async function login(correo: string, contrasenia: string)
     {
         throw "ERROR, CORREO O CONTRASEÑA INVALIDAS"
     }
-
-    const usuario2 = await Usuario.find(
-        {
-            select:
-            {
-                favorito: {
-                    isbn: true
-                }
-            },
-            relations:
-            {
-                favorito: true
-            },
-            where:
-            {
-                correo: ILike(`${correo}`),
-                contrasenia: contrasenia
-            }
-        }
-    )
     
     return usuario
 }
