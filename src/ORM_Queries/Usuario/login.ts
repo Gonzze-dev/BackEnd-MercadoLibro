@@ -8,7 +8,6 @@ export async function login(correo: string, contrasenia: string)
             relations:
             {
                 direccion: true,
-                favorito: true,
                 notificacion: true,
                 carrito:{
                     libro: true
