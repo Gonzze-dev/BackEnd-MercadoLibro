@@ -10,6 +10,14 @@ export async function getUsuarioById(id: number)
                     libro: true
                 },
                 notificacion: true,
+                orden:
+                {
+                    direccion_entrega: true,
+                    cupon: true,
+                    orden_detalle:{
+                        libro: true
+                    }
+                },
             },
             where:
             {
