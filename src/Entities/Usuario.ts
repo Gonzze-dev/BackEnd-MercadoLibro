@@ -69,9 +69,7 @@ export class Usuario extends BaseEntity
     direccion: Direccion;
 
     @Field(type => [Notificacion], {nullable: true})
-    @OneToMany((type) => Notificacion, notificacion => notificacion.usuario,{
-        eager: true
-    })
+    @OneToMany((type) => Notificacion, notificacion => notificacion.usuario)
     public notificacion: Notificacion[];
 
     @OneToMany((type) => Opinion, opinion => opinion.usuario)
