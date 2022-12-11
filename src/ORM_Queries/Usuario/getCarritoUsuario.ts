@@ -4,10 +4,7 @@ export async function getCarritoUsuario(id: number)
 {
     const usuario = await Usuario.find({
         relations: {
-            carrito: {
-                libro: true
-            },
-            direccion: true
+            notificacion: true
         },
         where:
         {
