@@ -6,10 +6,6 @@ import { insertTema } from "../Tema/insertTema";
 import { formatedDate } from "../Utilities/formatedDate";
 import { existsLibro } from "./existsLibro"
 
-
-
-
-
   
 export async function insertLibro(isbn: string,
                                     imagen: string,
@@ -70,8 +66,4 @@ export async function insertLibro(isbn: string,
     }
 
     return obj_libro
-}
-
-function padTo2Digits(arg0: number) {
-    throw new Error("Function not implemented.");
 }
