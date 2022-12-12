@@ -15,13 +15,14 @@ export async function GetFavoritos(tokenUser: string) {
 		msj.message = "LIBROS OBTENIDOS CON EXITO"
 		msj.success = true;
 		msj.status = 200;
-		msj.favorito = favoritos || []
+		msj.libro = favoritos || []
 
 		return msj;
 	} catch (err: any) {
 		msj.message = err
 		msj.success = true;
 		msj.status = 200;
+		
 		return msj;
 	}
 }
