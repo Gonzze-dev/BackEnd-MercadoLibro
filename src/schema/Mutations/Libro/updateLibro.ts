@@ -1,25 +1,52 @@
+import { updateLibro } from "../../../ORM_Queries/Libro/updateLibro";
+import { Send } from "../../../SendTypes/Send";
 
-async function fUpdateLibro(isbnOriginal: number,
-                            isbn: number,
+export async function UpdateLibro(isbn_original: string,
+							isbn: string,
 							imagen: string,
 							titulo: string,
-							fecha_edicion: String,
+							fecha_edicion: string,
 							precio: number,
 							stock: number,
 							descripcion: string,
-							idioma: number,
-							editorial: number,
-							autor: Array<number>,
-							tema: Array<number>) {
+							fecha_ingreso: string = '',
+							descuento: number = 0,
+							idioma: string,
+							editorial: string,
+							autores: Array<string>,
+							temas: Array<any>) {
+
+	const msj = new Send()
 
 	try {
 
+		await updateLibro(isbn_original,
+                            isbn,
+							imagen,
+							titulo,
+							fecha_edicion,
+							precio,
+							stock,
+							descripcion,
+							fecha_ingreso,
+							descuento,
+							idioma,
+							editorial,
+							autores,
+							temas)
 
+		msj.message = 'SE MODIFICO EL LIBRO CON EXITO';
+		msj.success = true;
+		msj.status = 200;
 
-		return 'SE MODIFICO EL LIBRO CON EXITO';
+		return msj;
 
-	} catch (err) {
-		return err;
+	} catch (err: any) {
+
+		msj.message = err;
+		msj.success = false;
+		msj.status = 400;
+		return msj;
 	}
 }
 

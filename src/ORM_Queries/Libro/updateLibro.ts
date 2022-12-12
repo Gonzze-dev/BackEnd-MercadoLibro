@@ -1,9 +1,10 @@
-import { Libro } from "../../Entities/Libro"
+
+import { Autor } from "../../Entities/Autor";
 import { Tema } from "../../Entities/Tema";
 import { insertAutor } from "../Autor/InsertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
 import { insertIdioma } from "../Idioma/insertIdioma";
-import { insertTema } from "../Tema/insertTema";
+
 import { formatedDate } from "../Utilities/formatedDate";
 import { getElementByName } from "../Utilities/getElementByName";
 import { existsLibro } from "./existsLibro"
@@ -26,17 +27,26 @@ export async function updateLibro(isbn_original: string,
                                     temas: Array<any>)
 {
 
-    const existe = await existsLibro(isbn)
+    const existe = await existsLibro(isbn_original)
     
     if (!existe)
     {
         throw ` ERROR, LIBRO CON ISBN ${isbn} NO EXISTE!`
     }
+    if (!isbn_original)
+    {
+        isbn_original = isbn
+    }
 
     const libro = await getLibroByIsbn(isbn_original);
     const obj_libro = await libro[0];
 
-    obj_libro.isbn = isbn;
+    if(!(obj_libro.isbn == isbn)
+        && (isbn_original && !(isbn_original == isbn)))
+    {
+        obj_libro.isbn = isbn;
+    }
+
     obj_libro.url_imagen = imagen;
     obj_libro.titulo = titulo;
     obj_libro.fecha_edicion = fecha_edicion;
@@ -52,25 +62,42 @@ export async function updateLibro(isbn_original: string,
     {
         obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
     }
-    if (descuento > 0)
-    {
+
+    if (descuento > 0) {
         obj_libro.descuento = descuento;
     }
 
     obj_libro.idioma = await insertIdioma(idioma);
     obj_libro.editorial = await insertEditorial(editorial);
 
+    
+    
+    if (autores.length > 0)
+    {
+        obj_libro.autor = []
 
-    obj_libro.autor = []
-    for (const autor of autores) {
-        obj_libro.autor.push(await insertAutor(autor))
+        for (const autor of autores) {
+            obj_libro.autor.push(await insertAutor(autor))
+        }
     }
+    else
+    {
+        throw "ERROR, DEBE DE HABER AL MENOS UN AUTOR"
+    }
+    
+    if (temas.length > 0)
+    {  
+        //let arr_tema: Array<Tema> = []
+        obj_libro.tema = []
+        for (const tema of temas) {
+            obj_libro.tema.push(await getElementByName(tema, Tema))
+        }
 
-    obj_libro.tema = []
-    for (const tema of temas) {
-        obj_libro.tema.push(await getElementByName(tema, Tema))
+    }
+    else
+    {
+        throw "ERROR, DEBE DE HABER AL MENOS UN TEMA"
     }
 
     await obj_libro.save()
-    
 }

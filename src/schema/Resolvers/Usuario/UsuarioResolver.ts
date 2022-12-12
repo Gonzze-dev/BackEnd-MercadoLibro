@@ -20,7 +20,7 @@ import { EliminarNotificacion } from "../../Mutations/Usuario/eliminarNotificaci
 
 import { SendCupon } from "../../../SendTypes/SendCupon";
 import { AgregarCupon } from "../../Mutations/Usuario/agregarCupon";
-import { SendLibro } from "../../../SendTypes/SendLibro";
+
 import { Opinar } from "../../Mutations/Usuario/opinar";
 import { Puntuar } from "../../Mutations/Usuario/puntuar";
 import { Puntuo } from "../../Mutations/Usuario/puntuo";
