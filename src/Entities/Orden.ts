@@ -26,13 +26,8 @@ export class Orden extends BaseEntity
     payment_id_mp!: string;
 
     @Field(type => String)
-    @Column(
-        {
-            type: 'timestamp',
-            default: () => 'CURRENT_TIMESTAMP'
-        }
-    )
-    fecha!: Date;
+    @Column({nullable: true})
+    fecha!: String;
     
     @Field(type => Float)
     @Column({

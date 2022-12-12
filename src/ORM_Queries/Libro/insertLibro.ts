@@ -3,17 +3,12 @@ import { insertAutor } from "../Autor/InsertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
 import { insertIdioma } from "../Idioma/insertIdioma";
 import { insertTema } from "../Tema/insertTema";
+import { formatedDate } from "../Utilities/formatedDate";
 import { existsLibro } from "./existsLibro"
 
 
 
-const formatedDate = (date: Date) => {
-    return [
-        date.getDate(),
-        (date.getMonth() + 1),
-        date.getFullYear()
-        ].join('/')
-}
+
 
   
 export async function insertLibro(isbn: string,

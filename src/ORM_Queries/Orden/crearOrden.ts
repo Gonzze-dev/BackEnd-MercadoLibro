@@ -8,6 +8,7 @@ import { Orden_detalle } from "../../Entities/Orden_detalle";
 
 import { Usuario } from "../../Entities/Usuario";
 import { eliminarProducto } from "../Usuario/eliminarProducto";
+import { formatedDate } from "../Utilities/formatedDate";
 
 async function esNotificacionRepetida(paymentId: string) 
 {
@@ -94,6 +95,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             }
 
             obj_orden.usuario = usuario
+            obj_orden.fecha = (formatedDate(new Date())).toString()
             obj_orden.total = totalCantidad * totalPrecio
             obj_orden.cupon = usuario.carrito[0].cupon
             obj_orden.payment_id_mp = paymentId
