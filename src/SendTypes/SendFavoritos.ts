@@ -15,5 +15,5 @@ export class SendFavoritos
     status: number = 0;
 
     @Field(type => [Libro], {nullable: true})
-    favorito: Libro[];
+    libro: Libro[];
 }
