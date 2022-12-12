@@ -1,4 +1,4 @@
-const calcTotal = (cantidad: number, precio: number) =>
+export function calcTotal (cantidad: number, precio: number)
 {
     return  precio * (+ cantidad)
 }

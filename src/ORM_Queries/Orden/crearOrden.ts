@@ -8,6 +8,7 @@ import { Orden_detalle } from "../../Entities/Orden_detalle";
 
 import { Usuario } from "../../Entities/Usuario";
 import { eliminarProducto } from "../Usuario/eliminarProducto";
+import { calcTotal } from "../Utilities/calcTotal";
 import { formatedDate } from "../Utilities/formatedDate";
 
 async function esNotificacionRepetida(paymentId: string) 
@@ -29,7 +30,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
     const idUsuario = items[0].id
 
     let orden = new Orden();
-
+    console.log(paymentId)
     const arr_usuario = await Usuario.find({
         relations: {
             direccion: true,
@@ -45,8 +46,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
     if (status == 'approved')
     {
-
-        
 
         const payment = await Orden.find({
             where:{
@@ -88,7 +87,8 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
             for (const item_carrito of usuario.carrito) 
             {
-                total += calcTotal(item_carrito.cantidad, item_carrito.libro.precio)
+                total = total + (+calcTotal(item_carrito.cantidad, item_carrito.libro.precio))
+                
             }
 
             obj_orden.usuario = usuario

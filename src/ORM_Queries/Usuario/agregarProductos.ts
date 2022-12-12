@@ -66,13 +66,5 @@ export async function agregarProducto(cantidad: number, isbn: string, id: number
         }
 
     }
-
-    console.log(isbn)
-    console.log(isbn)
-    console.log(isbn)
-    console.log(isbn)
-    console.log(isbn)
-    console.log(isbn)
-    console.log(isbn)
     
 }

@@ -29,7 +29,6 @@ export async function insertFav(isbn: string, id: number)
     
     if (usuario[0].favorito)
     {
-        console.log(libro[0])
         usuario[0].favorito.push(libro[0]);
         const notificacion = new Notificacion();
         notificacion.mensaje = `'${libro[0].titulo}' se agregó a favoritos`;
