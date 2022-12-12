@@ -8,6 +8,7 @@ import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 import bodyParser from "body-parser";
 import { MERCADO_PAGO_TOKEN } from "./config";
 import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
+import { CuponResolver } from "./schema/Resolvers/Cupon/CuponResolver";
 
 const mercadopago = require("mercadopago")
 
@@ -19,7 +20,10 @@ export async function startServer() {
 
   const server = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [LibroResolver, UsuarioResolver, TemaResolver],
+      resolvers: [LibroResolver, 
+                  UsuarioResolver, 
+                  TemaResolver, 
+                  CuponResolver],
       validate: false
     }),
     context: ({ req, res }) => ({ req, res })
