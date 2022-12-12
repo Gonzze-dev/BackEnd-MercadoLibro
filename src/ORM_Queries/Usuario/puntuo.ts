@@ -5,7 +5,7 @@ export async function puntuo(isbn: string, id: number)
 {
     const idPuntuacion = id.toString() + isbn
 
-    if (!libroComprado(isbn, id))
+    if (!await libroComprado(isbn, id))
     {
         return true
     }
