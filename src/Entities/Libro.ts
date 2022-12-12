@@ -54,12 +54,9 @@ export class Libro extends BaseEntity
     @Column()
     descripcion!: string;
 
-    @Field(type => String)
-    @Column({
-        type: 'date',
-        default: () => 'CURRENT_DATE'
-    })
-    fecha_ingreso!: String;
+    @Field(type => String, {nullable: true})
+    @Column({nullable: true})
+    fecha_ingreso: String;
 
     @Field(type => Float, {nullable: true})
     @Column({

@@ -41,7 +41,7 @@ export class ArgsInsertLibro
     descripcion: string
 
     @Field({nullable: true})
-    fecha_ingreso?: string
+    fecha_ingreso: string
 
     @Field(type => Float, {nullable: true})
     descuento?: number

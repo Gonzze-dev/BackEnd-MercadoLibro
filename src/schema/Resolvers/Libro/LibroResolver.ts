@@ -22,7 +22,7 @@ export class LibroResolver
                                 precio,
                                 stock,
                                 descripcion,
-                                fecha_ingreso = '',
+                                fecha_ingreso,
                                 descuento,
                                 idioma,
                                 editorial,
