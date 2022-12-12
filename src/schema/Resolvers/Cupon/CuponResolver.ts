@@ -1,14 +1,18 @@
-import { Args, ArgsType, Field } from "type-graphql";
+import { Args, ArgsType, Field, Mutation } from "type-graphql";
 
-import { Resolver, Query} from "type-graphql";
-import { SendCupon } from "../../../SendTypes/SendCupon";
-import { AgregarCupon } from "../../Mutations/Usuario/agregarCupon";
-import { GetTemas } from "../../Queries/Tema/getTemas";
+import { Resolver} from "type-graphql";
+import { Send } from "../../../SendTypes/Send";
+import { InsertCupon } from "../../Mutations/Cupon/insertCupon";
+import { ArgsInsertCupon } from "./argsDefs";
 
 
 @Resolver()
 export class CuponResolver
 {
     
-
+    @Mutation(() => Send)
+    async insertCupon(@Args() {codigo_cupon, descuento}: ArgsInsertCupon)
+    {
+        return await InsertCupon(codigo_cupon, descuento);
+    }
 }
