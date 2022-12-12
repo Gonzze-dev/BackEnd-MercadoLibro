@@ -1,14 +1,17 @@
 import { Libro } from "../../Entities/Libro"
+import { Tema } from "../../Entities/Tema";
 import { insertAutor } from "../Autor/InsertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
 import { insertIdioma } from "../Idioma/insertIdioma";
 import { insertTema } from "../Tema/insertTema";
 import { formatedDate } from "../Utilities/formatedDate";
+import { getElementByName } from "../Utilities/getElementByName";
 import { existsLibro } from "./existsLibro"
 import { getLibroByIsbn } from "./getLibroByIsbn";
 
   
-export async function updateLibro(isbn: string,
+export async function updateLibro(isbn_original: string,
+                                    isbn: string,
                                     imagen: string,
                                     titulo: string,
                                     fecha_edicion: string,
@@ -30,7 +33,7 @@ export async function updateLibro(isbn: string,
         throw ` ERROR, LIBRO CON ISBN ${isbn} NO EXISTE!`
     }
 
-    const libro = await getLibroByIsbn(isbn);
+    const libro = await getLibroByIsbn(isbn_original);
     const obj_libro = await libro[0];
 
     obj_libro.isbn = isbn;
@@ -65,7 +68,7 @@ export async function updateLibro(isbn: string,
 
     obj_libro.tema = []
     for (const tema of temas) {
-        obj_libro.tema.push(await insertTema(tema))
+        obj_libro.tema.push(await getElementByName(tema, Tema))
     }
 
     await obj_libro.save()
