@@ -16,5 +16,5 @@ export async function opino(isbn: string, id: number)
         }
     })
 
-    return (opinion.length > 0)? true : false
+    return opinion[0]? true : false
 }
