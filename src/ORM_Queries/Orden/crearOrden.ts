@@ -23,8 +23,8 @@ async function esNotificacionRepetida(paymentId: string)
 
 export async function crearOrden(status: string, items: Array<any>, paymentId: string) 
 {
-    let totalPrecio: number = 0
-    let totalCantidad: number = 0
+    let total: number = 0
+
 
     const idUsuario = items[0].id
 
@@ -88,15 +88,12 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
             for (const item_carrito of usuario.carrito) 
             {
-
-                totalPrecio = totalPrecio + (+ item_carrito.libro.precio)
-                totalCantidad = totalCantidad +(+ item_carrito.cantidad)
-
+                total += calcTotal(item_carrito.cantidad, item_carrito.libro.precio)
             }
 
             obj_orden.usuario = usuario
             obj_orden.fecha = (formatedDate(new Date())).toString()
-            obj_orden.total = totalCantidad * totalPrecio
+            obj_orden.total = total
             obj_orden.cupon = usuario.carrito[0].cupon
             obj_orden.payment_id_mp = paymentId
 
