@@ -1,9 +1,11 @@
 import { Libro } from "../../Entities/Libro"
+import { Tema } from "../../Entities/Tema";
 import { insertAutor } from "../Autor/InsertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
 import { insertIdioma } from "../Idioma/insertIdioma";
-import { insertTema } from "../Tema/insertTema";
+
 import { formatedDate } from "../Utilities/formatedDate";
+import { getElementByName } from "../Utilities/getElementByName";
 import { existsLibro } from "./existsLibro"
 
   
@@ -59,7 +61,7 @@ export async function insertLibro(isbn: string,
 
         obj_libro.tema = []
         for (const tema of temas) {
-            obj_libro.tema.push(await insertTema(tema))
+            obj_libro.tema.push(await getElementByName(tema, Tema))
         }
 
         await obj_libro.save()
