@@ -1,5 +1,4 @@
 import { Opinion } from "../../Entities/Opinion"
-import { Orden } from "../../Entities/Orden"
 import { libroComprado } from "./libroComprado"
 
 export async function opino(isbn: string, id: number)
@@ -17,5 +16,5 @@ export async function opino(isbn: string, id: number)
         }
     })
 
-    return opinion[0]? true : false
+    return (opinion.length > 0)? true : false
 }
