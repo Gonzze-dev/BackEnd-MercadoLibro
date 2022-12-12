@@ -6,7 +6,7 @@ export async function opino(isbn: string, id: number)
 {
     const idPuntuacion = id.toString() + isbn
 
-    if (! await libroComprado(isbn, id))
+    if (!await libroComprado(isbn, id))
     {
         return true
     }
