@@ -25,11 +25,4 @@ export async function puntuar(puntuacion: number, isbn: string, id: number)
 
     await obj_puntuacion.save()
 
-    libro = await Libro.find({
-        where:{
-            isbn: isbn
-        }
-    })
-
-    return libro
 }

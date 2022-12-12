@@ -100,13 +100,13 @@ export class UsuarioResolver
         return await RealizarCompra(tokenUser);
     }
 
-    @Mutation(() => SendLibro)
+    @Mutation(() => Send)
     async opinar(@Args() {comentario, isbn, tokenUser}: ArgsOpinar)
     {
         return await Opinar(comentario, isbn, tokenUser);
     }
     
-    @Mutation(() => SendLibro)
+    @Mutation(() => Send)
     async puntuar(@Args() {puntuacion, isbn, tokenUser}: ArgsPuntuar)
     {
         return await Puntuar(puntuacion, isbn, tokenUser);

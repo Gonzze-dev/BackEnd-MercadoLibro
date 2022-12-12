@@ -24,12 +24,4 @@ export async function opinar(comentario: string, isbn: string, id: number)
     opinion.libro = libro[0]
 
     await opinion.save()
-
-    libro = await Libro.find({
-        where:{
-            isbn: isbn
-        }
-    })
-
-    return libro
 }
