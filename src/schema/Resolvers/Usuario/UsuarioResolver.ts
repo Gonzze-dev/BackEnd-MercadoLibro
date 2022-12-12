@@ -28,6 +28,8 @@ import { Opino } from "../../Mutations/Usuario/opino";
 import { SendOpino } from "../../../SendTypes/SendOpino";
 import { SendPuntuo } from "../../../SendTypes/SendPuntuo";
 import { Send } from "../../../SendTypes/Send";
+import { SendFavoritos } from "../../../SendTypes/SendFavoritos";
+import { GetFavoritos } from "../../Mutations/Usuario/getFavoritos";
 
 
 @Resolver()
@@ -37,6 +39,12 @@ export class UsuarioResolver
     async login(@Args() args: ArgsLogin)
     {
         return await selectLoginType(args);
+    }
+
+    @Query(() => SendFavoritos)
+    async getFavoritos(@Arg('tokenUser') tokenUser: string)
+    {
+        return await GetFavoritos(tokenUser);
     }
 
     @Mutation(() => SendUsuario)
