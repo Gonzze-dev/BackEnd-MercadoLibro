@@ -45,10 +45,7 @@ async function GetUsuarioByToken(tokenUser: string): Promise<SendUsuario>
     }
 	try {
 
-
-
 		const id: number = parseInt(idString)
-        
         
 		const usuario = await getUsuarioById(id);
 
@@ -64,7 +61,6 @@ async function GetUsuarioByToken(tokenUser: string): Promise<SendUsuario>
         msj.success = false
 		return msj;
 	}
-    
 }
 
 export async function selectLoginType(args:  any)
