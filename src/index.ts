@@ -9,7 +9,6 @@ async function main()
 {
     try
     {
-        
         AppDataSource.initialize();
         const app = await startServer();
         app.listen(puerto);

@@ -32,6 +32,7 @@ export async function startServer() {
                       CiudadResolver,
                       PaisResolver, 
                       ProvinciaResolver],
+                      
         validate: false
         }),
         context: ({ req, res }) => ({ req, res })
