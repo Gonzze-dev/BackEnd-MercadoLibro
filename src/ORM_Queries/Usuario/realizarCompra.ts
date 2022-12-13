@@ -15,6 +15,7 @@ function getItems(usuario: Usuario): Array<any>
         {
             const precioNeto = linea_carrito.libro.precio
             const precio = precioNeto - (+precioNeto * (linea_carrito.cupon.porc_descuento/100))
+
             items.push({
                 id: usuario.id,
                 title: linea_carrito.libro.titulo,
