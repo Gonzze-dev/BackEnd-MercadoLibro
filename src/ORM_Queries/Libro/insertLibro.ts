@@ -38,7 +38,7 @@ export async function insertLibro(isbn: string,
     {
         obj_libro.fecha_ingreso = fecha_ingreso
     }
-    else
+    else if(!fecha_ingreso || fecha_ingreso.length == 0)
     {
         obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
     }
