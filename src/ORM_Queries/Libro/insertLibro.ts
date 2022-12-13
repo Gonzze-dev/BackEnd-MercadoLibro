@@ -42,6 +42,7 @@ export async function insertLibro(isbn: string,
     {
         obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
     }
+    
     if (descuento > 0)
     {
         obj_libro.descuento = descuento;
