@@ -8,7 +8,6 @@ import {BaseEntity,
 @Entity()
 export class Pais extends BaseEntity
 {
-
     @Field(type => ID, {nullable: true})
     @PrimaryGeneratedColumn()
     id!: number;

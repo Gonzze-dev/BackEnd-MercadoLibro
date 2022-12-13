@@ -72,17 +72,30 @@ export class Usuario extends BaseEntity
     @OneToMany((type) => Notificacion, notificacion => notificacion.usuario)
     public notificacion: Notificacion[];
 
-    @OneToMany((type) => Opinion, opinion => opinion.usuario)
+    @OneToMany((type) => Opinion, opinion => opinion.usuario,
+    {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     public opinion: Opinion[];
 
-    @OneToMany((type) => Puntuacion, puntuacion => puntuacion.usuario)
+    @OneToMany((type) => Puntuacion, puntuacion => puntuacion.usuario, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     public puntuacion: Puntuacion[];
 
     @Field(type => [Orden], {nullable: true})
-    @OneToMany((type) => Orden, orden => orden.usuario)
+    @OneToMany((type) => Orden, orden => orden.usuario, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     public orden?: Orden[];
 
     @Field(type => [Linea_carrito], {nullable: true})
-    @OneToMany((type) => Linea_carrito, linea_carrito => linea_carrito.usuario)
+    @OneToMany((type) => Linea_carrito, linea_carrito => linea_carrito.usuario, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     public carrito?: Linea_carrito[];
 }

@@ -122,11 +122,15 @@ export class Libro extends BaseEntity
     
     @Field(type => [Opinion], {nullable: true})
     @OneToMany((type) => Opinion, opinion => opinion.libro, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     public opinion?: Opinion[];
 
     @Field(type => [Puntuacion], {nullable: true})
     @OneToMany((type) => Puntuacion, puntuacion => puntuacion.libro, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     puntuacion?: Puntuacion[];
 
