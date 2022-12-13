@@ -16,8 +16,12 @@ export class Puntuacion extends BaseEntity
     @PrimaryColumn()
     usuario_libro: string;
     
-    @Field(type => Float, {nullable: true})
-    @Column()
+    @Field(type => Float)
+    @Column({
+        type: 'decimal',
+        precision: 3,
+        scale: 2,
+    })
     puntuacion!: number;
 
     @Field(type => Usuario, {nullable: true})
