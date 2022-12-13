@@ -3,7 +3,7 @@ import { getAllLibrosByCategoria } from "../../../ORM_Queries/Libro/getAllLibros
 import { getLibroByIsbn } from "../../../ORM_Queries/Libro/getLibroByIsbn";
 import { getLibrosByReference } from "../../../ORM_Queries/Libro/getLibrosByReference";
 import { getLibrosConDescuento } from "../../../ORM_Queries/Libro/getLibrosConDescuento";
-import { jSendLibro } from "../../../sendTypes";
+
 import { SendLibro } from "../../../SendTypes/SendLibro";
 
 async function selectFunction(args:  any)
