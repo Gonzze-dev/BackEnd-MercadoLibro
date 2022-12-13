@@ -1,5 +1,5 @@
 
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, Float, Int, ObjectType } from "type-graphql";
 import { BaseEntity,
         Column, 
         Entity, 
@@ -16,7 +16,7 @@ export class Puntuacion extends BaseEntity
     @PrimaryColumn()
     usuario_libro: string;
     
-    @Field(type => Int, {nullable: true})
+    @Field(type => Float, {nullable: true})
     @Column()
     puntuacion!: number;
 

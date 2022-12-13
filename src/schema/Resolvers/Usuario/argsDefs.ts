@@ -1,4 +1,5 @@
-import { ArgsType, Field, Int } from "type-graphql";
+import { type } from "os";
+import { ArgsType, Field, Float, Int } from "type-graphql";
 
 @ArgsType()
 export class ArgsLogin 
@@ -103,7 +104,7 @@ export class ArgsOpinar
 @ArgsType()
 export class ArgsPuntuar
 {
-    @Field()
+    @Field(type => Float)
     puntuacion: number;
 
     @Field()
