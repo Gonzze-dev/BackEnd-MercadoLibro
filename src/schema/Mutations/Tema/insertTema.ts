@@ -17,7 +17,7 @@ export async function InsertTema(tema: string, url_imagen: string) {
 	} catch (err: any) {
 
         msj.message = err
-        msj.success = true
+        msj.success = false
         msj.status = 404
 
 		return msj;
