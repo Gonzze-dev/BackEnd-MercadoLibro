@@ -4,6 +4,9 @@ import { ArgsType, Field } from "type-graphql";
 export class ArgsInsertTema
 {
     @Field()
+    tema_original: string;
+
+    @Field()
     tema: string;
     
     @Field()

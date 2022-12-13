@@ -7,7 +7,6 @@ export async function updateTema(tema_original: string, tema: string, url_imagen
     const existeTema = await existsName(tema_original, Tema);
     const existeTemaModificado = await existsName(tema, Tema);
     
-
     if (!existeTema)
     {
         throw `ERROR, EL TEMA ${tema_original} A MODIFICAR NO EXISTE`
@@ -20,7 +19,7 @@ export async function updateTema(tema_original: string, tema: string, url_imagen
 
     obj_tema.nombre = tema;
     
-    if(url_imagen)
+    if(url_imagen && url_imagen.length > 0)
         obj_tema.url_imagen = url_imagen;
 
     await obj_tema.save()
