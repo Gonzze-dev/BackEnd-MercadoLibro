@@ -33,8 +33,7 @@ export async function insertLibro(isbn: string,
     obj_libro.stock = stock;
     obj_libro.descripcion = descripcion;
 
-    if (fecha_ingreso != "null"
-        && fecha_ingreso.length > 0)
+    if (fecha_ingreso != "null")
     {
         obj_libro.fecha_ingreso = fecha_ingreso
     }
