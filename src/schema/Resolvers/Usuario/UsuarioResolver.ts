@@ -104,7 +104,6 @@ export class UsuarioResolver
     @Mutation(() => SendMercadoPago)
     async realizarCompra(@Arg("tokenUser") tokenUser: string)
     {
-
         return await RealizarCompra(tokenUser);
     }
 
