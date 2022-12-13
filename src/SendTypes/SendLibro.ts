@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, Float, Int, ObjectType } from "type-graphql";
 import { Libro } from "../Entities/Libro";
 
 @ObjectType()
@@ -18,6 +18,9 @@ export class SendLibro
 
     @Field(type => Int)
     totalPage: number = 0
+
+    @Field(type => Float)
+    puntuacion: number = 0
 
     @Field(type => [Libro], {nullable: true})
     libro: Libro[] = []

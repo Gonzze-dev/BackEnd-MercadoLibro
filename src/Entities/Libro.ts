@@ -129,4 +129,7 @@ export class Libro extends BaseEntity
     @OneToMany((type) => Puntuacion, puntuacion => puntuacion.libro, {
     })
     puntuacion?: Puntuacion[];
+
+    @Field(type => Float)
+    puntuacion_media: number = 0;
 }

@@ -27,8 +27,6 @@ async function selectFunction(args:  any)
         return getLibrosConDescuento()
     }
     
-    
-
     return await getAllLibros()
     
 }
@@ -40,10 +38,18 @@ export async function GetLibros(args: any) {
 
         const libro = await selectFunction(args)
         
+        for (const objLibro of libro)
+        {
+            let puntMedia = (objLibro.puntuacion?.reduce((prev, curr) => prev + +(curr.puntuacion), 0) || 0)/(objLibro.puntuacion?.length || 1)
+            objLibro.puntuacion_media = puntMedia
+        }
+
         msj.message = "Libros obtenidos con exito!"
 		msj.success = true;
 		msj.libro = libro
         
+        
+
         return msj;
     } catch (err) {
         
