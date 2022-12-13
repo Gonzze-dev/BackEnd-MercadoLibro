@@ -30,13 +30,17 @@ export class Orden_detalle extends BaseEntity
     @Column()
     cantidad!: number;
 
-    @ManyToOne((type) => Orden, (orden) => orden.id)
+    @ManyToOne((type) => Orden, (orden) => orden.id, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     @JoinColumn({name: 'id_orden'})
     orden!: Orden;
 
     @Field(type => Libro, {nullable: true})
     @ManyToOne((type) => Libro, (libro) => libro.isbn, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     libro: Libro;

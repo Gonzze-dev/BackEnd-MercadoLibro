@@ -22,7 +22,8 @@ export class Notificacion extends BaseEntity
 
     @Field((type) => Usuario, {nullable: true})
     @ManyToOne((type) => Usuario, (usuario) => usuario.id, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;

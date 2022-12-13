@@ -52,7 +52,8 @@ export class Direccion_entrega extends BaseEntity
 
     @Field(type => Ciudad)
     @ManyToOne((type) => Ciudad, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cp'})
     ciudad!: Ciudad;

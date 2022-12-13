@@ -21,7 +21,8 @@ export class Provincia extends BaseEntity
     
     @Field(type => Pais, {nullable: true})
     @ManyToOne((type) => Pais, (pais) => pais.id, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_pais'})
     pais!: Pais;

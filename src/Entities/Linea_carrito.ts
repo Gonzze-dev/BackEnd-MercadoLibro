@@ -24,7 +24,8 @@ export class Linea_carrito extends BaseEntity
 
     @Field(type => Cupon, {nullable: true})
     @ManyToOne((type) => Cupon, (Cupon) => Cupon.codigo_cupon, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'codigo_cupon'})
     cupon: Cupon;
@@ -32,13 +33,15 @@ export class Linea_carrito extends BaseEntity
     
     @Field(type => Libro, {nullable: true})
     @ManyToOne((type) => Libro, (libro) => libro.isbn, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     libro: Libro;
 
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_usuario'})
     usuario: Usuario;

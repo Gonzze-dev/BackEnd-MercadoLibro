@@ -39,7 +39,8 @@ export class Orden extends BaseEntity
 
     @Field(type => Cupon, {nullable: true})
     @ManyToOne((type) => Cupon, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'codigo_cupon'})
     cupon?: Cupon;
@@ -53,13 +54,15 @@ export class Orden extends BaseEntity
     @Field(type => Direccion_entrega, {nullable: true})
     @OneToOne((type) => Direccion_entrega, (direccion) => direccion.id, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_direccion_entrega'})
     direccion_entrega!: Direccion_entrega;
     
     @Field(type => [Orden_detalle], {nullable: true})
     @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     orden_detalle!: Orden_detalle[];
 }

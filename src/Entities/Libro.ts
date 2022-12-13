@@ -14,6 +14,7 @@ import { Autor } from "./Autor";
 import { Editorial } from "./Editorial";
 import { Idioma } from "./Idioma";
 import { Opinion } from "./Opinion";
+import { Orden_detalle } from "./Orden_detalle";
 import { Puntuacion } from "./Puntuacion";
 import { Tema } from "./Tema";
 
@@ -133,6 +134,9 @@ export class Libro extends BaseEntity
         onDelete: 'CASCADE'
     })
     puntuacion?: Puntuacion[];
+
+    @OneToMany((type) => Orden_detalle, orden_detalle => orden_detalle.libro)
+    public orden_detalle: Orden_detalle[];
 
     @Field(type => Float)
     puntuacion_media: number = 0;

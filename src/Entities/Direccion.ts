@@ -47,14 +47,16 @@ export class Direccion extends BaseEntity
     telefono: string;
 
     @OneToOne((type) => Usuario, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_usuario'})
     usuario: Usuario;
     
     @Field(type => Ciudad)
     @ManyToOne((type) => Ciudad, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cp'})
     ciudad!: Ciudad;
