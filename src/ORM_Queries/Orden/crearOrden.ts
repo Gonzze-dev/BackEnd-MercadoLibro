@@ -30,7 +30,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
     const idUsuario = items[0].id
 
     let orden = new Orden();
-    console.log(paymentId)
+    
     const arr_usuario = await Usuario.find({
         relations: {
             direccion: true,
@@ -93,7 +93,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
 
             obj_orden.usuario = usuario
             obj_orden.fecha = (formatedDate(new Date())).toString()
-            obj_orden.total = total
+            obj_orden.total = total - (+total * (usuario.carrito[0].cupon.porc_descuento/100))
             obj_orden.cupon = usuario.carrito[0].cupon
             obj_orden.payment_id_mp = paymentId
 
