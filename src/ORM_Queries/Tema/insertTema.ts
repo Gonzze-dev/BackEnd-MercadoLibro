@@ -4,12 +4,6 @@ import { existsName } from "../Utilities/exists";
 export async function insertTema(tema: string, url_imagen: string)
 {
     const existeTema = await existsName(tema, Tema);
-    
-
-    if (existeTema)
-    {
-        throw `ERROR, EL TEMA ${tema} YA EXISTE`
-    }
 
     const obj_tema = new Tema();
 
