@@ -30,6 +30,7 @@ import { SendPuntuo } from "../../../SendTypes/SendPuntuo";
 import { Send } from "../../../SendTypes/Send";
 import { SendFavoritos } from "../../../SendTypes/SendFavoritos";
 import { GetFavoritos } from "../../Mutations/Usuario/getFavoritos";
+import { EliminarUsuario } from "../../Mutations/Usuario/eliminarUsuario";
 
 
 @Resolver()
@@ -135,6 +136,12 @@ export class UsuarioResolver
     async eliminarNotificacion(@Arg('id') id: number)
     {
         return await EliminarNotificacion(id);
+    }
+
+    @Mutation(() => Send)
+    async eliminarUsuario(@Arg('correo') correo: string)
+    {
+        return await EliminarUsuario(correo)
     }
 
 }
