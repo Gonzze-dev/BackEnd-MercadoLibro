@@ -13,14 +13,15 @@ function getItems(usuario: Usuario): Array<any>
     {
         usuario.carrito.forEach(linea_carrito => 
         {
-
+            const precioNeto = linea_carrito.libro.precio
+            const precio = precioNeto - (+precioNeto * (linea_carrito.cupon.porc_descuento/100))
             items.push({
                 id: usuario.id,
                 title: linea_carrito.libro.titulo,
                 quantity: (+linea_carrito.cantidad),
                 currency_id: "ARS",
                 category: "Libro",
-                unit_price: (+linea_carrito.libro.precio)
+                unit_price: precio
             });
         });
 
