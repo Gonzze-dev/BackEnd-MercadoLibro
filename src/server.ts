@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import { MERCADO_PAGO_TOKEN } from "./config";
 import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
 import { CuponResolver } from "./schema/Resolvers/Cupon/CuponResolver";
+import { OrdenRsolver } from "./schema/Resolvers/Orden/OrdenResolver";
 
 const mercadopago = require("mercadopago")
 
@@ -23,7 +24,8 @@ export async function startServer() {
       resolvers: [LibroResolver, 
                   UsuarioResolver, 
                   TemaResolver, 
-                  CuponResolver],
+                  CuponResolver,
+                  OrdenRsolver],
       validate: false
     }),
     context: ({ req, res }) => ({ req, res })
