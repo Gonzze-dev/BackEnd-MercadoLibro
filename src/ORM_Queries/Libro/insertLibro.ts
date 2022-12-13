@@ -40,7 +40,18 @@ export async function insertLibro(isbn: string,
     }
     else
     {
-        obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
+        obj_libro.fecha_ingreso = formatedDate(new Date())
+
+        console.log(obj_libro.fecha_ingreso)
+        console.log(obj_libro.fecha_ingreso)
+        console.log(obj_libro.fecha_ingreso)
+        console.log(obj_libro.fecha_ingreso)
+        console.log(obj_libro.fecha_ingreso)
+        console.log(formatedDate(new Date()))
+        console.log(formatedDate(new Date()))
+        console.log(formatedDate(new Date()))
+        console.log(formatedDate(new Date()))
+        console.log(formatedDate(new Date()))
     }
 
     if (descuento > 0)
