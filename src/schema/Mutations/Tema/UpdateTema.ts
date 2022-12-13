@@ -15,6 +15,6 @@ export async function UpdateTema(tema_original: string, tema: string, url_imagen
 		msj.message = err
 		msj.status = 400
 
-		return err;
+		return msj;
 	}
 }
