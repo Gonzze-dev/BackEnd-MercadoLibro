@@ -1,12 +1,12 @@
 import { insertTema } from "../../../ORM_Queries/Tema/insertTema";
 import { Send } from "../../../SendTypes/Send";
 
-export async function InsertTema(tema: String) {
+export async function InsertTema(tema: string, url_imagen: string) {
     const msj = new Send()
 
 	try {
 
-        await insertTema(tema)
+        await insertTema(tema, url_imagen)
 
         msj.message = 'TEMA AGREGADO CON EXITO!'
         msj.success = true
