@@ -1,10 +1,10 @@
-import { Resolver, Query, Mutation, Arg, Args} from "type-graphql";
+import { Resolver, Query, Mutation, Args} from "type-graphql";
 import { Send } from "../../../SendTypes/Send";
 import { SendTema } from "../../../SendTypes/SendTema";
 import { InsertTema } from "../../Mutations/Tema/insertTema";
 import { UpdateTema } from "../../Mutations/Tema/UpdateTema";
 import { GetTemas } from "../../Queries/Tema/getTemas";
-import { ArgsInsertTema } from "./argsDefs";
+import { ArgsInsertTema, ArgsUpdateTema } from "./argsDefs";
 
 @Resolver()
 export class TemaResolver
@@ -22,7 +22,7 @@ export class TemaResolver
     }
 
     @Mutation(() => Send)
-    async updateTema(@Args() {tema_original, tema, url_imagen}:ArgsInsertTema)
+    async updateTema(@Args() {tema_original, tema, url_imagen}:ArgsUpdateTema)
     {
         return await UpdateTema(tema_original, tema, url_imagen);
     }
