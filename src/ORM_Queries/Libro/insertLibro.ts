@@ -33,20 +33,9 @@ export async function insertLibro(isbn: string,
     obj_libro.precio = precio;
     obj_libro.stock = stock;
     obj_libro.descripcion = descripcion;
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    console.log(fecha_ingreso)
-    if (fecha_ingreso.length > 0)
+
+    if (fecha_ingreso != null
+        && fecha_ingreso.length > 0)
     {
         obj_libro.fecha_ingreso = fecha_ingreso
     }
@@ -54,6 +43,7 @@ export async function insertLibro(isbn: string,
     {
         obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
     }
+    
     if (descuento > 0)
     {
         obj_libro.descuento = descuento;
