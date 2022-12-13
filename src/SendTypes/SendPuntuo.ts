@@ -10,8 +10,11 @@ export class SendPuntuo
     success: boolean = false;
 
     @Field()
-    status: number;
+    status: number = 0;
     
     @Field()
-    puntuo: boolean;
+    puntuo: boolean = false;
+
+    @Field()
+    compro: boolean = false;
 }

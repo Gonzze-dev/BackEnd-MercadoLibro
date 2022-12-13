@@ -22,6 +22,5 @@ export async function libroComprado(isbn: string, id: number)
         }
     })
 
-
     return compro[0]? true : false
 }
