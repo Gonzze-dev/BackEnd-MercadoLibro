@@ -14,4 +14,7 @@ export class SendOpino
 
     @Field()
     opino: boolean;
+
+    @Field()
+    compro: boolean;
 }
