@@ -1,4 +1,4 @@
-export const formatedDate = (date: Date) => {
+export const formatedDate = (date: any) => {
     return [
         date.getDate(),
         (date.getMonth() + 1),

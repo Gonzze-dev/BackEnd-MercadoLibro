@@ -6,7 +6,6 @@ import { insertIdioma } from "../Idioma/insertIdioma";
 
 import { formatedDate } from "../Utilities/formatedDate";
 import { getElementByName } from "../Utilities/getElementByName";
-import { existsLibro } from "./existsLibro"
 
   
 export async function insertLibro(isbn: string,
@@ -42,7 +41,7 @@ export async function insertLibro(isbn: string,
     {
         obj_libro.fecha_ingreso = (formatedDate(new Date())).toString()
     }
-    
+
     if (descuento > 0)
     {
         obj_libro.descuento = descuento;

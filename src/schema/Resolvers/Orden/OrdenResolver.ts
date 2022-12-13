@@ -9,7 +9,7 @@ export class OrdenRsolver
 {
 
     @Query(() => SendOrden)
-    async getOrden(){
+    async getVentas(){
         return await GetAllOrdenes();
     }
 
