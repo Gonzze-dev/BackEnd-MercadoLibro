@@ -12,5 +12,5 @@ export async function eliminarProvincia(nombre: string)
 
     const provincia = await getElementByName(nombre, Provincia)
     
-    await provincia.remove()
+    await provincia[0].remove()
 }

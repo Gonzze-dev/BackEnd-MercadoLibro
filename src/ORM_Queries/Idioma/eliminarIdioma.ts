@@ -6,5 +6,7 @@ export async function eliminarIdioma(nombre: string)
     const idioma = await getElementByName(nombre, Idioma)
     
     if(!idioma[0])
-        throw `ERROR, EL IDIOMA `
+        throw `ERROR, EL IDIOMA ${nombre} NO EXISTE!`
+
+    await idioma[0].remove()
 }
