@@ -54,6 +54,11 @@ export async function getLibroByIsbn(isbn: string)
             isbn: isbn
         }
     })
+
+    if(!libro[0])
+    {
+        throw `ERROR, EL LIBRO CON ISBN ${isbn} NO EXISTE!`
+    }
     
     return libro
 }
