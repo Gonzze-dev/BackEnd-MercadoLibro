@@ -1,4 +1,4 @@
-import { Resolver, Args, Query, Mutation } from "type-graphql";
+import { Resolver, Args, Query, Mutation, Arg } from "type-graphql";
 
 import { SendLibro } from "../../../SendTypes/SendLibro";
 import { InsertLibro } from "../../Mutations/Libro/insertLibro";
@@ -6,6 +6,7 @@ import { GetLibros } from "../../Queries/Libro/getibros";
 import { UpdateLibro } from "../../Mutations/Libro/updateLibro";
 import { ArgsGetLibro, ArgsInsertLibro, ArgsUpdateLibro } from "./argsDefs";
 import { Send } from "../../../SendTypes/Send";
+import { EliminarLibro } from "../../Mutations/Libro/eliminarLibro";
 
 @Resolver()
 export class LibroResolver
@@ -78,5 +79,11 @@ export class LibroResolver
                                 editorial,
                                 autor,
                                 tema);
+    }
+
+    @Mutation(() => Send)
+    async eliminarLibro(@Arg('isbn') isbn: string)
+    {
+        return await EliminarLibro(isbn);
     }
 }
