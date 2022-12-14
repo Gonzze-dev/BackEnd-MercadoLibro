@@ -33,6 +33,7 @@ export class Puntuacion extends BaseEntity
 
     @ManyToOne((type) => Libro, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     libro!: Libro;

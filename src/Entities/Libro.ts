@@ -135,7 +135,10 @@ export class Libro extends BaseEntity
     })
     puntuacion?: Puntuacion[];
 
-    @OneToMany((type) => Orden_detalle, orden_detalle => orden_detalle.libro)
+    @OneToMany((type) => Orden_detalle, orden_detalle => orden_detalle.libro,{
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     public orden_detalle: Orden_detalle[];
 
     @Field(type => Float)
