@@ -124,3 +124,21 @@ export class ArgsOpinoOPuntuo
     tokenUser: string;
 }
 
+@ArgsType()
+export class ArgsUpdateUsuario 
+{
+    @Field()
+    correo_original: string = '';
+
+    @Field()
+    tokenUser: string = '';
+
+    @Field()
+    nombre: string = '';
+
+    @Field()
+    correo: string = '';
+
+    @Field()
+    contrasenia: string = '';
+}

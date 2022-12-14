@@ -6,11 +6,17 @@ export async function updateUsuario(nombre: string,
                                     contrasenia: string,
                                     usuario: Usuario)
 {
+
+    if ((nombre.length + (+correo.length) + (+contrasenia.length)) == 0)
+        throw `ERROR, CAMPOS NOMBRE, CORREO Y CONTRASEÑA VACIOS`
+
     if (nombre != null
         && nombre.length > 0)
         usuario.nombre = nombre
 
-    if (usuario.correo != correo) {
+    if ((correo != null
+        && correo.length > 0)
+        && (usuario.correo != correo)) {
         const userComprob = await getUsuarioByMail(correo)
 
         if (userComprob)

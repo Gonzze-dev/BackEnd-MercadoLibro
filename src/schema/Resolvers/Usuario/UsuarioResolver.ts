@@ -1,6 +1,6 @@
 
 import { Resolver, Query, Args, Mutation, Arg } from "type-graphql";
-import { ArgsAgregarCupon, ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsOpinar, ArgsOpinoOPuntuo, ArgsPuntuar, ArgsSingUp } from "./argsDefs";
+import { ArgsAgregarCupon, ArgsAgregarDireccion, ArgsAgregarProducto, ArgsInsertFav, ArgsLogin, ArgsOpinar, ArgsOpinoOPuntuo, ArgsPuntuar, ArgsSingUp, ArgsUpdateUsuario } from "./argsDefs";
 
 import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
@@ -31,6 +31,7 @@ import { Send } from "../../../SendTypes/Send";
 import { SendFavoritos } from "../../../SendTypes/SendFavoritos";
 import { GetFavoritos } from "../../Mutations/Usuario/getFavoritos";
 import { EliminarUsuario } from "../../Mutations/Usuario/eliminarUsuario";
+import { selectUpdateType } from "../../Mutations/Usuario/updateUsuario";
 
 
 @Resolver()
@@ -144,4 +145,9 @@ export class UsuarioResolver
         return await EliminarUsuario(correo)
     }
 
+    @Mutation(() => Send)
+    async updateUsuario(@Args() args: ArgsUpdateUsuario)
+    {
+        return await selectUpdateType(args)
+    }
 }
