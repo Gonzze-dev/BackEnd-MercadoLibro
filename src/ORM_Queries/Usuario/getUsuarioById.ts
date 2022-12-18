@@ -28,7 +28,12 @@ export async function getUsuarioById(id: number)
         },
         where:
         {
-            id: id
+            id: id,
+        },
+        order:{
+            notificacion:{
+                id: "ASC"
+            }
         }
     })
 
