@@ -6,22 +6,20 @@ import { UsuarioResolver } from "./schema/Resolvers/Usuario/UsuarioResolver";
 import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 
 import bodyParser from "body-parser";
-
 import { CuponResolver } from "./schema/Resolvers/Cupon/CuponResolver";
 import { OrdenRsolver } from "./schema/Resolvers/Orden/OrdenResolver";
 import { CiudadResolver } from "./schema/Resolvers/Ciduad/CiudadResolver";
 import { PaisResolver } from "./schema/Resolvers/Pais/PaisResolver";
 import { ProvinciaResolver } from "./schema/Resolvers/Provincia/ProvinciaResolver";
-import { getRouter } from "./router" 
-import cors from "cors"
+import { notificar } from "./notificar";
+
+const mercadopago = require("mercadopago")
 
 export async function startServer() {
 
     const app = express();
-    app.use(cors())
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended: true}))
-    app.use(getRouter())
 
     const server = new ApolloServer({
         schema: await buildSchema({
@@ -40,6 +38,10 @@ export async function startServer() {
     });
 
     await server.start()
+
+    app.post('/notificar', async (req: any, res: any) => {
+        notificar(req, res)
+    })
 
 
     server.applyMiddleware({ app, path: "/graphql" });
