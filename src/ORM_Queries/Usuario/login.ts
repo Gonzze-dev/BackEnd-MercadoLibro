@@ -4,73 +4,6 @@ import { Usuario } from "../../Entities/Usuario";
 export async function login(correo: string, contrasenia: string) 
 {
     const usuario = await Usuario.find({
-        // select:{
-        //     nombre: true,
-        //     correo: true,
-        //     contrasenia: true,
-        //     admin: true,
-        //     direccion: {
-        //         direccion: true,
-        //         nombre: true,
-        //         infoAdicional: true,
-        //         dni: true,
-        //         telefono: true,
-        //         ciudad: {
-        //             cp: true
-        //         }
-        //     },
-        //     notificacion:{
-        //         id: true,
-        //         mensaje: true
-        //     },
-        //     carrito: {
-        //         nro_linea: true,
-        //         cantidad: true,
-        //         cupon:{
-        //             codigo_cupon: true,
-        //             porc_descuento: true,
-        //             utilizado: true
-        //         },
-        //         libro:{
-        //             isbn: true,
-        //             url_imagen: true,
-        //             titulo: true,
-        //             fecha_edicion: true,
-        //             precio: true,
-        //             stock: true,
-        //             descripcion: true,
-        //             descuento: true,
-        //             autor: {
-        //                 nombre: true
-        //             },
-        //         }
-        //     },
-        //     favorito:{
-        //         isbn: true
-        //     },
-        //     orden:{
-        //         fecha: true,
-        //         total: true,
-        //         cupon:{
-        //             codigo_cupon: true,
-        //             porc_descuento: true,
-        //             utilizado: true
-        //         },
-        //         orden_detalle:{
-        //             cantidad: true,
-        //             precio: true,
-        //             libro: {
-        //                 url_imagen: true,
-        //                 titulo: true,
-        //                 precio: true,
-        //                 fecha_edicion: true,
-        //                 autor: {
-        //                     nombre: true
-        //                 }
-        //             }
-        //         }
-        //     }
-        // },
         relations:
         {
             direccion: {
@@ -98,6 +31,11 @@ export async function login(correo: string, contrasenia: string)
         {
             correo: ILike(`${correo}`),
             contrasenia: contrasenia
+        },
+        order:{
+            notificacion:{
+                id: "DESC"
+            }
         }
     })
 
