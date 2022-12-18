@@ -1,17 +1,9 @@
 import { Field, ObjectType } from "type-graphql";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendPuntuo
+export class SendPuntuo extends Send
 {
-    @Field()
-    message: string = '';
-
-    @Field()
-    success: boolean = false;
-
-    @Field()
-    status: number = 0;
-    
     @Field()
     puntuo: boolean = false;
 

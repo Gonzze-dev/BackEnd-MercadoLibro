@@ -1,18 +1,10 @@
 import { Field, Float, Int, ObjectType } from "type-graphql";
 import { Libro } from "../Entities/Libro";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendLibro
+export class SendLibro extends Send
 {
-    @Field()
-    message: string = "";
-
-    @Field()
-    success:boolean = false;
-
-    @Field(type => Int)
-    status: number = 0
-
     @Field(type => Int)
     page: number = 0
 

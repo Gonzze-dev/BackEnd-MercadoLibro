@@ -1,14 +1,9 @@
 import { Field, ObjectType } from "type-graphql";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendMercadoPago
+export class SendMercadoPago extends Send
 {
-    @Field()
-    message: string = '';
-
-    @Field()
-    success: boolean = false;
-
     @Field()
     init_point: string = '';
 }

@@ -1,15 +1,10 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import { Usuario } from "../Entities/Usuario";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendUsuario
+export class SendUsuario extends Send
 {
-    @Field()
-    message: string = "";
-
-    @Field()
-    success:boolean = false;
-
     @Field()
     accessToken: string = ''
 

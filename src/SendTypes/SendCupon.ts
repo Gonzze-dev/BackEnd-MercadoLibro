@@ -1,15 +1,10 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import { Cupon } from "../Entities/Cupon";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendCupon
+export class SendCupon extends Send
 {
-    @Field()
-    message: string = "";
-
-    @Field()
-    success:boolean = false;
-
     @Field(type => Cupon, {nullable: true})
     cupon: Cupon
 }

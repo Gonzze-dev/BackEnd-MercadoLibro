@@ -1,19 +1,11 @@
 
 import { Field, Int, ObjectType } from "type-graphql";
 import { Libro } from "../Entities/Libro";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendFavoritos
+export class SendFavoritos extends Send
 {
-    @Field()
-    message: string = "";
-
-    @Field()
-    success:boolean = false;
-
-    @Field(type => Int)
-    status: number = 0;
-
     @Field(type => [Libro], {nullable: true})
     libro: Libro[];
 }

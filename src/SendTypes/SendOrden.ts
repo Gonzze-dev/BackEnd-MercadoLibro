@@ -1,18 +1,10 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import { Orden } from "../Entities/Orden";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendOrden
+export class SendOrden extends Send
 {
-    @Field()
-    message: string = "";
-
-    @Field()
-    success:boolean = false;
-
-    @Field(type => Int)
-    status: number = 0;
-
     @Field(type => [Orden], {nullable: true})
     orden: Orden[];
 }

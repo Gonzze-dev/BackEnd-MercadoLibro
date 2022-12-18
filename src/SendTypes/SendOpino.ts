@@ -1,17 +1,9 @@
 import { Field, ObjectType } from "type-graphql";
+import { Send } from "./Send";
 
 @ObjectType()
-export class SendOpino
+export class SendOpino extends Send
 {
-    @Field()
-    message: string = '';
-
-    @Field()
-    success: boolean = false;
-
-    @Field()
-    status: number;
-
     @Field()
     opino: boolean;
 
