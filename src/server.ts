@@ -6,13 +6,12 @@ import { UsuarioResolver } from "./schema/Resolvers/Usuario/UsuarioResolver";
 import { TemaResolver } from "./schema/Resolvers/Tema/TemaResolver";
 
 import bodyParser from "body-parser";
-import { MERCADO_PAGO_TOKEN } from "./config";
-import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
 import { CuponResolver } from "./schema/Resolvers/Cupon/CuponResolver";
 import { OrdenRsolver } from "./schema/Resolvers/Orden/OrdenResolver";
 import { CiudadResolver } from "./schema/Resolvers/Ciduad/CiudadResolver";
 import { PaisResolver } from "./schema/Resolvers/Pais/PaisResolver";
 import { ProvinciaResolver } from "./schema/Resolvers/Provincia/ProvinciaResolver";
+import { notificar } from "./notificar";
 
 const mercadopago = require("mercadopago")
 
@@ -41,32 +40,7 @@ export async function startServer() {
     await server.start()
 
     app.post('/notificar', async (req: any, res: any) => {
-        mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
-
-        const {query} = req
-
-        let payment: any
-
-        const topic = query.topic || query.type;
-        
-    
-        if (topic == "payment") {
-
-            const paymentId = query.id || query['data.id'];
-            payment = await mercadopago.payment.findById(paymentId)
-            
-            const items = payment.body.additional_info.items
-            const status = payment.body.status
-
-            await crearOrden(status, items, <string>paymentId)
-            
-            res.status(200)
-        }
-        else
-        {
-          res.status(400)
-        }
-
+        await notificar(req, res)
     })
 
 
