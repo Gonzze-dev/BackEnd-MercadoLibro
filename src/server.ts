@@ -13,12 +13,15 @@ import { CiudadResolver } from "./schema/Resolvers/Ciduad/CiudadResolver";
 import { PaisResolver } from "./schema/Resolvers/Pais/PaisResolver";
 import { ProvinciaResolver } from "./schema/Resolvers/Provincia/ProvinciaResolver";
 import { getRouter } from "./router" 
+import cors from "cors"
 
 export async function startServer() {
 
     const app = express();
+    app.use(cors())
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended: true}))
+    app.use(getRouter())
 
     const server = new ApolloServer({
         schema: await buildSchema({
@@ -37,8 +40,6 @@ export async function startServer() {
     });
 
     await server.start()
-
-    app.use(getRouter())
 
 
     server.applyMiddleware({ app, path: "/graphql" });
