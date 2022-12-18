@@ -32,7 +32,7 @@ export async function getUsuarioById(id: number)
         },
         order:{
             notificacion:{
-                id: "ASC"
+                id: "DESC"
             }
         }
     })
