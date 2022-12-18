@@ -40,7 +40,7 @@ export async function startServer() {
     await server.start()
 
     app.post('/notificar', async (req: any, res: any) => {
-        notificar(req, res)
+        await notificar(req, res)
     })
 
 
