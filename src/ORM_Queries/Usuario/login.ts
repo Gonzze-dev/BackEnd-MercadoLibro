@@ -12,8 +12,10 @@ export async function login(correo: string, contrasenia: string)
             notificacion: true,
             carrito:{
                 cupon: true,
-                libro: {
-                    autor: true
+                items: {
+                    libro:{
+                        autor: true
+                    }
                 }
             },
             orden:

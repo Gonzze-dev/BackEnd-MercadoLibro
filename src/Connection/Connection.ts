@@ -21,6 +21,7 @@ import { Tema } from "../Entities/Tema";
 
 //Entities
 import { Usuario } from "../Entities/Usuario";
+import { Carrito } from "../Entities/Carrito";
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -45,6 +46,7 @@ export const AppDataSource = new DataSource({
                Orden_detalle,
                Linea_carrito,
                Libro,
+               Carrito,
                Usuario,
                Notificacion],
     synchronize: true,

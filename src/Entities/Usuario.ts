@@ -2,6 +2,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 import {BaseEntity,
         Column,
         Entity,
+        JoinColumn,
         JoinTable,
         ManyToMany,
         OneToMany,
@@ -15,6 +16,7 @@ import { Notificacion } from './Notificacion';
 import { Opinion } from './Opinion'
 import { Orden } from './Orden';
 import { Puntuacion } from './Puntuacion'
+import { Carrito } from './Carrito';
 
 @ObjectType()
 @Entity()
@@ -92,10 +94,10 @@ export class Usuario extends BaseEntity
     })
     public orden?: Orden[];
 
-    @Field(type => [Linea_carrito], {nullable: true})
-    @OneToMany((type) => Linea_carrito, linea_carrito => linea_carrito.usuario, {
+    @Field(type => Carrito, {nullable: true})
+    @OneToOne((type) => Carrito, (carrito) => carrito.usuario, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
-    public carrito?: Linea_carrito[];
+    carrito: Carrito;
 }

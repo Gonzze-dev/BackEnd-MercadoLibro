@@ -11,8 +11,10 @@ export async function getUsuarioById(id: number)
             notificacion: true,
             carrito:{
                 cupon: true,
-                libro: {
-                    autor: true
+                items: {
+                    libro:{
+                        autor: true
+                    }
                 }
             },
             orden:

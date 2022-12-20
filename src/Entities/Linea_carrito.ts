@@ -9,6 +9,7 @@ import { BaseEntity,
 import { Cupon } from "./Cupon";
 import { Libro } from "./Libro"
 import { Usuario } from "./Usuario"
+import { Carrito } from "./Carrito";
 
 @ObjectType()
 @Entity()
@@ -22,15 +23,6 @@ export class Linea_carrito extends BaseEntity
     @Column()
     cantidad!: number;
 
-    @Field(type => Cupon, {nullable: true})
-    @ManyToOne((type) => Cupon, (Cupon) => Cupon.codigo_cupon, {
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-    })
-    @JoinColumn({name: 'codigo_cupon'})
-    cupon: Cupon;
-
-    
     @Field(type => Libro, {nullable: true})
     @ManyToOne((type) => Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
@@ -39,11 +31,11 @@ export class Linea_carrito extends BaseEntity
     @JoinColumn({name: 'isbn'})
     libro: Libro;
 
-    @ManyToOne((type) => Usuario, {
+    @ManyToOne((type) => Carrito, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'id_usuario'})
-    usuario: Usuario;
+    @JoinColumn({name: 'id_carrito'})
+    carrito: Carrito;
 
 }

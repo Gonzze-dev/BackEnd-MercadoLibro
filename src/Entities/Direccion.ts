@@ -15,7 +15,6 @@ import { Usuario } from "./Usuario";
 @Entity()
 export class Direccion extends BaseEntity
 {
-    
     @Field(type => ID)
     @PrimaryGeneratedColumn()
     id!: number;

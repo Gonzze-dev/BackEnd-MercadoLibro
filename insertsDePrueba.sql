@@ -101,13 +101,13 @@ VALUES  ('8418174072', 'https://m.media-amazon.com/images/I/91NW7CBaVwL.jpg', 'H
  ( '8423362477','https://m.media-amazon.com/images/I/71NtjKt82VL.jpg','Esperando al diluvio: 1591 (Áncora & Delfín)','01/11/2022',2599.00,6,'Entre los años 1968 y 1969, el asesino al que la prensa bautizaría como John Biblia mató a tres mujeres en Glasgow. Nunca fue identificado y el caso todavía sigue abierto hoy en día. En esta novela, a principios de los años ochenta, el investigador de policía escocés Noah Scott Sherrington logra llegar hasta John Biblia, pero un fallo en su corazón en el último momento le impide arrestarlo. A pesar de su frágil estado de salud, y contra los consejos médicos y la negativa de sus superiores para que continúe con la persecución del asesino en serie, Noah sigue una corazonada que lo llevará hasta el Bilbao de 1983. Justo unos días antes de que un verdadero diluvio arrase la ciudad.',4,1);
 
 
-INSERT INTO public.usuario(
-	nombre, correo, contrasenia)
-	VALUES ('Gonzalo Errandonea', 'gonzalo118@gmail.com', '1234');
+-- INSERT INTO public.usuario(
+-- 	nombre, correo, contrasenia)
+-- 	VALUES ('Gonzalo Errandonea', 'gonzalo118@gmail.com', '1234');
     
-INSERT INTO public.usuario(
-	nombre, correo, contrasenia, admin)
-	VALUES ('Gonzalo Romero', 'gonzaloRomero@hotmail.com', '1234', true);
+-- INSERT INTO public.usuario(
+-- 	nombre, correo, contrasenia, admin)
+-- 	VALUES ('Gonzalo Romero', 'gonzaloRomero@hotmail.com', '1234', true);
 
 --ESCRITO_POR
 INSERT INTO escrito_por(isbn, id_autor)
@@ -128,8 +128,8 @@ VALUES
         ('8423362477', 3);
 
 --DIRECCION ENTREGA
-INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp, nombre)
-VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820, 'Gonzalo Errandonea');
+-- INSERT INTO direccion_entrega (direccion, "infoAdicional", dni, id_usuario, cp, nombre)
+-- VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820, 'Gonzalo Errandonea');
 
 
 --DIRECCION

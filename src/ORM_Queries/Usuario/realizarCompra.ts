@@ -9,20 +9,25 @@ function getItems(usuario: Usuario): Array<any>
 {
     let items: Array<any> = [];
     
-    if (usuario.carrito)
+    if (usuario.carrito.items)
     {
-        usuario.carrito.forEach(linea_carrito => 
+        usuario.carrito.items.forEach(item => 
         {
-            const precioNeto = linea_carrito.libro.precio
-            const precio = precioNeto - (+precioNeto * (linea_carrito.cupon.porc_descuento/100))
+            const precioNeto = item.libro.precio
+            let precio = precioNeto
+
+            if (usuario.carrito.cupon != null)
+            {
+                precio = precio - (+precioNeto * (usuario.carrito.cupon.porc_descuento/100))
+            }
 
             items.push({
                 id: usuario.id,
-                title: linea_carrito.libro.titulo,
-                quantity: (+linea_carrito.cantidad),
+                title: item.libro.titulo,
+                quantity: (+item.cantidad),
                 currency_id: "ARS",
                 category: "Libro",
-                unit_price: precio
+                unit_price: +precio
             });
         });
 

@@ -10,6 +10,8 @@ import { Usuario } from "../../Entities/Usuario";
 import { eliminarProducto } from "../Usuario/eliminarProducto";
 import { calcTotal } from "../Utilities/calcTotal";
 import { formatedDate } from "../Utilities/formatedDate";
+import { AppDataSource } from "../../Connection/Connection";
+import { Carrito } from "../../Entities/Carrito";
 
 async function esNotificacionRepetida(paymentId: string) 
 {
@@ -36,7 +38,9 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             direccion: true,
             carrito: {
                 cupon: true,
-                libro: true
+                items: {
+                    libro: true
+                }
             }
         },
         where: {
@@ -56,19 +60,18 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         const usuario = arr_usuario[0]
 
         if (!payment[0]
-            && (((usuario && usuario.carrito) && (usuario.carrito.length > 0))
-            && (usuario.carrito[0].cupon 
-            && (!usuario.carrito[0].cupon.utilizado || usuario.carrito[0].cupon.codigo_cupon == '-'))))
+            && (((usuario && usuario.carrito.items) && (usuario.carrito.items.length > 0))))
         {
 
-            const cupon = await Cupon.find({
-                where:{
-                    codigo_cupon: usuario.carrito[0].cupon.codigo_cupon
-                }
-            })
-
-            if (usuario.carrito[0].cupon.codigo_cupon != '-')
+            
+            if (usuario.carrito.cupon != null)
             {
+                const cupon = await Cupon.find({
+                    where:{
+                        codigo_cupon: usuario.carrito.cupon.codigo_cupon
+                    }
+                })
+
                 cupon[0].utilizado = true
                 await cupon[0].save()
             }
@@ -85,24 +88,36 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             direccion_entrega.ciudad = usuario.direccion.ciudad
 
 
-            for (const item_carrito of usuario.carrito) 
+            for (const item_carrito of usuario.carrito.items)
             {
                 total = total + (+calcTotal(item_carrito.cantidad, item_carrito.libro.precio))
-                
             }
 
             obj_orden.usuario = usuario
             obj_orden.fecha = (formatedDate(new Date())).toString()
-            obj_orden.total = total - (+total * (usuario.carrito[0].cupon.porc_descuento/100))
-            obj_orden.cupon = usuario.carrito[0].cupon
+            obj_orden.total = total
             obj_orden.payment_id_mp = paymentId
 
+            //APLICO DESCUENTO
+            if (usuario.carrito.cupon != null)
+            {
+                obj_orden.cupon = usuario.carrito.cupon
+                obj_orden.total = obj_orden.total - (+total * (usuario.carrito.cupon.porc_descuento/100))
+
+                await AppDataSource
+                    .createQueryBuilder()
+                    .update(Carrito)
+                    .set({ cupon: null})
+                    .where("id_usuario = :id", { id: usuario.id })
+                    .execute()
+            }
+            
             await direccion_entrega.save()
             obj_orden.direccion_entrega = direccion_entrega
             await obj_orden.save()
 
 
-            for (const item_carrito of usuario.carrito) 
+            for (const item_carrito of usuario.carrito.items)
             {
                 const libro = await Libro.find({
                     where: {
@@ -122,7 +137,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
                 await eliminarProducto(item_carrito.libro.isbn, idUsuario) 
                 await obj_detalle.save()
                 await libro[0].save()
-
             }
 
             const notificacion = new Notificacion()
@@ -131,6 +145,8 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             await notificacion.save()
 
             orden = obj_orden
+
+           
         }
     }else if(status == 'in_process')
     {
@@ -154,5 +170,5 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         }
     }
     
-    return orden
+    //return orden
 }

@@ -1,6 +1,7 @@
 
 import { ILike } from "typeorm";
 import { Usuario } from "../../Entities/Usuario";
+import { Carrito } from "../../Entities/Carrito";
 
 export async function signUp(nombre: string, 
                             correo: string, 
@@ -20,13 +21,11 @@ export async function signUp(nombre: string,
     }
 
     const obj_usuario = new Usuario();
-
     obj_usuario.nombre = nombre;
     obj_usuario.correo = correo;
     obj_usuario.contrasenia = contrasenia;
-
     await obj_usuario.save();
-    
+
     usuario = await Usuario.find(
         {
             where:{
@@ -34,6 +33,10 @@ export async function signUp(nombre: string,
             }
         }
     )
+
+    const obj_carrito = new Carrito();
+    obj_carrito.usuario = usuario[0]
+    await obj_carrito.save();
     
     return usuario
 }

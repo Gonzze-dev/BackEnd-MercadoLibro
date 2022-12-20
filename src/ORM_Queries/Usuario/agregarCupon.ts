@@ -25,15 +25,13 @@ export async function agregarCupon(codigo_cupon: string, id: number)
         }
     })
     
-    if (usuario[0].carrito 
+    if (usuario[0].carrito
         && (cupon[0] && (!cupon[0].utilizado))
         )
     {
-        for (const item of usuario[0].carrito) {
-            item.cupon = cupon[0]
-            await item.save()
-        }
+        usuario[0].carrito.cupon = cupon[0]
     }
 
+    await usuario[0].carrito.save()
     return cupon
 }

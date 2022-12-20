@@ -8,7 +8,9 @@ export async function eliminarProducto(isbn: string, id: number)
         relations:
         {
             carrito: {
-                libro: true
+                items: {
+                    libro: true
+                }
             }
         },
         where:{
@@ -16,13 +18,13 @@ export async function eliminarProducto(isbn: string, id: number)
         }
     })
     
-    if (usuario[0].carrito)
+    if (usuario[0].carrito.items)
     {
-        const index = usuario[0].carrito.findIndex(obj => obj.libro.isbn === isbn)
+        const index = usuario[0].carrito.items.findIndex(item => item.libro.isbn === isbn)
 
         if (index != -1)
         {
-            await usuario[0].carrito[index].remove()
+            await usuario[0].carrito.items[index].remove()
         }
     }
  

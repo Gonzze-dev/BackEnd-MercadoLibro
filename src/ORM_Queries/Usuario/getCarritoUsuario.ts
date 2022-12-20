@@ -6,7 +6,9 @@ export async function getCarritoUsuario(id: number)
         relations: {
             carrito: {
                 cupon: true,
-                libro: true
+                items: {
+                    libro: true
+                }
             },
             direccion: true
         },
