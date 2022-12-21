@@ -1,4 +1,5 @@
 import { getAllLibros } from "../../../ORM_Queries/Libro/getAllLibros";
+import { getAllLibrosByAutor } from "../../../ORM_Queries/Libro/getAllLibrosByAutor";
 import { getAllLibrosByCategoria } from "../../../ORM_Queries/Libro/getAllLibrosByCategoria";
 import { getLibroByIsbn } from "../../../ORM_Queries/Libro/getLibroByIsbn";
 import { getLibrosByReference } from "../../../ORM_Queries/Libro/getLibrosByReference";
@@ -21,6 +22,11 @@ async function selectFunction(args:  any)
             && args.titulo != '')
     {
         return getLibrosByReference(args.titulo)
+    }
+    else if(args.autor
+        && args.autor != '')
+    {
+        return getAllLibrosByAutor(args.autor)
     }
     else if(args.descuento)
     {
@@ -45,11 +51,10 @@ export async function GetLibros(args: any) {
         }
 
         msj.message = "Libros obtenidos con exito!"
+        msj.status = 200;
 		msj.success = true;
 		msj.libro = libro
         
-        
-
         return msj;
     } catch (err) {
         

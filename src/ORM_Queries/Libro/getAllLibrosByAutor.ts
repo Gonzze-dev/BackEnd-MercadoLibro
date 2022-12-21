@@ -1,8 +1,8 @@
+import { ILike } from "typeorm";
 import { Libro } from "../../Entities/Libro";
 
-export async function getAllLibrosByCategoria(categoria: string) 
+export async function getAllLibrosByAutor(autor: string) 
 {
-
     const libro = await Libro.find({
         relations:
         {
@@ -18,8 +18,8 @@ export async function getAllLibrosByCategoria(categoria: string)
             autor: true
         },
         where: {
-            tema: {
-                nombre: categoria
+            autor:{
+                nombre: ILike(`%${autor}%`)
             }
         }
     })

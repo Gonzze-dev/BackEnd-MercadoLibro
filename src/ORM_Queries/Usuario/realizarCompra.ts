@@ -72,7 +72,6 @@ async function crearLinkDePago(usuario: Usuario, items: any): Promise<string>
 
 export async function realizarCompra (id: number) 
 {
-
     let res = ""
     
     const usuario = await getCarritoUsuario(id)

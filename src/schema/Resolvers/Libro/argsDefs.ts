@@ -12,6 +12,9 @@ export class ArgsGetLibro {
     titulo: string = '';
 
     @Field()
+    autor: string = '';
+
+    @Field()
     descuento: boolean = false;
     
 }
