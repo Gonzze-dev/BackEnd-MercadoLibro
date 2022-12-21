@@ -5,41 +5,7 @@ export async function getLibrosByReference(titulo: string)
 {
 
     const libro = await Libro.find({
-        // select: 
-        // {
-        //     isbn: true,
-        //     url_imagen: true,
-        //     titulo: true,
-        //     fecha_edicion: true,
-        //     precio: true,
-        //     stock: true,
-        //     descripcion: true,
-        //     fecha_ingreso: true,
-        //     descuento: true,
-        //     editorial: {
-        //         nombre: true
-        //     },
-        //     tema: {
-        //         nombre: true
-        //     },
-        //     autor: {
-        //         nombre: true
-        //     },
-        //     opinion:{
-        //     comentario: true,
-        //     usuario:{
-        //         nombre: true
-        //     }
-        //     },
-        //     puntuacion:{
-        //     puntuacion: true,
-        //     usuario:{
-        //         nombre: true
-        //     }
-        //     },
-        // },
-        relations:
-        {
+        relations:{
             editorial: true,
             idioma: true,
             opinion: {
