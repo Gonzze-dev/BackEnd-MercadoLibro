@@ -1,16 +1,17 @@
 
-import { Resolver, Query} from "type-graphql";
+import { Resolver, Query, Args} from "type-graphql";
 import { SendOrden } from "../../../SendTypes/SendOrden";
 
-import { GetAllOrdenes } from "../../Mutations/Orden/getAllOrdenes";
+import { GetOrdenes } from "../../Mutations/Orden/getAllOrdenes";
+import { ArgsGetVentas } from "./argsDefs";
 
 @Resolver()
 export class OrdenRsolver
 {
 
     @Query(() => SendOrden)
-    async getVentas(){
-        return await GetAllOrdenes();
+    async getVentas(@Args() args: ArgsGetVentas){
+        return await GetOrdenes(args);
     }
 
 }
