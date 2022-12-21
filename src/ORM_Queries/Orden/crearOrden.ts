@@ -1,5 +1,5 @@
 import { Like } from "typeorm";
-import { Cupon } from "../../Entities/Cupon";
+
 import { Direccion_entrega } from "../../Entities/Direccion_entrega";
 import { Libro } from "../../Entities/Libro";
 import { Notificacion } from "../../Entities/Notificacion";
@@ -62,19 +62,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         if (!payment[0]
             && (((usuario && usuario.carrito.items) && (usuario.carrito.items.length > 0))))
         {
-
-            
-            if (usuario.carrito.cupon != null)
-            {
-                const cupon = await Cupon.find({
-                    where:{
-                        codigo_cupon: usuario.carrito.cupon.codigo_cupon
-                    }
-                })
-
-                cupon[0].utilizado = true
-                await cupon[0].save()
-            }
 
             const obj_orden = new Orden()
             const direccion_entrega = new Direccion_entrega()
@@ -145,10 +132,8 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             await notificacion.save()
 
             orden = obj_orden
-
-           
         }
-    }else if(status == 'in_process')
+    } else if(status == 'in_process')
     {
         if(await esNotificacionRepetida(paymentId))
         {
@@ -157,7 +142,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             notificacion.usuario = arr_usuario[0];
             await notificacion.save()
         }
-        
     }
     else if(status == 'rejected')
     {
@@ -169,6 +153,6 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             await notificacion.save()
         }
     }
-    
+
     //return orden
 }

@@ -33,5 +33,8 @@ export async function agregarCupon(codigo_cupon: string, id: number)
     }
 
     await usuario[0].carrito.save()
+    cupon[0].utilizado = true
+    await cupon[0].save()
+    
     return cupon
 }
