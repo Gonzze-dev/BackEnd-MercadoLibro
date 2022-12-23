@@ -57,9 +57,9 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
     if(!usuario)
         throw new Error("EL USUARIO NO EXISTE");
     else if (!usuario.correo)
-        throw new Error("EL USUARIO TIENE CORREO")
+        throw new Error("EL USUARIO TIENE CORREO");
     else if (usuario.carrito.items && usuario.carrito.items.length <= 0)
-    throw new Error("EL USUARIO NO TIENE SU CARRITO VACIO")
+        throw new Error("EL USUARIO NO TIENE SU CARRITO VACIO");
 
     let mensaje = message(usuario.correo, "", "")
 
