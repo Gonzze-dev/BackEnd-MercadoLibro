@@ -52,7 +52,16 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         }
     })
 
-    let mensaje = message(arr_usuario[0].correo, "", "")
+    const usuario = arr_usuario[0]
+
+    if(!usuario)
+        throw new Error("EL USUARIO NO EXISTE");
+    else if (!usuario.correo)
+        throw new Error("EL USUARIO TIENE CORREO")
+    else if (usuario.carrito.items && usuario.carrito.items.length <= 0)
+    throw new Error("EL USUARIO NO TIENE SU CARRITO VACIO")
+
+    let mensaje = message(usuario.correo, "", "")
 
     if (status == 'approved')
     {
@@ -63,7 +72,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             }
         })
 
-        const usuario = arr_usuario[0]
+        
 
         if (!payment[0]
             && (((usuario && usuario.carrito.items) && (usuario.carrito.items.length > 0))))

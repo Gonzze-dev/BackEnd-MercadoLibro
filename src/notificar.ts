@@ -3,30 +3,35 @@ import { crearOrden } from "./ORM_Queries/Orden/crearOrden";
 const mercadopago = require("mercadopago")
 
 export const notificar = async (req: any, res: any) => {
-    mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
 
-    const {query} = req
+  try{
+      mercadopago.configure({access_token: MERCADO_PAGO_TOKEN});
 
-    let payment: any
+      const {query} = req
 
-    const topic = query.topic || query.type;
-    
+      let payment: any
 
-    if (topic == "payment") {
+      const topic = query.topic || query.type;
+      
 
-        const paymentId = query.id || query['data.id'];
-        payment = await mercadopago.payment.findById(paymentId)
-        
-        const items = payment.body.additional_info.items
-        const status = payment.body.status
+      if (topic == "payment") {
 
-        await crearOrden(status, items, <string>paymentId)
-        
-        res.status(200)
+          const paymentId = query.id || query['data.id'];
+          payment = await mercadopago.payment.findById(paymentId)
+          
+          const items = payment.body.additional_info.items
+          const status = payment.body.status
+
+          await crearOrden(status, items, <string>paymentId)
+          
+          res.status(200)
+      }
+      else
+      {
+        res.status(400)
+      }
+    }catch(err: any){
+      console.log(err)
+      return err
     }
-    else
-    {
-      res.status(400)
-    }
-
 }
