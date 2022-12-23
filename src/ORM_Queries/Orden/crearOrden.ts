@@ -12,6 +12,8 @@ import { calcTotal } from "../Utilities/calcTotal";
 import { formatedDate } from "../Utilities/formatedDate";
 import { AppDataSource } from "../../Connection/Connection";
 import { Carrito } from "../../Entities/Carrito";
+import { message } from "../../NodeMailer/message";
+import { sendMail } from "../../NodeMailer/sendMail";
 
 async function esNotificacionRepetida(paymentId: string) 
 {
@@ -27,7 +29,9 @@ async function esNotificacionRepetida(paymentId: string)
 export async function crearOrden(status: string, items: Array<any>, paymentId: string) 
 {
     let total: number = 0
-
+    let topic: string;
+    let textoMensaje: string;
+    
 
     const idUsuario = items[0].id
 
@@ -48,6 +52,8 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         }
     })
 
+    let mensaje = message(arr_usuario[0].correo, "", "")
+
     if (status == 'approved')
     {
 
@@ -62,7 +68,7 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
         if (!payment[0]
             && (((usuario && usuario.carrito.items) && (usuario.carrito.items.length > 0))))
         {
-
+            
             const obj_orden = new Orden()
             const direccion_entrega = new Direccion_entrega()
 
@@ -131,6 +137,15 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             notificacion.usuario = usuario;
             await notificacion.save()
 
+            //NOTIFICAR VIA MAIL
+            topic = 'COMPRA APROBADA'
+            textoMensaje = `Disfrute de su libros! 
+                            ticket: ${paymentId}`
+            mensaje.subject = topic
+            mensaje.text = textoMensaje
+
+            await sendMail(mensaje)
+
             orden = obj_orden
         }
     } else if(status == 'in_process')
@@ -141,6 +156,15 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             notificacion.mensaje = `Compra pendiente\nTicket: ${paymentId}`;
             notificacion.usuario = arr_usuario[0];
             await notificacion.save()
+
+            //NOTIFICAR VIA MAIL
+            topic = 'PAGO PENDIENTE'
+            textoMensaje = `El estado del pago es pendiente. 
+                            Por ende no se ha podido concretar por el momento, su ticket es: ${paymentId}`
+            mensaje.subject = topic
+            mensaje.text = textoMensaje
+
+            await sendMail(mensaje)
         }
     }
     else if(status == 'rejected')
@@ -151,6 +175,15 @@ export async function crearOrden(status: string, items: Array<any>, paymentId: s
             notificacion.mensaje = `Compra rechazada`;
             notificacion.usuario = arr_usuario[0];
             await notificacion.save()
+
+            //NOTIFICAR VIA MAIL
+            topic = 'PAGO RECHAZADO'
+            textoMensaje = `El pago de su compra fue rechazado. 
+                            Por ende no se ha podido concretar, su ticket es: ${paymentId}`
+            mensaje.subject = topic
+            mensaje.text = textoMensaje
+
+            await sendMail(mensaje)
         }
     }
 
