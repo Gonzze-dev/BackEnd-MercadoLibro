@@ -12,8 +12,7 @@ import { CiudadResolver } from "./schema/Resolvers/Ciduad/CiudadResolver";
 import { PaisResolver } from "./schema/Resolvers/Pais/PaisResolver";
 import { ProvinciaResolver } from "./schema/Resolvers/Provincia/ProvinciaResolver";
 import { notificar } from "./notificar";
-
-const mercadopago = require("mercadopago")
+import { EstadisticaResolver } from "./schema/Resolvers/Estadistica/EstadisticaResolver";
 
 export async function startServer() {
 
@@ -30,7 +29,8 @@ export async function startServer() {
                       OrdenRsolver,
                       CiudadResolver,
                       PaisResolver, 
-                      ProvinciaResolver],
+                      ProvinciaResolver,
+                      EstadisticaResolver],
                       
         validate: false
         }),
@@ -42,8 +42,7 @@ export async function startServer() {
     app.post('/notificar', async (req: any, res: any) => {
         await notificar(req, res)
     })
-
-
+    
     server.applyMiddleware({ app, path: "/graphql" });
 
     return app;

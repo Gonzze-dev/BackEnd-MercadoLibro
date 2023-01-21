@@ -246,5 +246,5 @@ VALUES
 
 
 --DIRECCION
--- INSERT INTO direccion (direccion, "infoAdicional", dni, id_usuario, cp, nombre)
--- VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820, 'Gonzalo Errandonea');
+INSERT INTO direccion (direccion, "infoAdicional", dni, id_usuario, cp, nombre)
+VALUES ('Escarguache 84', 'segundo piso', 42464430, 1, 2820, 'Gonzalo Errandonea');
