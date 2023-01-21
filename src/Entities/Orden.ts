@@ -47,6 +47,7 @@ export class Orden extends BaseEntity
 
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;
