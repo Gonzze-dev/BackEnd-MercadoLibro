@@ -50,6 +50,7 @@ export class Usuario extends BaseEntity
     })
     admin: boolean;
 
+    @Field()
     @Column({
         nullable: true,
         default: false
