@@ -1,17 +1,17 @@
 
 import { Resolver, Query, Args} from "type-graphql";
-import { SendOrden } from "../../../SendTypes/SendOrden";
+import { SendOrdenByPage } from "../../../SendTypes/SendOrden";
 
-import { GetOrdenes } from "../../Mutations/Orden/getAllOrdenes";
-import { ArgsGetVentas } from "./argsDefs";
+import { GetOrdenesByFechaAndPage } from "../../Mutations/Orden/getAllOrdenes";
+import { ArgsGetVentasByPage } from "./argsDefs";
 
 @Resolver()
 export class OrdenRsolver
 {
 
-    @Query(() => SendOrden)
-    async getVentas(@Args() args: ArgsGetVentas){
-        return await GetOrdenes(args);
+    @Query(() => SendOrdenByPage)
+    async getVentas(@Args() {fechaMenor, fechaMayor, limit, offset}: ArgsGetVentasByPage){
+        return await GetOrdenesByFechaAndPage(fechaMenor, fechaMayor, limit, offset);
     }
 
 }
