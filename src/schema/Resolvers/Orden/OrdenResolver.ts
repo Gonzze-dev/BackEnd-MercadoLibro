@@ -2,7 +2,7 @@
 import { Resolver, Query, Args} from "type-graphql";
 import { SendOrdenByPage } from "../../../SendTypes/SendOrden";
 
-import { GetOrdenesByFechaAndPage } from "../../Mutations/Orden/getAllOrdenes";
+import { GetOrdenesByFechaAndPage } from "../../Queries/Orden/getAllOrdenes";
 import { ArgsGetVentasByPage } from "./argsDefs";
 
 @Resolver()
