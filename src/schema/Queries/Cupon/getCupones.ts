@@ -13,9 +13,12 @@ export async function GetAllCuponesByPage(limit: number, offset: number)
         if (!limit || limit <= 0 || limit == null) limit = 10
 
         const arrResult = await getAllCuponesByPage(limit, offset)
+        let maxPage = arrResult[1]
+
+        if (maxPage == null) maxPage = 0
 
         msj.cupones = arrResult[0]
-        msj.maxPage = Math.ceil(arrResult[1]/limit)
+        msj.maxPage = Math.ceil(maxPage/limit)
         msj.message = 'CUPONES OBTENIDOS CON EXITO!'
         msj.status = 200
         msj.success = false
