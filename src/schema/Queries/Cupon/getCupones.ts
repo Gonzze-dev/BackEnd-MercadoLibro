@@ -19,6 +19,7 @@ export async function GetAllCuponesByPage(limit: number, offset: number)
 
         msj.cupones = arrResult[0]
         msj.maxPage = Math.ceil(maxPage/limit)
+        msj.page = Math.ceil(offset /limit) + 1
         msj.message = 'CUPONES OBTENIDOS CON EXITO!'
         msj.status = 200
         msj.success = false
