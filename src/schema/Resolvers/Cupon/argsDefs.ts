@@ -1,4 +1,15 @@
-import { ArgsType, Field, Float } from "type-graphql";
+import { ArgsType, Field, Float, Int } from "type-graphql";
+
+
+@ArgsType()
+export class ArgsGetCupones
+{
+    @Field(() => Int, {nullable: true})
+    limit: number;
+
+    @Field(() => Int, {nullable: true})
+    offset: number;
+}
 
 @ArgsType()
 export class ArgsInsertCupon
