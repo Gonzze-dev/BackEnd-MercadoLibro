@@ -1,6 +1,7 @@
 import { getAllOrdenes } from "../../../ORM_Queries/Orden/getAllOrdenes";
 import { getOrdenesByFecha } from "../../../ORM_Queries/Orden/getOrdenesByFecha";
-import { SendOrden } from "../../../SendTypes/SendOrden";
+import { getOrdenesByFechaAndPage } from "../../../ORM_Queries/Orden/getOrdenesByPage";
+import { SendOrden, SendOrdenByPage } from "../../../SendTypes/SendOrden";
 
 async function selectOrdenesMethods(args: any) 
 {
@@ -13,18 +14,49 @@ async function selectOrdenesMethods(args: any)
     return await getAllOrdenes()
 }
 
-export async function GetOrdenes(args: any) {
+export async function GetOrdenes(fechaMenor: string, fechaMayor: string) {
     const msj = new SendOrden()
 
 	try {
 
-        const orden = await selectOrdenesMethods(args)
+        const orden = await getOrdenesByFecha(fechaMenor, fechaMayor)
 
         msj.message = 'ORDENES OBTENIDAS CON EXITO!!'
         msj.success = true
         msj.status = 200
         msj.orden = orden
 		return msj;
+
+	} catch (err: any) {
+
+        msj.message = err
+        msj.success = true
+        msj.status = 404
+
+		return msj;
+	}
+}
+
+export async function GetOrdenesByFechaAndPage(fechaMenor: string, 
+                                                fechaMayor: string, 
+                                                limit: number,
+                                                offset: number) {
+    const msj = new SendOrdenByPage()
+
+	try {
+
+        if (!offset || offset <= 0 || offset == null) offset = 0
+        if (!limit || limit <= 0 || limit == null) limit = 10
+
+        const arrResult = await getOrdenesByFechaAndPage(fechaMenor, fechaMayor, limit, offset)
+
+        msj.message = 'ORDENES OBTENIDAS CON EXITO!!'
+        msj.success = true
+        msj.status = 200
+        msj.orden = arrResult[0]
+        msj.maxPage = Math.ceil(arrResult[1]/limit)
+
+		return new SendOrdenByPage();
 
 	} catch (err: any) {
 
