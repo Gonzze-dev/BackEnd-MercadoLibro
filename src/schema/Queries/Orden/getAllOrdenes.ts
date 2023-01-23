@@ -47,16 +47,20 @@ export async function GetOrdenesByFechaAndPage(fechaMenor: string,
 
         if (!offset || offset <= 0 || offset == null) offset = 0
         if (!limit || limit <= 0 || limit == null) limit = 10
-
+        
         const arrResult = await getOrdenesByFechaAndPage(fechaMenor, fechaMayor, limit, offset)
+        let maxPage = arrResult[1]
 
         msj.message = 'ORDENES OBTENIDAS CON EXITO!!'
         msj.success = true
         msj.status = 200
         msj.orden = arrResult[0]
-        msj.maxPage = Math.ceil(arrResult[1]/limit)
 
-		return new SendOrdenByPage();
+        if (maxPage == null) maxPage = 0
+
+        msj.maxPage = Math.ceil(maxPage/limit)
+
+		return msj;
 
 	} catch (err: any) {
 
