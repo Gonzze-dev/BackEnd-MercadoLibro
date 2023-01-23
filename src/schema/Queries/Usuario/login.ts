@@ -54,6 +54,7 @@ async function GetUsuarioByCorreoYPassword(args: any): Promise<SendUsuario>
 async function GetUsuarioByToken(tokenUser: string): Promise<SendUsuario>
 {
     const msj = new SendUsuario()
+
     let idString = ''
     try
     {
@@ -65,6 +66,7 @@ async function GetUsuarioByToken(tokenUser: string): Promise<SendUsuario>
         msj.success = false
 		return msj;
     }
+    
 	try {
 
 		const id: number = parseInt(idString)
