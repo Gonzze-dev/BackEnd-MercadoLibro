@@ -18,4 +18,7 @@ export class SendOrdenByPage extends Send
 
     @Field(type => Int)
     maxPage: number;
+
+    @Field(type => Int)
+    page: number;
 }

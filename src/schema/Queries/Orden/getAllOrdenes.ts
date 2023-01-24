@@ -50,7 +50,7 @@ export async function GetOrdenesByFechaAndPage(fechaMenor: string,
         
         const arrResult = await getOrdenesByFechaAndPage(fechaMenor, fechaMayor, limit, offset)
         let maxPage = arrResult[1]
-
+        msj.page = Math.ceil(offset /limit) + 1
         msj.message = 'ORDENES OBTENIDAS CON EXITO!!'
         msj.success = true
         msj.status = 200
