@@ -27,8 +27,11 @@ export async function getOrdenesByFechaAndPage(fechaMenor: string,
                 fechaMayorFormateada
             ),
         },
+        order:{
+            id: 'DESC'
+        },
         skip: offset,
-        take: limit
+        take: limit,
     })
     
     for (const orden of ordenes[0]) {
