@@ -1,6 +1,7 @@
 import { ILike } from "typeorm";
 import { Usuario } from "../../Entities/Usuario";
 import { Carrito } from "../../Entities/Carrito";
+import { formatedDate } from "../Utilities/formatedDate";
 
 export async function loginByRedSocial(nombre: string = "", correo: string, contrasenia: string) 
 {
@@ -63,6 +64,15 @@ export async function loginByRedSocial(nombre: string = "", correo: string, cont
         const obj_carrito = new Carrito();
         obj_carrito.usuario = usuario[0]
         await obj_carrito.save();
+    }
+    else
+    {
+        if (usuario[0] && usuario[0].orden)
+        {
+            for (const orden of usuario[0].orden) {
+                orden.fecha = formatedDate(orden.fecha)
+            }
+        }
     }
 
     return usuario

@@ -1,4 +1,5 @@
 import { Usuario } from "../../Entities/Usuario";
+import { formatedDate } from "../Utilities/formatedDate";
 
 export async function getUsuarioById(id: number) 
 {
@@ -38,6 +39,14 @@ export async function getUsuarioById(id: number)
             }
         }
     })
+
+    if (usuario[0] && usuario[0].orden)
+    {
+        for (const orden of usuario[0].orden) {
+            orden.fecha = formatedDate(orden.fecha)
+        }
+    }
+        
 
     return usuario
 }
