@@ -11,7 +11,9 @@ export class OrdenRsolver
 
     @Query(() => SendOrdenByPage)
     async getVentas(@Args() {fechaMenor, fechaMayor, limit, offset}: ArgsGetVentasByPage){
+
         return await GetOrdenesByFechaAndPage(fechaMenor, fechaMayor, limit, offset);
+        
     }
 
 }

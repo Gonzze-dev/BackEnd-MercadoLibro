@@ -26,7 +26,7 @@ export class Orden extends BaseEntity
     payment_id_mp!: string;
 
     @Field(type => String)
-    @Column({nullable: true})
+    @Column({type: 'timestamptz', nullable: true})
     fecha!: String;
     
     @Field(type => Float)
