@@ -12,7 +12,8 @@ export async function getOrdenesByFechaAndPage(fechaMenor: string,
     let fechaMenorFormateada = new Date(formatedStringToDate(fechaMenor))
     let fechaMayorFormateada = new Date(formatedStringToDate(fechaMayor))
 
-    console.log(formatedStringToDate(fechaMenor))
+    //Sumo un dia a la fecha a bsucar por que el between no evalua el dia final
+    fechaMayorFormateada.setDate(fechaMayorFormateada.getDate() + 1)
 
     const ordenes = await Orden.findAndCount({
         relations:{
