@@ -9,3 +9,10 @@ export function formatedDate(date: any) {
         date.getFullYear(),
     ].join('/');
 }
+
+export function formatedStringToDate(dateString: string) {
+    const partesFecha = dateString.split("/")
+    dateString = partesFecha[2] + '-' + partesFecha[1] + '-' + partesFecha[0];
+
+    return dateString
+}
