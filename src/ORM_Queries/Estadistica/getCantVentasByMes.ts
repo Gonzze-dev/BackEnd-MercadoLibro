@@ -5,7 +5,7 @@ export async function getCantVentasByMes()
 {
     const vetnasDia = await AppDataSource
     .createQueryBuilder()
-    .select("TO_CHAR(TO_DATE(orden.fecha, 'dd/mm/yyyy'), 'mm/yyyy') as fechaVentas,COUNT(orden.fecha) as ventas")
+    .select("TO_CHAR(orden.fecha, 'mm/yyyy') as fechaVentas,COUNT(orden.fecha) as ventas")
     .from(Orden, 'orden')
     .groupBy('fechaVentas')
     .getRawMany()
